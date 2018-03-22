@@ -19,6 +19,16 @@ namespace GruppuppgiftMMMJ
         public Form1()
         {
             InitializeComponent();
+
+        }
+
+        private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
+        {
+            MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             cartesianChart1.Series = new SeriesCollection
             {
                 new LineSeries
@@ -71,12 +81,5 @@ namespace GruppuppgiftMMMJ
 
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
-
-        private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
-        {
-            MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
-        }
-
-    
     }
 }
