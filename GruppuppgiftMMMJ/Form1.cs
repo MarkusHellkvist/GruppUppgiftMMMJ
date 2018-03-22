@@ -14,7 +14,7 @@ namespace GruppuppgiftMMMJ
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent(); //Markus
         }
     }
 }
