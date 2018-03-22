@@ -66,6 +66,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputData.Designer.cs">
+      <DependentUpon>InputData.cs</DependentUpon>
+    </Compile>
     <Compile Include="LivechartsDemo.cs">
       <SubType>Form</SubType>
     </Compile>
