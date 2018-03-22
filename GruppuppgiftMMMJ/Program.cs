@@ -8,8 +8,10 @@ namespace GruppuppgiftMMMJ
 {
     static class Program
     {
+        //Hej /MW
+
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application. mm
         /// </summary>
         [STAThread]
         static void Main()
