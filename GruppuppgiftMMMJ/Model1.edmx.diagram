@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9bf2ba5c300c447ca3cf2de56c222421" Name="Diagram1" ZoomLevel="116">
+        <EntityTypeShape EntityType="CarsDWModel.Avg_Salary" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.CarSales" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.ChargingPoint" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.Country" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.DataTypesAvg_Salary" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.DataTypesCarSales" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.DataTypesChargingPoint" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.DataTypesMarketEvent" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.GasPrice" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.MarketEvent" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.avg_salaryCSVwData" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.bensinprisCSV" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.MarketEventsCSV" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.nyreg_NorgeCSV" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.nyreg_SverigeCSV" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="CarsDWModel.FK__Avg_Salar__count__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="CarsDWModel.FK_CarSales_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="CarsDWModel.FK_ChargingPoints_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="CarsDWModel.FK__MarketEve__count__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="CarsDWModel.FK_GasPrice_Country" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
