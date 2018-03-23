@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Uppgift3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uppgift3.dbo.Amsterdam' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Amsterdam">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="survey_id" Type="int" Nullable="false" />
+          <Property Name="host_id" Type="int" Nullable="false" />
+          <Property Name="room_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="1" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="borough" Type="nvarchar" MaxLength="1" />
+          <Property Name="neighborhood" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="reviews" Type="int" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="accommodates" Type="int" Nullable="false" />
+          <Property Name="bedrooms" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bathrooms" Type="nvarchar" MaxLength="1" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="minstay" Type="nvarchar" MaxLength="1" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="last_modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uppgift3.dbo.Barcelona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Barcelona">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="survey_id" Type="int" Nullable="false" />
+          <Property Name="host_id" Type="int" Nullable="false" />
+          <Property Name="room_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="1" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="borough" Type="nvarchar" MaxLength="1" />
+          <Property Name="neighborhood" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="reviews" Type="int" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="accommodates" Type="int" Nullable="false" />
+          <Property Name="bedrooms" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bathrooms" Type="nvarchar" MaxLength="1" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="minstay" Type="nvarchar" MaxLength="1" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="last_modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Uppgift3.dbo.Boston' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Boston">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="survey_id" Type="int" Nullable="false" />
+          <Property Name="host_id" Type="int" Nullable="false" />
+          <Property Name="room_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="1" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="borough" Type="nvarchar" MaxLength="1" />
+          <Property Name="neighborhood" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="reviews" Type="int" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="accommodates" Type="int" Nullable="false" />
+          <Property Name="bedrooms" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bathrooms" Type="nvarchar" MaxLength="1" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="minstay" Type="nvarchar" MaxLength="1" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="last_modified" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="latitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Uppgift3ModelStoreContainer">
+          <EntitySet Name="Amsterdam" EntityType="Self.Amsterdam" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Amsterdam].[room_id] AS [room_id], 
+    [Amsterdam].[survey_id] AS [survey_id], 
+    [Amsterdam].[host_id] AS [host_id], 
+    [Amsterdam].[room_type] AS [room_type], 
+    [Amsterdam].[country] AS [country], 
+    [Amsterdam].[city] AS [city], 
+    [Amsterdam].[borough] AS [borough], 
+    [Amsterdam].[neighborhood] AS [neighborhood], 
+    [Amsterdam].[reviews] AS [reviews], 
+    [Amsterdam].[overall_satisfaction] AS [overall_satisfaction], 
+    [Amsterdam].[accommodates] AS [accommodates], 
+    [Amsterdam].[bedrooms] AS [bedrooms], 
+    [Amsterdam].[bathrooms] AS [bathrooms], 
+    [Amsterdam].[price] AS [price], 
+    [Amsterdam].[minstay] AS [minstay], 
+    [Amsterdam].[name] AS [name], 
+    [Amsterdam].[last_modified] AS [last_modified], 
+    [Amsterdam].[latitude] AS [latitude], 
+    [Amsterdam].[longitude] AS [longitude], 
+    [Amsterdam].[location] AS [location]
+    FROM [dbo].[Amsterdam] AS [Amsterdam]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Barcelona" EntityType="Self.Barcelona" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Barcelona].[room_id] AS [room_id], 
+    [Barcelona].[survey_id] AS [survey_id], 
+    [Barcelona].[host_id] AS [host_id], 
+    [Barcelona].[room_type] AS [room_type], 
+    [Barcelona].[country] AS [country], 
+    [Barcelona].[city] AS [city], 
+    [Barcelona].[borough] AS [borough], 
+    [Barcelona].[neighborhood] AS [neighborhood], 
+    [Barcelona].[reviews] AS [reviews], 
+    [Barcelona].[overall_satisfaction] AS [overall_satisfaction], 
+    [Barcelona].[accommodates] AS [accommodates], 
+    [Barcelona].[bedrooms] AS [bedrooms], 
+    [Barcelona].[bathrooms] AS [bathrooms], 
+    [Barcelona].[price] AS [price], 
+    [Barcelona].[minstay] AS [minstay], 
+    [Barcelona].[name] AS [name], 
+    [Barcelona].[last_modified] AS [last_modified], 
+    [Barcelona].[latitude] AS [latitude], 
+    [Barcelona].[longitude] AS [longitude], 
+    [Barcelona].[location] AS [location]
+    FROM [dbo].[Barcelona] AS [Barcelona]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Boston" EntityType="Self.Boston" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Boston].[room_id] AS [room_id], 
+    [Boston].[survey_id] AS [survey_id], 
+    [Boston].[host_id] AS [host_id], 
+    [Boston].[room_type] AS [room_type], 
+    [Boston].[country] AS [country], 
+    [Boston].[city] AS [city], 
+    [Boston].[borough] AS [borough], 
+    [Boston].[neighborhood] AS [neighborhood], 
+    [Boston].[reviews] AS [reviews], 
+    [Boston].[overall_satisfaction] AS [overall_satisfaction], 
+    [Boston].[accommodates] AS [accommodates], 
+    [Boston].[bedrooms] AS [bedrooms], 
+    [Boston].[bathrooms] AS [bathrooms], 
+    [Boston].[price] AS [price], 
+    [Boston].[minstay] AS [minstay], 
+    [Boston].[name] AS [name], 
+    [Boston].[last_modified] AS [last_modified], 
+    [Boston].[latitude] AS [latitude], 
+    [Boston].[longitude] AS [longitude], 
+    [Boston].[location] AS [location]
+    FROM [dbo].[Boston] AS [Boston]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Uppgift3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Amsterdam">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="survey_id" Type="Int32" Nullable="false" />
+          <Property Name="host_id" Type="Int32" Nullable="false" />
+          <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="borough" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="neighborhood" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reviews" Type="Int32" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="accommodates" Type="Int32" Nullable="false" />
+          <Property Name="bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bathrooms" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minstay" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Barcelona">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="survey_id" Type="Int32" Nullable="false" />
+          <Property Name="host_id" Type="Int32" Nullable="false" />
+          <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="borough" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="neighborhood" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reviews" Type="Int32" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="accommodates" Type="Int32" Nullable="false" />
+          <Property Name="bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bathrooms" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minstay" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Boston">
+          <Key>
+            <PropertyRef Name="room_id" />
+            <PropertyRef Name="survey_id" />
+            <PropertyRef Name="host_id" />
+            <PropertyRef Name="room_type" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="neighborhood" />
+            <PropertyRef Name="reviews" />
+            <PropertyRef Name="overall_satisfaction" />
+            <PropertyRef Name="accommodates" />
+            <PropertyRef Name="bedrooms" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="last_modified" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="location" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="survey_id" Type="Int32" Nullable="false" />
+          <Property Name="host_id" Type="Int32" Nullable="false" />
+          <Property Name="room_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="borough" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="neighborhood" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reviews" Type="Int32" Nullable="false" />
+          <Property Name="overall_satisfaction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="accommodates" Type="Int32" Nullable="false" />
+          <Property Name="bedrooms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bathrooms" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minstay" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="last_modified" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Uppgift3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Amsterdam" EntityType="Self.Amsterdam" />
+          <EntitySet Name="Barcelona" EntityType="Self.Barcelona" />
+          <EntitySet Name="Boston" EntityType="Self.Boston" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Uppgift3ModelStoreContainer" CdmEntityContainer="Uppgift3Entities">
+          <EntitySetMapping Name="Amsterdam">
+            <EntityTypeMapping TypeName="Uppgift3Model.Amsterdam">
+              <MappingFragment StoreEntitySet="Amsterdam">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="survey_id" ColumnName="survey_id" />
+                <ScalarProperty Name="host_id" ColumnName="host_id" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="borough" ColumnName="borough" />
+                <ScalarProperty Name="neighborhood" ColumnName="neighborhood" />
+                <ScalarProperty Name="reviews" ColumnName="reviews" />
+                <ScalarProperty Name="overall_satisfaction" ColumnName="overall_satisfaction" />
+                <ScalarProperty Name="accommodates" ColumnName="accommodates" />
+                <ScalarProperty Name="bedrooms" ColumnName="bedrooms" />
+                <ScalarProperty Name="bathrooms" ColumnName="bathrooms" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="minstay" ColumnName="minstay" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barcelona">
+            <EntityTypeMapping TypeName="Uppgift3Model.Barcelona">
+              <MappingFragment StoreEntitySet="Barcelona">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="survey_id" ColumnName="survey_id" />
+                <ScalarProperty Name="host_id" ColumnName="host_id" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="borough" ColumnName="borough" />
+                <ScalarProperty Name="neighborhood" ColumnName="neighborhood" />
+                <ScalarProperty Name="reviews" ColumnName="reviews" />
+                <ScalarProperty Name="overall_satisfaction" ColumnName="overall_satisfaction" />
+                <ScalarProperty Name="accommodates" ColumnName="accommodates" />
+                <ScalarProperty Name="bedrooms" ColumnName="bedrooms" />
+                <ScalarProperty Name="bathrooms" ColumnName="bathrooms" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="minstay" ColumnName="minstay" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boston">
+            <EntityTypeMapping TypeName="Uppgift3Model.Boston">
+              <MappingFragment StoreEntitySet="Boston">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="survey_id" ColumnName="survey_id" />
+                <ScalarProperty Name="host_id" ColumnName="host_id" />
+                <ScalarProperty Name="room_type" ColumnName="room_type" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="borough" ColumnName="borough" />
+                <ScalarProperty Name="neighborhood" ColumnName="neighborhood" />
+                <ScalarProperty Name="reviews" ColumnName="reviews" />
+                <ScalarProperty Name="overall_satisfaction" ColumnName="overall_satisfaction" />
+                <ScalarProperty Name="accommodates" ColumnName="accommodates" />
+                <ScalarProperty Name="bedrooms" ColumnName="bedrooms" />
+                <ScalarProperty Name="bathrooms" ColumnName="bathrooms" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="minstay" ColumnName="minstay" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="location" ColumnName="location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
