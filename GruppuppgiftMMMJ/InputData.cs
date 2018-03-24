@@ -14,16 +14,20 @@ namespace GruppuppgiftMMMJ
 {
     public partial class InputData : Form
     {
+        private int xStartsAtDateYear;
+        private int xStartsAtDateMonth;
         public InputData()
         {
             InitializeComponent();
+            xStartsAtDateYear = 0;
+            xStartsAtDateMonth = 0;
 
 
         }
 
         private void InputData_Load(object sender, EventArgs e)
         {
-           mytestfunction(1, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", true);
+            mytestfunction(1, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", false);
             mytestfunction(2, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", true);
 
         }
@@ -31,7 +35,12 @@ namespace GruppuppgiftMMMJ
 
         private void mytestfunction(int country_id, string pickedTable, string xtitle, string ytitle, string pickedColumn, string typeofcalculation, string graphtype, string granularity, bool add)
         {
-
+            if (add==false)
+            {
+                xStartsAtDateYear = 0;
+                xStartsAtDateMonth = 0;
+            }
+           
             using (CarsDWEntities dw = new CarsDWEntities())
             {
                 List<CarSale> Context = dw.CarSales.Where(c => c.country_id == country_id).ToList();
@@ -40,6 +49,14 @@ namespace GruppuppgiftMMMJ
                 //hämtar min o max
                 int max = Context.Max(a => a.year_no);
                 int min = Context.Min(a => a.year_no);
+
+                //Hjälpa hoverfunktionen
+                if (xStartsAtDateYear==0)
+                {
+                    xStartsAtDateYear = min;
+                    
+                }
+
                 List<int> y = new List<int>();
                 List<string> x = new List<string>();
                 for (int i = min; i <= max; i++) //för varje år
@@ -63,6 +80,11 @@ namespace GruppuppgiftMMMJ
                             //addarer y 12 gånger per år el hur många månader som det nu finns
                             int maxmonth = Context.Where(C => C.year_no == i).Max(m => m.month_no);
                             int minmonth = Context.Where(C => C.year_no == i).Min(m => m.month_no);
+                            //hjälp till hoverfunktionen
+                            if (xStartsAtDateMonth == 0)
+                            {
+                                xStartsAtDateMonth = minmonth;
+                            }
                             for (int m = minmonth; m <= maxmonth; m++) //för månad
                             {
                                 var hjalp1 = Context.Where(b => b.year_no == i && b.month_no == m).Select(pickedColumn);
@@ -74,7 +96,7 @@ namespace GruppuppgiftMMMJ
                                 }
                                 //lägger till
                                 y.Add(sumM);
-                                x.Add(i.ToString()+"-"+m.ToString());
+                                x.Add(i.ToString() + "-" + m.ToString());
                             }
                             break;
 
@@ -121,12 +143,41 @@ namespace GruppuppgiftMMMJ
         }
 
 
-        private class ColItem
-        {
-            public double[] value;
-            public string label;
 
+        private void cartesianChart1_DataHover(object sender, ChartPoint p)
+        {
+           
+            if (xStartsAtDateMonth==0 && xStartsAtDateYear!=0)
+            {
+                //år verkar valt
+                int yr = (int)p.X + xStartsAtDateYear;
+                using (CarsDWEntities dw = new CarsDWEntities())
+                {
+
+                    var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
+                    dataGridView1.DataSource = me;
+
+                }
+                label1.Text = yr.ToString();
+            }
+            else if (xStartsAtDateYear!=0 && xStartsAtDateMonth!=0)
+            {
+                //räknar antalet månader fram
+                DateTime d = new DateTime(xStartsAtDateYear, 1, 1);
+                d = d.AddMonths((int)p.X);
+                int yr = d.Year;
+                int mnth = d.Month;
+                using (CarsDWEntities dw = new CarsDWEntities())
+                {
+                    var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no==mnth).Select( a=>new { a.date, a.country_name, a.description,a.title}).ToList();
+                    dataGridView1.DataSource = me;
+
+                }
+                label1.Text = yr.ToString() + mnth.ToString();
+            }
+         
         }
+
 
     }
 }
