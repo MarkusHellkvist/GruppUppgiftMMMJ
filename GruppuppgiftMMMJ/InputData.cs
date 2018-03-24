@@ -23,11 +23,12 @@ namespace GruppuppgiftMMMJ
 
         private void InputData_Load(object sender, EventArgs e)
         {
-            mytestfunction(1,"xtitlen","electric","sum");
+            mytestfunction(1,"År","CarSales","elbilar sålda","electric","sum");
+            mytestfunction(2, "År","CarSales", "elbilar sålda", "electric", "sum");
         }
      
 
-        private void mytestfunction(int country_id,string xtitle,string pickedColumn,string typeofcalculation)
+        private void mytestfunction(int country_id,string pickedTable,string xtitle, string ytitle, string pickedColumn,string typeofcalculation)
         {
 
             using (CarsDWEntities dw = new CarsDWEntities())
@@ -71,14 +72,14 @@ namespace GruppuppgiftMMMJ
                         Labels = x.ToArray()
                     });
 
+                    cartesianChart1.AxisY.Add(new Axis
+                    {
+                        Title = ytitle,
+                        LabelFormatter = value => value.ToString("N")
+                    });
                 }
                 cartesianChart1.Series.Add(cs);
-                /*
-                cartesianChart1.AxisY.Add(new Axis
-                {
-                    Title = "Totalt Antal Bilar sålda",
-                    LabelFormatter = value => value.ToString("N")
-                });*/
+               
 
             }
 
