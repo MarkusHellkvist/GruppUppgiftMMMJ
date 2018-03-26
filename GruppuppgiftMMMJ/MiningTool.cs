@@ -12,14 +12,16 @@ using System.Linq.Dynamic;
 using LiveCharts;
 namespace GruppuppgiftMMMJ
 {
-    public partial class InputData : Form
+    public partial class MiningTool : Form
     {
         private int xStartsAtDateYear;
         private int xStartsAtDateMonth;
         private int currentYscaleLs;
         private int currentYscaleCs;
-        public InputData()
+        private Form pf;
+        public MiningTool(Form parentForm)
         {
+            pf = parentForm;
             InitializeComponent();
             xStartsAtDateYear = 0;
             xStartsAtDateMonth = 0;
@@ -352,6 +354,13 @@ namespace GruppuppgiftMMMJ
 
             drawGraph(cbiCountry.country_id, cbiGran.Text, cbiSelectionData.Column, cbiSelectionData.Column, cbiSelectionData.TypeOfCalculation, cbiGraphType.Text, cbiGran.Text, checkBox1.Checked, cbiSelectionData.IsFloat, checkBox2.Checked);
             label1.Text = (cbiGran.Text);
+
+        }
+
+        private void InputData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            pf.Show();
 
         }
     }
