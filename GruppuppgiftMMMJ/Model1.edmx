@@ -32,6 +32,7 @@
           <Property Name="hybrids" Type="int" Nullable="false" />
           <Property Name="liquid_fuel" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="total" Type="int" Nullable="false" />
+          <Property Name="avg_CO2" Type="int" />
         </EntityType>
         <EntityType Name="ChargingPoint">
           <Key>
@@ -52,34 +53,6 @@
           </Key>
           <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="DataTypesAvg_Salary">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="datatype" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="DataTypesCarSales">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="datatype" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="DataTypesChargingPoint">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="datatype" Type="varchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="DataTypesMarketEvent">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="datatype" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="GasPrice">
           <Key>
@@ -123,6 +96,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
             <PropertyRef Name="quarter" />
             <PropertyRef Name="hybrids" />
             <PropertyRef Name="total" />
+            <PropertyRef Name="CO2" />
             <PropertyRef Name="gas_price" />
             <PropertyRef Name="charging_points" />
             <PropertyRef Name="avg_salary" />
@@ -139,6 +113,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="hybrids" Type="int" Nullable="false" />
           <Property Name="liquid_fuel" Type="int" />
           <Property Name="total" Type="int" Nullable="false" />
+          <Property Name="CO2" Type="int" Nullable="false" />
           <Property Name="gas_price" Type="float" Nullable="false" />
           <Property Name="charging_points" Type="int" Nullable="false" />
           <Property Name="avg_salary" Type="int" Nullable="false" />
@@ -208,10 +183,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <EntitySet Name="CarSales" EntityType="Self.CarSales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChargingPoint" EntityType="Self.ChargingPoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DataTypesAvg_Salary" EntityType="Self.DataTypesAvg_Salary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DataTypesChargingPoint" EntityType="Self.DataTypesChargingPoint" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DataTypesMarketEvent" EntityType="Self.DataTypesMarketEvent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GasPrice" EntityType="Self.GasPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarketEvent" EntityType="Self.MarketEvent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BigView" EntityType="Self.BigView" store:Type="Views" store:Schema="dbo">
@@ -228,6 +199,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
     [BigView].[hybrids] AS [hybrids], 
     [BigView].[liquid_fuel] AS [liquid_fuel], 
     [BigView].[total] AS [total], 
+    [BigView].[CO2] AS [CO2], 
     [BigView].[gas_price] AS [gas_price], 
     [BigView].[charging_points] AS [charging_points], 
     [BigView].[avg_salary] AS [avg_salary]
@@ -287,6 +259,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="hybrids" Type="Int32" Nullable="false" />
           <Property Name="liquid_fuel" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="total" Type="Int32" Nullable="false" />
+          <Property Name="avg_CO2" Type="Int32" />
           <NavigationProperty Name="Country" Relationship="Self.FK_CarSales_Country" FromRole="CarSales" ToRole="Country" />
         </EntityType>
         <EntityType Name="ChargingPoint">
@@ -314,34 +287,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <NavigationProperty Name="ChargingPoints" Relationship="Self.FK_ChargingPoints_Country" FromRole="Country" ToRole="ChargingPoint" />
           <NavigationProperty Name="MarketEvents" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="Country" ToRole="MarketEvent" />
           <NavigationProperty Name="GasPrices" Relationship="Self.FK_GasPrice_Country" FromRole="Country" ToRole="GasPrice" />
-        </EntityType>
-        <EntityType Name="DataTypesAvg_Salary">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="DataTypesCarSale">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="DataTypesChargingPoint">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="DataTypesMarketEvent">
-          <Key>
-            <PropertyRef Name="colname" />
-          </Key>
-          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="GasPrice">
           <Key>
@@ -385,6 +330,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
             <PropertyRef Name="quarter" />
             <PropertyRef Name="hybrids" />
             <PropertyRef Name="total" />
+            <PropertyRef Name="CO2" />
             <PropertyRef Name="gas_price" />
             <PropertyRef Name="charging_points" />
             <PropertyRef Name="avg_salary" />
@@ -401,6 +347,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="hybrids" Type="Int32" Nullable="false" />
           <Property Name="liquid_fuel" Type="Int32" />
           <Property Name="total" Type="Int32" Nullable="false" />
+          <Property Name="CO2" Type="Int32" Nullable="false" />
           <Property Name="gas_price" Type="Double" Nullable="false" />
           <Property Name="charging_points" Type="Int32" Nullable="false" />
           <Property Name="avg_salary" Type="Int32" Nullable="false" />
@@ -465,15 +412,11 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DWEntitiesCars" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CarsDWEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" />
           <EntitySet Name="CarSales" EntityType="Self.CarSale" />
           <EntitySet Name="ChargingPoints" EntityType="Self.ChargingPoint" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
-          <EntitySet Name="DataTypesAvg_Salary" EntityType="Self.DataTypesAvg_Salary" />
-          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSale" />
-          <EntitySet Name="DataTypesChargingPoints" EntityType="Self.DataTypesChargingPoint" />
-          <EntitySet Name="DataTypesMarketEvents" EntityType="Self.DataTypesMarketEvent" />
           <EntitySet Name="GasPrices" EntityType="Self.GasPrice" />
           <EntitySet Name="MarketEvents" EntityType="Self.MarketEvent" />
           <EntitySet Name="BigViews" EntityType="Self.BigView" />
@@ -503,7 +446,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CarsDWModelStoreContainer" CdmEntityContainer="DWEntitiesCars">
+        <EntityContainerMapping StorageEntityContainer="CarsDWModelStoreContainer" CdmEntityContainer="CarsDWEntities">
           <EntitySetMapping Name="Avg_Salary">
             <EntityTypeMapping TypeName="CarsDWModel.Avg_Salary">
               <MappingFragment StoreEntitySet="Avg_Salary">
@@ -531,6 +474,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
                 <ScalarProperty Name="hybrids" ColumnName="hybrids" />
                 <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
                 <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="avg_CO2" ColumnName="avg_CO2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -553,38 +497,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesAvg_Salary">
-            <EntityTypeMapping TypeName="CarsDWModel.DataTypesAvg_Salary">
-              <MappingFragment StoreEntitySet="DataTypesAvg_Salary">
-                <ScalarProperty Name="colname" ColumnName="colname" />
-                <ScalarProperty Name="datatype" ColumnName="datatype" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesCarSales">
-            <EntityTypeMapping TypeName="CarsDWModel.DataTypesCarSale">
-              <MappingFragment StoreEntitySet="DataTypesCarSales">
-                <ScalarProperty Name="colname" ColumnName="colname" />
-                <ScalarProperty Name="datatype" ColumnName="datatype" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesChargingPoints">
-            <EntityTypeMapping TypeName="CarsDWModel.DataTypesChargingPoint">
-              <MappingFragment StoreEntitySet="DataTypesChargingPoint">
-                <ScalarProperty Name="colname" ColumnName="colname" />
-                <ScalarProperty Name="datatype" ColumnName="datatype" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesMarketEvents">
-            <EntityTypeMapping TypeName="CarsDWModel.DataTypesMarketEvent">
-              <MappingFragment StoreEntitySet="DataTypesMarketEvent">
-                <ScalarProperty Name="colname" ColumnName="colname" />
-                <ScalarProperty Name="datatype" ColumnName="datatype" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -633,6 +545,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
                 <ScalarProperty Name="hybrids" ColumnName="hybrids" />
                 <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
                 <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="CO2" ColumnName="CO2" />
                 <ScalarProperty Name="gas_price" ColumnName="gas_price" />
                 <ScalarProperty Name="charging_points" ColumnName="charging_points" />
                 <ScalarProperty Name="avg_salary" ColumnName="avg_salary" />

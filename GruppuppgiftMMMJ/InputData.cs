@@ -53,7 +53,7 @@ namespace GruppuppgiftMMMJ
 
             }
 
-            using (DWEntitiesCars dw = new DWEntitiesCars())
+            using (CarsDWEntities dw = new CarsDWEntities())
             {
 
                 List<BigView> Context = dw.BigViews.Where(c => c.country_id == country_id).ToList();
@@ -174,7 +174,7 @@ namespace GruppuppgiftMMMJ
                 //typ av graf y värden
                 ColumnSeries cs = new ColumnSeries();
                 LineSeries ls = new LineSeries();
-
+                
                 switch (graphtype.ToLower())
                 {
                     case "column":
@@ -281,7 +281,7 @@ namespace GruppuppgiftMMMJ
             {
                 //år verkar valt
                 int yr = (int)p.X + xStartsAtDateYear;
-                using (DWEntitiesCars dw = new DWEntitiesCars())
+                using (CarsDWEntities dw = new CarsDWEntities())
                 {
 
                     var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
@@ -297,7 +297,7 @@ namespace GruppuppgiftMMMJ
                 d = d.AddMonths((int)p.X);
                 int yr = d.Year;
                 int mnth = d.Month;
-                using (DWEntitiesCars dw = new DWEntitiesCars())
+                using (CarsDWEntities dw = new CarsDWEntities())
                 {
                     var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
                     dataGridView1.DataSource = me;
@@ -309,7 +309,7 @@ namespace GruppuppgiftMMMJ
         }
         private void PopulateComboBoxes()
         {
-            using (DWEntitiesCars dw = new DWEntitiesCars())
+            using (CarsDWEntities dw = new CarsDWEntities())
             {
                 comboBox1.DataSource = dw.Countries.ToList();
                 comboBox1.DisplayMember = "name";
@@ -320,6 +320,7 @@ namespace GruppuppgiftMMMJ
                 comboBox2.Items.Add(new CbItem("Car Sales Hybrids", "CarSales", "hybrids", "sum"));
                 comboBox2.Items.Add(new CbItem("Car Sales Petrol/Diesel", "CarSales", "liquid_fuel", "sum"));
                 comboBox2.Items.Add(new CbItem("Car Sales All Cars", "CarSales", "total", "sum"));
+                comboBox2.Items.Add(new CbItem("Co2", "CarSales", "CO2", "sum"));
 
 
 
