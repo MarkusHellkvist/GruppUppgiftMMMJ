@@ -16,34 +16,6 @@
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="year" Type="int" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CarsDW.dbo.avg_salaryCSVwData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="avg_salaryCSVwData">
-          <Key>
-            <PropertyRef Name="yearstring" />
-            <PropertyRef Name="dollar" />
-            <PropertyRef Name="country_id" />
-            <PropertyRef Name="avg_salary" />
-            <PropertyRef Name="date" />
-          </Key>
-          <Property Name="yearstring" Type="int" Nullable="false" />
-          <Property Name="dollar" Type="float" Nullable="false" />
-          <Property Name="country_id" Type="int" Nullable="false" />
-          <Property Name="avg_salary" Type="float" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CarsDW.dbo.bensinprisCSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="bensinprisCSV">
-          <Key>
-            <PropertyRef Name="date" />
-            <PropertyRef Name="gas_price_sek_" />
-            <PropertyRef Name="country_id" />
-          </Key>
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="gas_price_sek_" Type="float" Nullable="false" />
-          <Property Name="country_id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="CarSales">
           <Key>
             <PropertyRef Name="carsales_id" />
@@ -138,80 +110,38 @@ warning 6002: The table/view 'CarsDW.dbo.bensinprisCSV' does not have a primary 
           <Property Name="quarter" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CarsDW.dbo.MarketEventsCSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="MarketEventsCSV">
+warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BigView">
           <Key>
+            <PropertyRef Name="carsales_id" />
+            <PropertyRef Name="country_id" />
+            <PropertyRef Name="country_name" />
             <PropertyRef Name="date" />
-            <PropertyRef Name="country_ID" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
+            <PropertyRef Name="year_no" />
+            <PropertyRef Name="month_no" />
+            <PropertyRef Name="month_name" />
+            <PropertyRef Name="quarter" />
+            <PropertyRef Name="hybrids" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="gas_price" />
+            <PropertyRef Name="charging_points" />
+            <PropertyRef Name="avg_salary" />
           </Key>
+          <Property Name="carsales_id" Type="int" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="country_ID" Type="int" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CarsDW.dbo.nyreg_NorgeCSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="nyreg_NorgeCSV">
-          <Key>
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Year" />
-            <PropertyRef Name="Month" />
-            <PropertyRef Name="Month_name_sv" />
-            <PropertyRef Name="Quarter" />
-            <PropertyRef Name="Total" />
-            <PropertyRef Name="Quantity_Inc_used_cars" />
-            <PropertyRef Name="Import" />
-            <PropertyRef Name="Quantity_Hybrid" />
-            <PropertyRef Name="Quantity_Electric" />
-            <PropertyRef Name="Import_Electric" />
-          </Key>
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Year" Type="int" Nullable="false" />
-          <Property Name="Month" Type="int" Nullable="false" />
-          <Property Name="Month_name_sv" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Quarter" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Total" Type="int" Nullable="false" />
-          <Property Name="Quantity_Inc_used_cars" Type="int" Nullable="false" />
-          <Property Name="Import" Type="int" Nullable="false" />
-          <Property Name="Quantity_Hybrid" Type="int" Nullable="false" />
-          <Property Name="Quantity_Electric" Type="int" Nullable="false" />
-          <Property Name="Import_Electric" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="nyreg_SverigeCSV">
-          <Key>
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Quarter" />
-            <PropertyRef Name="Year" />
-            <PropertyRef Name="Month_no" />
-            <PropertyRef Name="Month_name_sv" />
-            <PropertyRef Name="Eletricity" />
-            <PropertyRef Name="Electric_hybrids" />
-            <PropertyRef Name="Charge_hybrids" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="Quarter" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Year" Type="int" Nullable="false" />
-          <Property Name="Month_no" Type="int" Nullable="false" />
-          <Property Name="Month_name_sv" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Eletricity" Type="int" Nullable="false" />
-          <Property Name="Electric_hybrids" Type="int" Nullable="false" />
-          <Property Name="Charge_hybrids" Type="int" Nullable="false" />
-          <Property Name="Total" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="year_no" Type="int" Nullable="false" />
+          <Property Name="month_no" Type="int" Nullable="false" />
+          <Property Name="month_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="quarter" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="electric" Type="int" />
+          <Property Name="hybrids" Type="int" Nullable="false" />
+          <Property Name="liquid_fuel" Type="int" />
+          <Property Name="total" Type="int" Nullable="false" />
+          <Property Name="gas_price" Type="float" Nullable="false" />
+          <Property Name="charging_points" Type="int" Nullable="false" />
+          <Property Name="avg_salary" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Avg_Salar__count__45F365D3">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
@@ -284,58 +214,24 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
           <EntitySet Name="DataTypesMarketEvent" EntityType="Self.DataTypesMarketEvent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GasPrice" EntityType="Self.GasPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarketEvent" EntityType="Self.MarketEvent" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="avg_salaryCSVwData" EntityType="Self.avg_salaryCSVwData" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="BigView" EntityType="Self.BigView" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [avg_salaryCSVwData].[yearstring] AS [yearstring], 
-    [avg_salaryCSVwData].[dollar] AS [dollar], 
-    [avg_salaryCSVwData].[country_id] AS [country_id], 
-    [avg_salaryCSVwData].[avg_salary] AS [avg_salary], 
-    [avg_salaryCSVwData].[date] AS [date]
-    FROM [dbo].[avg_salaryCSVwData] AS [avg_salaryCSVwData]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="bensinprisCSV" EntityType="Self.bensinprisCSV" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [bensinprisCSV].[date] AS [date], 
-    [bensinprisCSV].[gas_price_sek_] AS [gas_price_sek_], 
-    [bensinprisCSV].[country_id] AS [country_id]
-    FROM [dbo].[bensinprisCSV] AS [bensinprisCSV]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="MarketEventsCSV" EntityType="Self.MarketEventsCSV" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MarketEventsCSV].[date] AS [date], 
-    [MarketEventsCSV].[country_ID] AS [country_ID], 
-    [MarketEventsCSV].[title] AS [title], 
-    [MarketEventsCSV].[description] AS [description]
-    FROM [dbo].[MarketEventsCSV] AS [MarketEventsCSV]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="nyreg_NorgeCSV" EntityType="Self.nyreg_NorgeCSV" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [nyreg_NorgeCSV].[Date] AS [Date], 
-    [nyreg_NorgeCSV].[Year] AS [Year], 
-    [nyreg_NorgeCSV].[Month] AS [Month], 
-    [nyreg_NorgeCSV].[Month_name_sv] AS [Month_name_sv], 
-    [nyreg_NorgeCSV].[Quarter] AS [Quarter], 
-    [nyreg_NorgeCSV].[Total] AS [Total], 
-    [nyreg_NorgeCSV].[Quantity_Inc_used_cars] AS [Quantity_Inc_used_cars], 
-    [nyreg_NorgeCSV].[Import] AS [Import], 
-    [nyreg_NorgeCSV].[Quantity_Hybrid] AS [Quantity_Hybrid], 
-    [nyreg_NorgeCSV].[Quantity_Electric] AS [Quantity_Electric], 
-    [nyreg_NorgeCSV].[Import_Electric] AS [Import_Electric]
-    FROM [dbo].[nyreg_NorgeCSV] AS [nyreg_NorgeCSV]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="nyreg_SverigeCSV" EntityType="Self.nyreg_SverigeCSV" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [nyreg_SverigeCSV].[Date] AS [Date], 
-    [nyreg_SverigeCSV].[Quarter] AS [Quarter], 
-    [nyreg_SverigeCSV].[Year] AS [Year], 
-    [nyreg_SverigeCSV].[Month_no] AS [Month_no], 
-    [nyreg_SverigeCSV].[Month_name_sv] AS [Month_name_sv], 
-    [nyreg_SverigeCSV].[Eletricity] AS [Eletricity], 
-    [nyreg_SverigeCSV].[Electric_hybrids] AS [Electric_hybrids], 
-    [nyreg_SverigeCSV].[Charge_hybrids] AS [Charge_hybrids], 
-    [nyreg_SverigeCSV].[Total] AS [Total]
-    FROM [dbo].[nyreg_SverigeCSV] AS [nyreg_SverigeCSV]</DefiningQuery>
+    [BigView].[carsales_id] AS [carsales_id], 
+    [BigView].[country_id] AS [country_id], 
+    [BigView].[country_name] AS [country_name], 
+    [BigView].[date] AS [date], 
+    [BigView].[year_no] AS [year_no], 
+    [BigView].[month_no] AS [month_no], 
+    [BigView].[month_name] AS [month_name], 
+    [BigView].[quarter] AS [quarter], 
+    [BigView].[electric] AS [electric], 
+    [BigView].[hybrids] AS [hybrids], 
+    [BigView].[liquid_fuel] AS [liquid_fuel], 
+    [BigView].[total] AS [total], 
+    [BigView].[gas_price] AS [gas_price], 
+    [BigView].[charging_points] AS [charging_points], 
+    [BigView].[avg_salary] AS [avg_salary]
+    FROM [dbo].[BigView] AS [BigView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Avg_Salar__count__45F365D3" Association="Self.FK__Avg_Salar__count__45F365D3">
             <End Role="Country" EntitySet="Country" />
@@ -375,7 +271,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
           <Property Name="year" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Country" Relationship="Self.FK__Avg_Salar__count__45F365D3" FromRole="Avg_Salary" ToRole="Country" />
         </EntityType>
-        <EntityType Name="CarSales">
+        <EntityType Name="CarSale">
           <Key>
             <PropertyRef Name="carsales_id" />
           </Key>
@@ -415,9 +311,9 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Avg_Salary" Relationship="Self.FK__Avg_Salar__count__45F365D3" FromRole="Country" ToRole="Avg_Salary" />
           <NavigationProperty Name="CarSales" Relationship="Self.FK_CarSales_Country" FromRole="Country" ToRole="CarSales" />
-          <NavigationProperty Name="ChargingPoint" Relationship="Self.FK_ChargingPoints_Country" FromRole="Country" ToRole="ChargingPoint" />
-          <NavigationProperty Name="MarketEvent" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="Country" ToRole="MarketEvent" />
-          <NavigationProperty Name="GasPrice" Relationship="Self.FK_GasPrice_Country" FromRole="Country" ToRole="GasPrice" />
+          <NavigationProperty Name="ChargingPoints" Relationship="Self.FK_ChargingPoints_Country" FromRole="Country" ToRole="ChargingPoint" />
+          <NavigationProperty Name="MarketEvents" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="Country" ToRole="MarketEvent" />
+          <NavigationProperty Name="GasPrices" Relationship="Self.FK_GasPrice_Country" FromRole="Country" ToRole="GasPrice" />
         </EntityType>
         <EntityType Name="DataTypesAvg_Salary">
           <Key>
@@ -426,7 +322,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
           <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="DataTypesCarSales">
+        <EntityType Name="DataTypesCarSale">
           <Key>
             <PropertyRef Name="colname" />
           </Key>
@@ -477,99 +373,37 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
           <Property Name="quarter" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Country" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="MarketEvent" ToRole="Country" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="BigView">
           <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="avg_salaryCSVwData">
-          <Key>
-            <PropertyRef Name="yearstring" />
-            <PropertyRef Name="dollar" />
+            <PropertyRef Name="carsales_id" />
             <PropertyRef Name="country_id" />
+            <PropertyRef Name="country_name" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="year_no" />
+            <PropertyRef Name="month_no" />
+            <PropertyRef Name="month_name" />
+            <PropertyRef Name="quarter" />
+            <PropertyRef Name="hybrids" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="gas_price" />
+            <PropertyRef Name="charging_points" />
             <PropertyRef Name="avg_salary" />
-            <PropertyRef Name="date" />
           </Key>
-          <Property Name="yearstring" Type="Int32" Nullable="false" />
-          <Property Name="dollar" Type="Double" Nullable="false" />
+          <Property Name="carsales_id" Type="Int32" Nullable="false" />
           <Property Name="country_id" Type="Int32" Nullable="false" />
-          <Property Name="avg_salary" Type="Double" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="bensinprisCSV">
-          <Key>
-            <PropertyRef Name="date" />
-            <PropertyRef Name="gas_price_sek_" />
-            <PropertyRef Name="country_id" />
-          </Key>
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="gas_price_sek_" Type="Double" Nullable="false" />
-          <Property Name="country_id" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MarketEventsCSV">
-          <Key>
-            <PropertyRef Name="date" />
-            <PropertyRef Name="country_ID" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
-          </Key>
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="country_ID" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="nyreg_NorgeCSV">
-          <Key>
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Year" />
-            <PropertyRef Name="Month" />
-            <PropertyRef Name="Month_name_sv" />
-            <PropertyRef Name="Quarter" />
-            <PropertyRef Name="Total" />
-            <PropertyRef Name="Quantity_Inc_used_cars" />
-            <PropertyRef Name="Import" />
-            <PropertyRef Name="Quantity_Hybrid" />
-            <PropertyRef Name="Quantity_Electric" />
-            <PropertyRef Name="Import_Electric" />
-          </Key>
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Year" Type="Int32" Nullable="false" />
-          <Property Name="Month" Type="Int32" Nullable="false" />
-          <Property Name="Month_name_sv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Quarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Total" Type="Int32" Nullable="false" />
-          <Property Name="Quantity_Inc_used_cars" Type="Int32" Nullable="false" />
-          <Property Name="Import" Type="Int32" Nullable="false" />
-          <Property Name="Quantity_Hybrid" Type="Int32" Nullable="false" />
-          <Property Name="Quantity_Electric" Type="Int32" Nullable="false" />
-          <Property Name="Import_Electric" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="nyreg_SverigeCSV">
-          <Key>
-            <PropertyRef Name="Date" />
-            <PropertyRef Name="Quarter" />
-            <PropertyRef Name="Year" />
-            <PropertyRef Name="Month_no" />
-            <PropertyRef Name="Month_name_sv" />
-            <PropertyRef Name="Eletricity" />
-            <PropertyRef Name="Electric_hybrids" />
-            <PropertyRef Name="Charge_hybrids" />
-            <PropertyRef Name="Total" />
-          </Key>
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Quarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Year" Type="Int32" Nullable="false" />
-          <Property Name="Month_no" Type="Int32" Nullable="false" />
-          <Property Name="Month_name_sv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Eletricity" Type="Int32" Nullable="false" />
-          <Property Name="Electric_hybrids" Type="Int32" Nullable="false" />
-          <Property Name="Charge_hybrids" Type="Int32" Nullable="false" />
-          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="year_no" Type="Int32" Nullable="false" />
+          <Property Name="month_no" Type="Int32" Nullable="false" />
+          <Property Name="month_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quarter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="electric" Type="Int32" />
+          <Property Name="hybrids" Type="Int32" Nullable="false" />
+          <Property Name="liquid_fuel" Type="Int32" />
+          <Property Name="total" Type="Int32" Nullable="false" />
+          <Property Name="gas_price" Type="Double" Nullable="false" />
+          <Property Name="charging_points" Type="Int32" Nullable="false" />
+          <Property Name="avg_salary" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK__Avg_Salar__count__45F365D3">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
@@ -585,7 +419,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
         </Association>
         <Association Name="FK_CarSales_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="CarSales" Type="Self.CarSales" Multiplicity="*" />
+          <End Role="CarSales" Type="Self.CarSale" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="country_id" />
@@ -631,42 +465,37 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CarsDWEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DWEntitiesCars" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" />
-          <EntitySet Name="CarSales" EntityType="Self.CarSales" />
-          <EntitySet Name="ChargingPoint" EntityType="Self.ChargingPoint" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="CarSales" EntityType="Self.CarSale" />
+          <EntitySet Name="ChargingPoints" EntityType="Self.ChargingPoint" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="DataTypesAvg_Salary" EntityType="Self.DataTypesAvg_Salary" />
-          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSales" />
-          <EntitySet Name="DataTypesChargingPoint" EntityType="Self.DataTypesChargingPoint" />
-          <EntitySet Name="DataTypesMarketEvent" EntityType="Self.DataTypesMarketEvent" />
-          <EntitySet Name="GasPrice" EntityType="Self.GasPrice" />
-          <EntitySet Name="MarketEvent" EntityType="Self.MarketEvent" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="avg_salaryCSVwData" EntityType="Self.avg_salaryCSVwData" />
-          <EntitySet Name="bensinprisCSV" EntityType="Self.bensinprisCSV" />
-          <EntitySet Name="MarketEventsCSV" EntityType="Self.MarketEventsCSV" />
-          <EntitySet Name="nyreg_NorgeCSV" EntityType="Self.nyreg_NorgeCSV" />
-          <EntitySet Name="nyreg_SverigeCSV" EntityType="Self.nyreg_SverigeCSV" />
+          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSale" />
+          <EntitySet Name="DataTypesChargingPoints" EntityType="Self.DataTypesChargingPoint" />
+          <EntitySet Name="DataTypesMarketEvents" EntityType="Self.DataTypesMarketEvent" />
+          <EntitySet Name="GasPrices" EntityType="Self.GasPrice" />
+          <EntitySet Name="MarketEvents" EntityType="Self.MarketEvent" />
+          <EntitySet Name="BigViews" EntityType="Self.BigView" />
           <AssociationSet Name="FK__Avg_Salar__count__45F365D3" Association="Self.FK__Avg_Salar__count__45F365D3">
-            <End Role="Country" EntitySet="Country" />
+            <End Role="Country" EntitySet="Countries" />
             <End Role="Avg_Salary" EntitySet="Avg_Salary" />
           </AssociationSet>
           <AssociationSet Name="FK_CarSales_Country" Association="Self.FK_CarSales_Country">
-            <End Role="Country" EntitySet="Country" />
+            <End Role="Country" EntitySet="Countries" />
             <End Role="CarSales" EntitySet="CarSales" />
           </AssociationSet>
           <AssociationSet Name="FK_ChargingPoints_Country" Association="Self.FK_ChargingPoints_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="ChargingPoint" EntitySet="ChargingPoint" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="ChargingPoint" EntitySet="ChargingPoints" />
           </AssociationSet>
           <AssociationSet Name="FK__MarketEve__count__4316F928" Association="Self.FK__MarketEve__count__4316F928">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="MarketEvent" EntitySet="MarketEvent" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="MarketEvent" EntitySet="MarketEvents" />
           </AssociationSet>
           <AssociationSet Name="FK_GasPrice_Country" Association="Self.FK_GasPrice_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="GasPrice" EntitySet="GasPrice" />
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="GasPrice" EntitySet="GasPrices" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -674,7 +503,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CarsDWModelStoreContainer" CdmEntityContainer="CarsDWEntities">
+        <EntityContainerMapping StorageEntityContainer="CarsDWModelStoreContainer" CdmEntityContainer="DWEntitiesCars">
           <EntitySetMapping Name="Avg_Salary">
             <EntityTypeMapping TypeName="CarsDWModel.Avg_Salary">
               <MappingFragment StoreEntitySet="Avg_Salary">
@@ -688,7 +517,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CarSales">
-            <EntityTypeMapping TypeName="CarsDWModel.CarSales">
+            <EntityTypeMapping TypeName="CarsDWModel.CarSale">
               <MappingFragment StoreEntitySet="CarSales">
                 <ScalarProperty Name="carsales_id" ColumnName="carsales_id" />
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
@@ -705,7 +534,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChargingPoint">
+          <EntitySetMapping Name="ChargingPoints">
             <EntityTypeMapping TypeName="CarsDWModel.ChargingPoint">
               <MappingFragment StoreEntitySet="ChargingPoint">
                 <ScalarProperty Name="chargingpoint_id" ColumnName="chargingpoint_id" />
@@ -719,7 +548,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Country">
+          <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="CarsDWModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
@@ -736,14 +565,14 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DataTypesCarSales">
-            <EntityTypeMapping TypeName="CarsDWModel.DataTypesCarSales">
+            <EntityTypeMapping TypeName="CarsDWModel.DataTypesCarSale">
               <MappingFragment StoreEntitySet="DataTypesCarSales">
                 <ScalarProperty Name="colname" ColumnName="colname" />
                 <ScalarProperty Name="datatype" ColumnName="datatype" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesChargingPoint">
+          <EntitySetMapping Name="DataTypesChargingPoints">
             <EntityTypeMapping TypeName="CarsDWModel.DataTypesChargingPoint">
               <MappingFragment StoreEntitySet="DataTypesChargingPoint">
                 <ScalarProperty Name="colname" ColumnName="colname" />
@@ -751,7 +580,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DataTypesMarketEvent">
+          <EntitySetMapping Name="DataTypesMarketEvents">
             <EntityTypeMapping TypeName="CarsDWModel.DataTypesMarketEvent">
               <MappingFragment StoreEntitySet="DataTypesMarketEvent">
                 <ScalarProperty Name="colname" ColumnName="colname" />
@@ -759,7 +588,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GasPrice">
+          <EntitySetMapping Name="GasPrices">
             <EntityTypeMapping TypeName="CarsDWModel.GasPrice">
               <MappingFragment StoreEntitySet="GasPrice">
                 <ScalarProperty Name="gasprice_id" ColumnName="gasprice_id" />
@@ -773,7 +602,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MarketEvent">
+          <EntitySetMapping Name="MarketEvents">
             <EntityTypeMapping TypeName="CarsDWModel.MarketEvent">
               <MappingFragment StoreEntitySet="MarketEvent">
                 <ScalarProperty Name="marketevent_id" ColumnName="marketevent_id" />
@@ -789,76 +618,24 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CarsDWModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="avg_salaryCSVwData">
-            <EntityTypeMapping TypeName="CarsDWModel.avg_salaryCSVwData">
-              <MappingFragment StoreEntitySet="avg_salaryCSVwData">
-                <ScalarProperty Name="yearstring" ColumnName="yearstring" />
-                <ScalarProperty Name="dollar" ColumnName="dollar" />
+          <EntitySetMapping Name="BigViews">
+            <EntityTypeMapping TypeName="CarsDWModel.BigView">
+              <MappingFragment StoreEntitySet="BigView">
+                <ScalarProperty Name="carsales_id" ColumnName="carsales_id" />
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="month_name" ColumnName="month_name" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="electric" ColumnName="electric" />
+                <ScalarProperty Name="hybrids" ColumnName="hybrids" />
+                <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="gas_price" ColumnName="gas_price" />
+                <ScalarProperty Name="charging_points" ColumnName="charging_points" />
                 <ScalarProperty Name="avg_salary" ColumnName="avg_salary" />
-                <ScalarProperty Name="date" ColumnName="date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="bensinprisCSV">
-            <EntityTypeMapping TypeName="CarsDWModel.bensinprisCSV">
-              <MappingFragment StoreEntitySet="bensinprisCSV">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="gas_price_sek_" ColumnName="gas_price_sek_" />
-                <ScalarProperty Name="country_id" ColumnName="country_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MarketEventsCSV">
-            <EntityTypeMapping TypeName="CarsDWModel.MarketEventsCSV">
-              <MappingFragment StoreEntitySet="MarketEventsCSV">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="country_ID" ColumnName="country_ID" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="nyreg_NorgeCSV">
-            <EntityTypeMapping TypeName="CarsDWModel.nyreg_NorgeCSV">
-              <MappingFragment StoreEntitySet="nyreg_NorgeCSV">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Month_name_sv" ColumnName="Month_name_sv" />
-                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Quantity_Inc_used_cars" ColumnName="Quantity_Inc_used_cars" />
-                <ScalarProperty Name="Import" ColumnName="Import" />
-                <ScalarProperty Name="Quantity_Hybrid" ColumnName="Quantity_Hybrid" />
-                <ScalarProperty Name="Quantity_Electric" ColumnName="Quantity_Electric" />
-                <ScalarProperty Name="Import_Electric" ColumnName="Import_Electric" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="nyreg_SverigeCSV">
-            <EntityTypeMapping TypeName="CarsDWModel.nyreg_SverigeCSV">
-              <MappingFragment StoreEntitySet="nyreg_SverigeCSV">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Quarter" ColumnName="Quarter" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Month_no" ColumnName="Month_no" />
-                <ScalarProperty Name="Month_name_sv" ColumnName="Month_name_sv" />
-                <ScalarProperty Name="Eletricity" ColumnName="Eletricity" />
-                <ScalarProperty Name="Electric_hybrids" ColumnName="Electric_hybrids" />
-                <ScalarProperty Name="Charge_hybrids" ColumnName="Charge_hybrids" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -876,7 +653,7 @@ warning 6002: The table/view 'CarsDW.dbo.nyreg_SverigeCSV' does not have a prima
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

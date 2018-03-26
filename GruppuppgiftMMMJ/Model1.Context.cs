@@ -13,10 +13,10 @@ namespace GruppuppgiftMMMJ
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CarsDWEntities : DbContext
+    public partial class DWEntitiesCars : DbContext
     {
-        public CarsDWEntities()
-            : base("name=CarsDWEntities")
+        public DWEntitiesCars()
+            : base("name=DWEntitiesCars")
         {
         }
     
@@ -26,20 +26,15 @@ namespace GruppuppgiftMMMJ
         }
     
         public virtual DbSet<Avg_Salary> Avg_Salary { get; set; }
-        public virtual DbSet<CarSales> CarSales { get; set; }
-        public virtual DbSet<ChargingPoint> ChargingPoint { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<CarSale> CarSales { get; set; }
+        public virtual DbSet<ChargingPoint> ChargingPoints { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<DataTypesAvg_Salary> DataTypesAvg_Salary { get; set; }
-        public virtual DbSet<DataTypesCarSales> DataTypesCarSales { get; set; }
-        public virtual DbSet<DataTypesChargingPoint> DataTypesChargingPoint { get; set; }
-        public virtual DbSet<DataTypesMarketEvent> DataTypesMarketEvent { get; set; }
-        public virtual DbSet<GasPrice> GasPrice { get; set; }
-        public virtual DbSet<MarketEvent> MarketEvent { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<avg_salaryCSVwData> avg_salaryCSVwData { get; set; }
-        public virtual DbSet<bensinprisCSV> bensinprisCSV { get; set; }
-        public virtual DbSet<MarketEventsCSV> MarketEventsCSV { get; set; }
-        public virtual DbSet<nyreg_NorgeCSV> nyreg_NorgeCSV { get; set; }
-        public virtual DbSet<nyreg_SverigeCSV> nyreg_SverigeCSV { get; set; }
+        public virtual DbSet<DataTypesCarSale> DataTypesCarSales { get; set; }
+        public virtual DbSet<DataTypesChargingPoint> DataTypesChargingPoints { get; set; }
+        public virtual DbSet<DataTypesMarketEvent> DataTypesMarketEvents { get; set; }
+        public virtual DbSet<GasPrice> GasPrices { get; set; }
+        public virtual DbSet<MarketEvent> MarketEvents { get; set; }
+        public virtual DbSet<BigView> BigViews { get; set; }
     }
 }
