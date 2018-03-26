@@ -16,13 +16,15 @@ namespace GruppuppgiftMMMJ
     {
         private int xStartsAtDateYear;
         private int xStartsAtDateMonth;
-        private bool lastInsertedTypeWasInt;
+        private int currentYscaleLs;
+        private int currentYscaleCs;
         public InputData()
         {
             InitializeComponent();
             xStartsAtDateYear = 0;
             xStartsAtDateMonth = 0;
-            lastInsertedTypeWasInt = true;
+            currentYscaleLs = 0;
+            currentYscaleCs = 0;
 
         }
 
@@ -38,14 +40,17 @@ namespace GruppuppgiftMMMJ
         }
 
 
-        private void drawGraph(int country_id, string xtitle, string ytitle, string pickedColumn, string typeofcalculation, string graphtype, string granularity, bool add, bool isFloat)
+        private void drawGraph(int country_id, string xtitle, string ytitle, string pickedColumn, string typeofcalculation, string graphtype, string granularity, bool add, bool isFloat, bool addScaleY)
         {
             if (add == false)
             {
                 xStartsAtDateYear = 0;
                 xStartsAtDateMonth = 0;
+                currentYscaleLs = 0;
+                currentYscaleCs = 0;
                 cartesianChart1.AxisX.Clear();
                 cartesianChart1.AxisY.Clear();
+
             }
 
             using (DWEntitiesCars dw = new DWEntitiesCars())
@@ -176,16 +181,29 @@ namespace GruppuppgiftMMMJ
 
                         cs.Title = country_name + " " + pickedColumn;
                         cs.Values = cvy;
+                        //man vill lägga till en skala, ökar skalindex på resp
+                        if (addScaleY == true)
+                        {
+                            currentYscaleCs++;
+
+                        }
+                        cs.ScalesYAt = currentYscaleCs;
                         break;
                     case "line":
                         ls.Title = country_name + " " + pickedColumn;
                         ls.Values = cvy;
+                         //ökar skalindex
+                        if (addScaleY == true)
+                        {
+                            currentYscaleLs++;
+
+                        }
+                        ls.ScalesYAt = currentYscaleLs;
                         break;
-                    default: break;
+                    default:
+                        break;
                 }
-                //använd skala 0, skala 1 är för flyttal
-                cs.ScalesYAt = 0;
-                ls.ScalesYAt = 0;
+              
 
                 int numberofXAxis = cartesianChart1.AxisX.Count();
                 int numberofYAxis = cartesianChart1.AxisY.Count();
@@ -205,21 +223,16 @@ namespace GruppuppgiftMMMJ
                         LabelFormatter = value => value.ToString("N")
                     });
                 }
-                //växlar skala
-                if (lastInsertedTypeWasInt == true && isFloat == true)
+                else if (addScaleY == true && numberofXAxis != 0 && add == true) //det är inte den första graphen och man vill lägga till en ny skala
                 {
-                    cs.ScalesYAt = 1;
-                    ls.ScalesYAt = 1;
-                    if (numberofYAxis < 2)
+                    cartesianChart1.AxisY.Add(new Axis
                     {
-                        cartesianChart1.AxisY.Add(new Axis
-                        {
-                            Title = ytitle,
-                            LabelFormatter = value => value.ToString("N")
-                        });
-                    }
-
+                        Title = ytitle,
+                        LabelFormatter = value => value.ToString("N")
+                    });
                 }
+
+
 
                 if (add)
                 {
@@ -255,8 +268,6 @@ namespace GruppuppgiftMMMJ
 
                 }
 
-                lastInsertedTypeWasInt = isFloat ? false : true;
-
             }
 
         }
@@ -273,11 +284,11 @@ namespace GruppuppgiftMMMJ
                 using (DWEntitiesCars dw = new DWEntitiesCars())
                 {
 
-                    var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
+                    var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
                     dataGridView1.DataSource = me;
 
                 }
-                label1.Text = yr.ToString();
+               // label1.Text = yr.ToString();
             }
             else if (xStartsAtDateYear != 0 && xStartsAtDateMonth != 0)
             {
@@ -338,7 +349,7 @@ namespace GruppuppgiftMMMJ
 
             //drawGraph(1, "År", "elbilar sålda", "electric", "sum", "column", "year", false);
 
-            drawGraph(cbiCountry.country_id, cbiGran.Text, cbiSelectionData.Column, cbiSelectionData.Column, cbiSelectionData.TypeOfCalculation, cbiGraphType.Text, cbiGran.Text, checkBox1.Checked, cbiSelectionData.IsFloat);
+            drawGraph(cbiCountry.country_id, cbiGran.Text, cbiSelectionData.Column, cbiSelectionData.Column, cbiSelectionData.TypeOfCalculation, cbiGraphType.Text, cbiGran.Text, checkBox1.Checked, cbiSelectionData.IsFloat, checkBox2.Checked);
             label1.Text = (cbiGran.Text);
 
         }
