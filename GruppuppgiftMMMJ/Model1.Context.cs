@@ -13,10 +13,10 @@ namespace GruppuppgiftMMMJ
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CarsDWEntities : DbContext
+    public partial class DWEntitiesCars : DbContext
     {
-        public CarsDWEntities()
-            : base("name=CarsDWEntities")
+        public DWEntitiesCars()
+            : base("name=DWEntitiesCars")
         {
         }
     
@@ -33,6 +33,8 @@ namespace GruppuppgiftMMMJ
         public virtual DbSet<DataTypesCarSale> DataTypesCarSales { get; set; }
         public virtual DbSet<DataTypesChargingPoint> DataTypesChargingPoints { get; set; }
         public virtual DbSet<DataTypesMarketEvent> DataTypesMarketEvents { get; set; }
+        public virtual DbSet<GasPrice> GasPrices { get; set; }
         public virtual DbSet<MarketEvent> MarketEvents { get; set; }
+        public virtual DbSet<BigView> BigViews { get; set; }
     }
 }

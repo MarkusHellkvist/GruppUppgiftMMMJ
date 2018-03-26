@@ -12,19 +12,22 @@ namespace GruppuppgiftMMMJ
     using System;
     using System.Collections.Generic;
     
-    public partial class MarketEvent
+    public partial class BigView
     {
-        public int marketevent_id { get; set; }
-        public System.DateTime date { get; set; }
+        public int carsales_id { get; set; }
         public int country_id { get; set; }
         public string country_name { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string source { get; set; }
-        public Nullable<int> year_no { get; set; }
-        public Nullable<int> month_no { get; set; }
+        public System.DateTime date { get; set; }
+        public int year_no { get; set; }
+        public int month_no { get; set; }
+        public string month_name { get; set; }
         public string quarter { get; set; }
-    
-        public virtual Country Country { get; set; }
+        public Nullable<int> electric { get; set; }
+        public int hybrids { get; set; }
+        public Nullable<int> liquid_fuel { get; set; }
+        public int total { get; set; }
+        public double gas_price { get; set; }
+        public int charging_points { get; set; }
+        public int avg_salary { get; set; }
     }
 }

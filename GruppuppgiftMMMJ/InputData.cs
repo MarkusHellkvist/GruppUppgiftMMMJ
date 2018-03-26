@@ -16,34 +16,44 @@ namespace GruppuppgiftMMMJ
     {
         private int xStartsAtDateYear;
         private int xStartsAtDateMonth;
+        private bool lastInsertedTypeWasInt;
         public InputData()
         {
             InitializeComponent();
             xStartsAtDateYear = 0;
             xStartsAtDateMonth = 0;
-
+            lastInsertedTypeWasInt = true;
 
         }
 
         private void InputData_Load(object sender, EventArgs e)
         {
-            mytestfunction(1, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", false);
-            mytestfunction(2, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", true);
+
+            PopulateComboBoxes();
+
+            // drawGraph(1, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "year", false);
+            // mytestfunction(2, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", true);
+
 
         }
 
 
-        private void mytestfunction(int country_id, string pickedTable, string xtitle, string ytitle, string pickedColumn, string typeofcalculation, string graphtype, string granularity, bool add)
+        private void drawGraph(int country_id, string xtitle, string ytitle, string pickedColumn, string typeofcalculation, string graphtype, string granularity, bool add, bool isFloat)
         {
-            if (add==false)
+            if (add == false)
             {
                 xStartsAtDateYear = 0;
                 xStartsAtDateMonth = 0;
+                cartesianChart1.AxisX.Clear();
+                cartesianChart1.AxisY.Clear();
             }
-           
-            using (CarsDWEntities dw = new CarsDWEntities())
+
+            using (DWEntitiesCars dw = new DWEntitiesCars())
             {
-                List<CarSale> Context = dw.CarSales.Where(c => c.country_id == country_id).ToList();
+
+                List<BigView> Context = dw.BigViews.Where(c => c.country_id == country_id).ToList();
+
+
                 string country_name = dw.Countries.Where(c => c.country_id == country_id).Select(a => a.name).FirstOrDefault();
                 //per år
                 //hämtar min o max
@@ -51,13 +61,15 @@ namespace GruppuppgiftMMMJ
                 int min = Context.Min(a => a.year_no);
 
                 //Hjälpa hoverfunktionen
-                if (xStartsAtDateYear==0)
+                if (xStartsAtDateYear == 0)
                 {
                     xStartsAtDateYear = min;
-                    
+
                 }
 
                 List<int> y = new List<int>();
+                List<double> yAsDouble = new List<double>();
+
                 List<string> x = new List<string>();
                 for (int i = min; i <= max; i++) //för varje år
                 {
@@ -66,14 +78,29 @@ namespace GruppuppgiftMMMJ
                         case "year":
                             x.Add(i.ToString());//year as x values
                             var hjalp = Context.Where(b => b.year_no == i).Select(pickedColumn);
-                            int sum = 0;
-                            //summerar
-                            foreach (int h in hjalp)
+                            if (!isFloat)
                             {
-                                sum += h;
+                                int sum = 0;
+                                //summerar
+                                foreach (int h in hjalp)
+                                {
+                                    sum += h;
+                                }
+                                //lägger till
+                                y.Add(sum);
                             }
-                            //lägger till
-                            y.Add(sum);
+                            else //float
+                            {
+                                double sum = 0;
+                                //summerar
+                                foreach (double h in hjalp)
+                                {
+                                    sum += h;
+                                }
+                                //lägger till
+                                yAsDouble.Add(sum);
+
+                            }
 
                             break;
                         case "month":
@@ -88,16 +115,36 @@ namespace GruppuppgiftMMMJ
                             for (int m = minmonth; m <= maxmonth; m++) //för månad
                             {
                                 var hjalp1 = Context.Where(b => b.year_no == i && b.month_no == m).Select(pickedColumn);
-                                int sumM = 0;
-                                //summerar
-                                foreach (int h in hjalp1)
+                                if (!isFloat)
                                 {
-                                    sumM += h;
+                                    int sumM = 0;
+                                    //summerar
+                                    foreach (int h in hjalp1)
+                                    {
+                                        sumM += h;
+                                    }
+                                    //lägger till
+                                    y.Add(sumM);
                                 }
-                                //lägger till
-                                y.Add(sumM);
+                                else //floathjälp1
+                                {
+
+                                    double sumM = 0;
+                                    //summerar
+                                    foreach (double h in hjalp1)
+                                    {
+                                        sumM += h;
+                                    }
+                                    //lägger till
+                                    yAsDouble.Add(sumM);
+                                }
+
+
+
+
                                 x.Add(i.ToString() + "-" + m.ToString());
                             }
+
                             break;
 
                         default:
@@ -105,16 +152,47 @@ namespace GruppuppgiftMMMJ
                     }
 
                 }
-                ChartValues<int> cvy = new ChartValues<int>();
-                cvy.AddRange(y.ToArray());
+                //Klar med listorna av x o y värden
 
-                ColumnSeries cs = new ColumnSeries
+
+                ChartValues<double> cvy = new ChartValues<double>();
+
+                if (!isFloat) //integer
                 {
-                    Title = country_name,
-                    Values = cvy
-                };
-                if (cartesianChart1.AxisX.Count() == 0) //Sätter bara om det inte är satt
+                    cvy.AddRange(y.Select(a => (double)a).ToArray());
+
+                }
+                else //double
                 {
+                    cvy.AddRange(yAsDouble.ToArray());
+                }
+                //typ av graf y värden
+                ColumnSeries cs = new ColumnSeries();
+                LineSeries ls = new LineSeries();
+
+                switch (graphtype.ToLower())
+                {
+                    case "column":
+
+                        cs.Title = country_name + " " + pickedColumn;
+                        cs.Values = cvy;
+                        break;
+                    case "line":
+                        ls.Title = country_name + " " + pickedColumn;
+                        ls.Values = cvy;
+                        break;
+                    default: break;
+                }
+                //använd skala 0, skala 1 är för flyttal
+                cs.ScalesYAt = 0;
+                ls.ScalesYAt = 0;
+
+                int numberofXAxis = cartesianChart1.AxisX.Count();
+                int numberofYAxis = cartesianChart1.AxisY.Count();
+                //stoppar bara in x om det inte finns
+                if (numberofXAxis == 0)
+                {
+
                     cartesianChart1.AxisX.Add(new Axis
                     {
                         Title = xtitle,
@@ -127,16 +205,57 @@ namespace GruppuppgiftMMMJ
                         LabelFormatter = value => value.ToString("N")
                     });
                 }
+                //växlar skala
+                if (lastInsertedTypeWasInt == true && isFloat == true)
+                {
+                    cs.ScalesYAt = 1;
+                    ls.ScalesYAt = 1;
+                    if (numberofYAxis < 2)
+                    {
+                        cartesianChart1.AxisY.Add(new Axis
+                        {
+                            Title = ytitle,
+                            LabelFormatter = value => value.ToString("N")
+                        });
+                    }
+
+                }
+
                 if (add)
                 {
-                    cartesianChart1.Series.Add(cs);
+                    switch (graphtype.ToLower())
+                    {
+                        case "column":
+                            cartesianChart1.Series.Add(cs);
+                            break;
+                        case "line":
+                            cartesianChart1.Series.Add(ls);
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
-                    cartesianChart1.Series.Clear();
-                    cartesianChart1.Series.Add(cs);
+
+                    switch (graphtype.ToLower())
+                    {
+                        case "column":
+                            cartesianChart1.Series.Clear();
+                            cartesianChart1.Series.Add(cs);
+                            break;
+                        case "line":
+                            cartesianChart1.Series.Clear();
+                            cartesianChart1.Series.Add(ls);
+                            break;
+                        default:
+                            break;
+                    }
 
                 }
+
+                lastInsertedTypeWasInt = isFloat ? false : true;
 
             }
 
@@ -146,12 +265,12 @@ namespace GruppuppgiftMMMJ
 
         private void cartesianChart1_DataHover(object sender, ChartPoint p)
         {
-           
-            if (xStartsAtDateMonth==0 && xStartsAtDateYear!=0)
+
+            if (xStartsAtDateMonth == 0 && xStartsAtDateYear != 0)
             {
                 //år verkar valt
                 int yr = (int)p.X + xStartsAtDateYear;
-                using (CarsDWEntities dw = new CarsDWEntities())
+                using (DWEntitiesCars dw = new DWEntitiesCars())
                 {
 
                     var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
@@ -160,24 +279,132 @@ namespace GruppuppgiftMMMJ
                 }
                 label1.Text = yr.ToString();
             }
-            else if (xStartsAtDateYear!=0 && xStartsAtDateMonth!=0)
+            else if (xStartsAtDateYear != 0 && xStartsAtDateMonth != 0)
             {
                 //räknar antalet månader fram
                 DateTime d = new DateTime(xStartsAtDateYear, 1, 1);
                 d = d.AddMonths((int)p.X);
                 int yr = d.Year;
                 int mnth = d.Month;
-                using (CarsDWEntities dw = new CarsDWEntities())
+                using (DWEntitiesCars dw = new DWEntitiesCars())
                 {
-                    var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no==mnth).Select( a=>new { a.date, a.country_name, a.description,a.title}).ToList();
+                    var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
                     dataGridView1.DataSource = me;
 
                 }
                 label1.Text = yr.ToString() + mnth.ToString();
             }
-         
+
+        }
+        private void PopulateComboBoxes()
+        {
+            using (DWEntitiesCars dw = new DWEntitiesCars())
+            {
+                comboBox1.DataSource = dw.Countries.ToList();
+                comboBox1.DisplayMember = "name";
+                comboBox1.ValueMember = "country_id";
+
+
+                comboBox2.Items.Add(new CbItem("Car Sales Electric", "CarSales", "electric", "sum"));
+                comboBox2.Items.Add(new CbItem("Car Sales Hybrids", "CarSales", "hybrids", "sum"));
+                comboBox2.Items.Add(new CbItem("Car Sales Petrol/Diesel", "CarSales", "liquid_fuel", "sum"));
+                comboBox2.Items.Add(new CbItem("Car Sales All Cars", "CarSales", "total", "sum"));
+
+
+
+                comboBox2.Items.Add(new CbItem("Average Salary", "Avg_Salary", "avg_salary", "sum"));
+                comboBox2.Items.Add(new CbItem("Gas Price", "GasPrice", "gas_price", "sum", true));
+                comboBox2.Items.Add(new CbItem("Charging Points", "ChargingPoint", "charging_points", "sum"));
+                comboBox2.SelectedIndex = 0;
+
+                comboBox3.Items.Add(new CbItem("Year"));
+                comboBox3.Items.Add(new CbItem("Month"));
+                comboBox3.Items.Add(new CbItem("Day"));
+                comboBox3.SelectedIndex = 0;
+
+                comboBox4.Items.Add(new CbItem("Column"));
+                comboBox4.Items.Add(new CbItem("Line"));
+                comboBox4.SelectedIndex = 0;
+
+            }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Country cbiCountry = (Country)comboBox1.SelectedItem;
+            CbItem cbiSelectionData = (CbItem)comboBox2.SelectedItem;
+            CbItem cbiGran = (CbItem)comboBox3.SelectedItem;
+            CbItem cbiGraphType = (CbItem)comboBox4.SelectedItem;
 
+            //drawGraph(1, "År", "elbilar sålda", "electric", "sum", "column", "year", false);
+
+            drawGraph(cbiCountry.country_id, cbiGran.Text, cbiSelectionData.Column, cbiSelectionData.Column, cbiSelectionData.TypeOfCalculation, cbiGraphType.Text, cbiGran.Text, checkBox1.Checked, cbiSelectionData.IsFloat);
+            label1.Text = (cbiGran.Text);
+
+        }
+    }
+    public class CbItem
+    {
+        public string Text { get; set; }
+        public string Table { get; set; }
+        public string Column { get; set; }
+        public string TypeOfCalculation { get; set; }
+        public int Value { get; set; }
+        public bool IsFloat { get; set; }
+        public override string ToString()
+        {
+            return this.Text;
+        }
+
+        public CbItem()
+        {
+
+        }
+
+        public CbItem(string t, int v)
+        {
+            Text = t;
+            Value = v;
+
+        }
+
+        public CbItem(string t)
+        {
+            Text = t;
+
+        }
+        public CbItem(string t, string ta)
+        {
+            Text = t;
+            Table = ta;
+
+        }
+        public CbItem(string t, string ta, string c)
+        {
+            Text = t;
+            Table = ta;
+            Column = c;
+
+
+        }
+        public CbItem(string t, string ta, string c, string toc)
+        {
+            Text = t;
+            Table = ta;
+            Column = c;
+            TypeOfCalculation = toc;
+
+
+        }
+        public CbItem(string t, string ta, string c, string toc, bool isfl)
+        {
+            Text = t;
+            Table = ta;
+            Column = c;
+            TypeOfCalculation = toc;
+            IsFloat = isfl;
+
+
+        }
     }
 }

@@ -12,18 +12,16 @@ namespace GruppuppgiftMMMJ
     using System;
     using System.Collections.Generic;
     
-    public partial class MarketEvent
+    public partial class GasPrice
     {
-        public int marketevent_id { get; set; }
-        public System.DateTime date { get; set; }
+        public int gasprice_id { get; set; }
         public int country_id { get; set; }
         public string country_name { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public string source { get; set; }
+        public System.DateTime date { get; set; }
         public Nullable<int> year_no { get; set; }
         public Nullable<int> month_no { get; set; }
         public string quarter { get; set; }
+        public double gasprice1 { get; set; }
     
         public virtual Country Country { get; set; }
     }
