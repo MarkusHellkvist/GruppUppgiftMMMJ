@@ -66,6 +66,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.44444F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // angularGauge1
             // 
@@ -112,6 +113,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LivechartsDemo";
             this.Text = "LivechartsDemo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LivechartsDemo_FormClosing);
             this.Load += new System.EventHandler(this.LivechartsDemo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

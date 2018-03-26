@@ -24,5 +24,39 @@ namespace GruppuppgiftMMMJ
         {
 
         }
+
+        private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            InsertMarketEvent f = new InsertMarketEvent(this);
+            f.Show();
+
+        }
+
+        private void miningToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            MiningTool f = new MiningTool(this);
+            f.Show();
+            
+        }
+
+        private void livechartsDemoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LivechartsDemo l = new LivechartsDemo(this);
+            l.Show();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

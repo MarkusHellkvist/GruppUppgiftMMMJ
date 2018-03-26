@@ -26,6 +26,7 @@ namespace GruppuppgiftMMMJ
         public int hybrids { get; set; }
         public Nullable<int> liquid_fuel { get; set; }
         public int total { get; set; }
+        public int CO2 { get; set; }
         public double gas_price { get; set; }
         public int charging_points { get; set; }
         public int avg_salary { get; set; }
