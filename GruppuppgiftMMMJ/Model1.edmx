@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarsDWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Avg_Salary">
+          <Key>
+            <PropertyRef Name="avg_salary_id" />
+          </Key>
+          <Property Name="avg_salary_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="avg_salary" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="year" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="CarSales">
+          <Key>
+            <PropertyRef Name="carsales_id" />
+          </Key>
+          <Property Name="carsales_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="year_no" Type="int" Nullable="false" />
+          <Property Name="month_no" Type="int" Nullable="false" />
+          <Property Name="month_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="quarter" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="electric" Type="int" />
+          <Property Name="hybrids" Type="int" Nullable="false" />
+          <Property Name="liquid_fuel" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChargingPoint">
+          <Key>
+            <PropertyRef Name="chargingpoint_id" />
+          </Key>
+          <Property Name="chargingpoint_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="no_of_charging_points" Type="int" Nullable="false" />
+          <Property Name="year_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DataTypesAvg_Salary">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="datatype" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DataTypesCarSales">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="datatype" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DataTypesChargingPoint">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="datatype" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DataTypesMarketEvent">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="datatype" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="GasPrice">
+          <Key>
+            <PropertyRef Name="gasprice_id" />
+          </Key>
+          <Property Name="gasprice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="year_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+          <Property Name="gasprice" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MarketEvent">
+          <Key>
+            <PropertyRef Name="marketevent_id" />
+          </Key>
+          <Property Name="marketevent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="source" Type="nvarchar" MaxLength="300" />
+          <Property Name="year_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BigView">
+          <Key>
+            <PropertyRef Name="carsales_id" />
+            <PropertyRef Name="country_id" />
+            <PropertyRef Name="country_name" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="year_no" />
+            <PropertyRef Name="month_no" />
+            <PropertyRef Name="month_name" />
+            <PropertyRef Name="quarter" />
+            <PropertyRef Name="hybrids" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="gas_price" />
+            <PropertyRef Name="charging_points" />
+            <PropertyRef Name="avg_salary" />
+          </Key>
+          <Property Name="carsales_id" Type="int" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="year_no" Type="int" Nullable="false" />
+          <Property Name="month_no" Type="int" Nullable="false" />
+          <Property Name="month_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="quarter" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="electric" Type="int" />
+          <Property Name="hybrids" Type="int" Nullable="false" />
+          <Property Name="liquid_fuel" Type="int" />
+          <Property Name="total" Type="int" Nullable="false" />
+          <Property Name="gas_price" Type="float" Nullable="false" />
+          <Property Name="charging_points" Type="int" Nullable="false" />
+          <Property Name="avg_salary" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Avg_Salar__count__45F365D3">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Avg_Salary" Type="Self.Avg_Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Avg_Salary">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarketEve__count__4316F928">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="MarketEvent" Type="Self.MarketEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="MarketEvent">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarSales_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="CarSales" Type="Self.CarSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="CarSales">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChargingPoints_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ChargingPoint" Type="Self.ChargingPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="ChargingPoint">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GasPrice_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="GasPrice" Type="Self.GasPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="GasPrice">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarsDWModelStoreContainer">
+          <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarSales" EntityType="Self.CarSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChargingPoint" EntityType="Self.ChargingPoint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataTypesAvg_Salary" EntityType="Self.DataTypesAvg_Salary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataTypesChargingPoint" EntityType="Self.DataTypesChargingPoint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataTypesMarketEvent" EntityType="Self.DataTypesMarketEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GasPrice" EntityType="Self.GasPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarketEvent" EntityType="Self.MarketEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BigView" EntityType="Self.BigView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BigView].[carsales_id] AS [carsales_id], 
+    [BigView].[country_id] AS [country_id], 
+    [BigView].[country_name] AS [country_name], 
+    [BigView].[date] AS [date], 
+    [BigView].[year_no] AS [year_no], 
+    [BigView].[month_no] AS [month_no], 
+    [BigView].[month_name] AS [month_name], 
+    [BigView].[quarter] AS [quarter], 
+    [BigView].[electric] AS [electric], 
+    [BigView].[hybrids] AS [hybrids], 
+    [BigView].[liquid_fuel] AS [liquid_fuel], 
+    [BigView].[total] AS [total], 
+    [BigView].[gas_price] AS [gas_price], 
+    [BigView].[charging_points] AS [charging_points], 
+    [BigView].[avg_salary] AS [avg_salary]
+    FROM [dbo].[BigView] AS [BigView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Avg_Salar__count__45F365D3" Association="Self.FK__Avg_Salar__count__45F365D3">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Avg_Salary" EntitySet="Avg_Salary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarketEve__count__4316F928" Association="Self.FK__MarketEve__count__4316F928">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="MarketEvent" EntitySet="MarketEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarSales_Country" Association="Self.FK_CarSales_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="CarSales" EntitySet="CarSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChargingPoints_Country" Association="Self.FK_ChargingPoints_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ChargingPoint" EntitySet="ChargingPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GasPrice_Country" Association="Self.FK_GasPrice_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="GasPrice" EntitySet="GasPrice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarsDWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Avg_Salary">
+          <Key>
+            <PropertyRef Name="avg_salary_id" />
+          </Key>
+          <Property Name="avg_salary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="avg_salary1" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="year" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Avg_Salar__count__45F365D3" FromRole="Avg_Salary" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="CarSale">
+          <Key>
+            <PropertyRef Name="carsales_id" />
+          </Key>
+          <Property Name="carsales_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="year_no" Type="Int32" Nullable="false" />
+          <Property Name="month_no" Type="Int32" Nullable="false" />
+          <Property Name="month_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quarter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="electric" Type="Int32" />
+          <Property Name="hybrids" Type="Int32" Nullable="false" />
+          <Property Name="liquid_fuel" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="total" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_CarSales_Country" FromRole="CarSales" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="ChargingPoint">
+          <Key>
+            <PropertyRef Name="chargingpoint_id" />
+          </Key>
+          <Property Name="chargingpoint_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="no_of_charging_points" Type="Int32" Nullable="false" />
+          <Property Name="year_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_ChargingPoints_Country" FromRole="ChargingPoint" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Avg_Salary" Relationship="Self.FK__Avg_Salar__count__45F365D3" FromRole="Country" ToRole="Avg_Salary" />
+          <NavigationProperty Name="CarSales" Relationship="Self.FK_CarSales_Country" FromRole="Country" ToRole="CarSales" />
+          <NavigationProperty Name="ChargingPoints" Relationship="Self.FK_ChargingPoints_Country" FromRole="Country" ToRole="ChargingPoint" />
+          <NavigationProperty Name="MarketEvents" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="Country" ToRole="MarketEvent" />
+          <NavigationProperty Name="GasPrices" Relationship="Self.FK_GasPrice_Country" FromRole="Country" ToRole="GasPrice" />
+        </EntityType>
+        <EntityType Name="DataTypesAvg_Salary">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DataTypesCarSale">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DataTypesChargingPoint">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DataTypesMarketEvent">
+          <Key>
+            <PropertyRef Name="colname" />
+          </Key>
+          <Property Name="colname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datatype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GasPrice">
+          <Key>
+            <PropertyRef Name="gasprice_id" />
+          </Key>
+          <Property Name="gasprice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="year_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="gasprice1" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_GasPrice_Country" FromRole="GasPrice" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="MarketEvent">
+          <Key>
+            <PropertyRef Name="marketevent_id" />
+          </Key>
+          <Property Name="marketevent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="source" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="year_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="month_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="quarter" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="MarketEvent" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="BigView">
+          <Key>
+            <PropertyRef Name="carsales_id" />
+            <PropertyRef Name="country_id" />
+            <PropertyRef Name="country_name" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="year_no" />
+            <PropertyRef Name="month_no" />
+            <PropertyRef Name="month_name" />
+            <PropertyRef Name="quarter" />
+            <PropertyRef Name="hybrids" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="gas_price" />
+            <PropertyRef Name="charging_points" />
+            <PropertyRef Name="avg_salary" />
+          </Key>
+          <Property Name="carsales_id" Type="Int32" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="year_no" Type="Int32" Nullable="false" />
+          <Property Name="month_no" Type="Int32" Nullable="false" />
+          <Property Name="month_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quarter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="electric" Type="Int32" />
+          <Property Name="hybrids" Type="Int32" Nullable="false" />
+          <Property Name="liquid_fuel" Type="Int32" />
+          <Property Name="total" Type="Int32" Nullable="false" />
+          <Property Name="gas_price" Type="Double" Nullable="false" />
+          <Property Name="charging_points" Type="Int32" Nullable="false" />
+          <Property Name="avg_salary" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Avg_Salar__count__45F365D3">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Avg_Salary" Type="Self.Avg_Salary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Avg_Salary">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarSales_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="CarSales" Type="Self.CarSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="CarSales">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChargingPoints_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ChargingPoint" Type="Self.ChargingPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="ChargingPoint">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarketEve__count__4316F928">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="MarketEvent" Type="Self.MarketEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="MarketEvent">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GasPrice_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="GasPrice" Type="Self.GasPrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="GasPrice">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DWEntitiesCars" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" />
+          <EntitySet Name="CarSales" EntityType="Self.CarSale" />
+          <EntitySet Name="ChargingPoints" EntityType="Self.ChargingPoint" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DataTypesAvg_Salary" EntityType="Self.DataTypesAvg_Salary" />
+          <EntitySet Name="DataTypesCarSales" EntityType="Self.DataTypesCarSale" />
+          <EntitySet Name="DataTypesChargingPoints" EntityType="Self.DataTypesChargingPoint" />
+          <EntitySet Name="DataTypesMarketEvents" EntityType="Self.DataTypesMarketEvent" />
+          <EntitySet Name="GasPrices" EntityType="Self.GasPrice" />
+          <EntitySet Name="MarketEvents" EntityType="Self.MarketEvent" />
+          <EntitySet Name="BigViews" EntityType="Self.BigView" />
+          <AssociationSet Name="FK__Avg_Salar__count__45F365D3" Association="Self.FK__Avg_Salar__count__45F365D3">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Avg_Salary" EntitySet="Avg_Salary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarSales_Country" Association="Self.FK_CarSales_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="CarSales" EntitySet="CarSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChargingPoints_Country" Association="Self.FK_ChargingPoints_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="ChargingPoint" EntitySet="ChargingPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarketEve__count__4316F928" Association="Self.FK__MarketEve__count__4316F928">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="MarketEvent" EntitySet="MarketEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GasPrice_Country" Association="Self.FK_GasPrice_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="GasPrice" EntitySet="GasPrices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarsDWModelStoreContainer" CdmEntityContainer="DWEntitiesCars">
+          <EntitySetMapping Name="Avg_Salary">
+            <EntityTypeMapping TypeName="CarsDWModel.Avg_Salary">
+              <MappingFragment StoreEntitySet="Avg_Salary">
+                <ScalarProperty Name="avg_salary_id" ColumnName="avg_salary_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="avg_salary1" ColumnName="avg_salary" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarSales">
+            <EntityTypeMapping TypeName="CarsDWModel.CarSale">
+              <MappingFragment StoreEntitySet="CarSales">
+                <ScalarProperty Name="carsales_id" ColumnName="carsales_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="month_name" ColumnName="month_name" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="electric" ColumnName="electric" />
+                <ScalarProperty Name="hybrids" ColumnName="hybrids" />
+                <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChargingPoints">
+            <EntityTypeMapping TypeName="CarsDWModel.ChargingPoint">
+              <MappingFragment StoreEntitySet="ChargingPoint">
+                <ScalarProperty Name="chargingpoint_id" ColumnName="chargingpoint_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="no_of_charging_points" ColumnName="no_of_charging_points" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="CarsDWModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataTypesAvg_Salary">
+            <EntityTypeMapping TypeName="CarsDWModel.DataTypesAvg_Salary">
+              <MappingFragment StoreEntitySet="DataTypesAvg_Salary">
+                <ScalarProperty Name="colname" ColumnName="colname" />
+                <ScalarProperty Name="datatype" ColumnName="datatype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataTypesCarSales">
+            <EntityTypeMapping TypeName="CarsDWModel.DataTypesCarSale">
+              <MappingFragment StoreEntitySet="DataTypesCarSales">
+                <ScalarProperty Name="colname" ColumnName="colname" />
+                <ScalarProperty Name="datatype" ColumnName="datatype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataTypesChargingPoints">
+            <EntityTypeMapping TypeName="CarsDWModel.DataTypesChargingPoint">
+              <MappingFragment StoreEntitySet="DataTypesChargingPoint">
+                <ScalarProperty Name="colname" ColumnName="colname" />
+                <ScalarProperty Name="datatype" ColumnName="datatype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataTypesMarketEvents">
+            <EntityTypeMapping TypeName="CarsDWModel.DataTypesMarketEvent">
+              <MappingFragment StoreEntitySet="DataTypesMarketEvent">
+                <ScalarProperty Name="colname" ColumnName="colname" />
+                <ScalarProperty Name="datatype" ColumnName="datatype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GasPrices">
+            <EntityTypeMapping TypeName="CarsDWModel.GasPrice">
+              <MappingFragment StoreEntitySet="GasPrice">
+                <ScalarProperty Name="gasprice_id" ColumnName="gasprice_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="gasprice1" ColumnName="gasprice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketEvents">
+            <EntityTypeMapping TypeName="CarsDWModel.MarketEvent">
+              <MappingFragment StoreEntitySet="MarketEvent">
+                <ScalarProperty Name="marketevent_id" ColumnName="marketevent_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BigViews">
+            <EntityTypeMapping TypeName="CarsDWModel.BigView">
+              <MappingFragment StoreEntitySet="BigView">
+                <ScalarProperty Name="carsales_id" ColumnName="carsales_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year_no" ColumnName="year_no" />
+                <ScalarProperty Name="month_no" ColumnName="month_no" />
+                <ScalarProperty Name="month_name" ColumnName="month_name" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="electric" ColumnName="electric" />
+                <ScalarProperty Name="hybrids" ColumnName="hybrids" />
+                <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="gas_price" ColumnName="gas_price" />
+                <ScalarProperty Name="charging_points" ColumnName="charging_points" />
+                <ScalarProperty Name="avg_salary" ColumnName="avg_salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
