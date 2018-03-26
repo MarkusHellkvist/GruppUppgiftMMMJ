@@ -32,6 +32,9 @@ namespace GruppuppgiftMMMJ
 
         private void miningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            InsertMarketEvent f = new InsertMarketEvent(this);
+            f.Show();
 
         }
 
@@ -42,6 +45,18 @@ namespace GruppuppgiftMMMJ
             MiningTool f = new MiningTool(this);
             f.Show();
             
+        }
+
+        private void livechartsDemoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LivechartsDemo l = new LivechartsDemo(this);
+            l.Show();
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -11,10 +11,14 @@ namespace GruppuppgiftMMMJ
 {
     public partial class LivechartsDemo : Form
     {
-        public LivechartsDemo()
+        private Form form;
+    
+        public LivechartsDemo(Form f)
         {
             InitializeComponent();
+            form = f;
         }
+
 
         private void LivechartsDemo_Load(object sender, EventArgs e)
         {
@@ -179,6 +183,18 @@ namespace GruppuppgiftMMMJ
         {
             angularGauge1.Value += 3;
             solidGauge1.Value += 10;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LivechartsDemo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            form.Show();
+
         }
     }
     

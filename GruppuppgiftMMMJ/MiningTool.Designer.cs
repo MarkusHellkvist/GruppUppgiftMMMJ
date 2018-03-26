@@ -151,7 +151,7 @@
             this.checkBox2.Text = "New scale Y-Axis ";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // InputData
+            // MiningTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,8 +166,8 @@
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cartesianChart1);
-            this.Name = "InputData";
-            this.Text = "InputData";
+            this.Name = "MiningTool";
+            this.Text = "Mining Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InputData_FormClosing);
             this.Load += new System.EventHandler(this.InputData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -36,6 +36,8 @@
             this.toolsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miningToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,8 @@
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.toolsToolStripMenuItem1,
-            this.chartsToolStripMenuItem});
+            this.chartsToolStripMenuItem,
+            this.sandboxToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(946, 28);
@@ -66,6 +69,7 @@
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -104,6 +108,21 @@
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.chartsToolStripMenuItem.Text = "Charts";
             // 
+            // sandboxToolStripMenuItem
+            // 
+            this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.livechartsDemoToolStripMenuItem});
+            this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
+            this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.sandboxToolStripMenuItem.Text = "Sandbox";
+            // 
+            // livechartsDemoToolStripMenuItem
+            // 
+            this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
+            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
+            this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,6 +150,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem miningToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem chartsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sandboxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem livechartsDemoToolStripMenuItem;
     }
 }
 

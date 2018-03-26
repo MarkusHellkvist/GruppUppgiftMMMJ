@@ -96,6 +96,12 @@
     <Compile Include="GasPrice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="InsertMarketEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertMarketEvent.Designer.cs">
+      <DependentUpon>InsertMarketEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="MiningTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertMarketEvent.resx">
+      <DependentUpon>InsertMarketEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MiningTool.resx">
       <DependentUpon>MiningTool.cs</DependentUpon>
