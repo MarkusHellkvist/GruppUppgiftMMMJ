@@ -13,10 +13,10 @@ namespace GruppuppgiftMMMJ
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Uppgift3Entities : DbContext
+    public partial class DWEntitiesCars : DbContext
     {
-        public Uppgift3Entities()
-            : base("name=Uppgift3Entities")
+        public DWEntitiesCars()
+            : base("name=DWEntitiesCars")
         {
         }
     
@@ -25,8 +25,16 @@ namespace GruppuppgiftMMMJ
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Amsterdam> Amsterdam { get; set; }
-        public virtual DbSet<Barcelona> Barcelona { get; set; }
-        public virtual DbSet<Boston> Boston { get; set; }
+        public virtual DbSet<Avg_Salary> Avg_Salary { get; set; }
+        public virtual DbSet<CarSale> CarSales { get; set; }
+        public virtual DbSet<ChargingPoint> ChargingPoints { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<DataTypesAvg_Salary> DataTypesAvg_Salary { get; set; }
+        public virtual DbSet<DataTypesCarSale> DataTypesCarSales { get; set; }
+        public virtual DbSet<DataTypesChargingPoint> DataTypesChargingPoints { get; set; }
+        public virtual DbSet<DataTypesMarketEvent> DataTypesMarketEvents { get; set; }
+        public virtual DbSet<GasPrice> GasPrices { get; set; }
+        public virtual DbSet<MarketEvent> MarketEvents { get; set; }
+        public virtual DbSet<BigView> BigViews { get; set; }
     }
 }
