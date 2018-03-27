@@ -45,15 +45,16 @@ namespace GruppuppgiftMMMJ
             me.title = textBox3.Text;
             me.description = richTextBox1.Text;
             me.source = textBox4.Text;
-            
-            if (country_id != 0 && me.date != null && textBox5.Text==null && button1.Text=="Insert")
+            string wtf = textBox5.Text;
+            label5.Text = country_id.ToString() + me.date.ToString() + textBox5.Text + button1.Text;
+            if (country_id != 0 && me.date != null && textBox5.Text == "" && button1.Text == "Insert")
             {
 
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
                     dw.MarketEvents.Add(me);
                     int code = dw.SaveChanges();
-                    if (code==1)
+                    if (code == 1)
                     {
 
                         label5.Text = "Inserted" + me.title + "code " + code.ToString();
@@ -70,7 +71,7 @@ namespace GruppuppgiftMMMJ
 
 
             }
-            else if (button1.Text=="Update" && textBox5.Text!="")
+            else if (button1.Text == "Update" && textBox5.Text != "")
             {
                 if (Int32.TryParse(textBox5.Text, out int marketevent_id))
                 {
@@ -92,7 +93,7 @@ namespace GruppuppgiftMMMJ
                         }
                         else
                         {
-                            label5.Text="Something went wrong. Code:" + code.ToString();
+                            label5.Text = "Something went wrong. Code:" + code.ToString();
                         }
 
                     }
@@ -116,9 +117,9 @@ namespace GruppuppgiftMMMJ
         private void Clear()
         {
 
-            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text="";
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = "";
             richTextBox1.Text = "";
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -155,6 +156,58 @@ namespace GruppuppgiftMMMJ
                 textBox4.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["source"].Value);
 
                 button1.Text = "Update";
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MarketEvent me = new MarketEvent();
+            int country_id = 0;
+            if (Int32.TryParse(textBox1.Text, out country_id))
+            {
+                //country_id en siffra, gör resten
+                me.country_id = country_id;
+            }
+
+            //var date = DateTime.Parse(textBox2).text;
+
+            if (DateTime.TryParse(textBox2.Text, out DateTime date))
+            {
+                me.date = date.Date;
+            }
+            me.title = textBox3.Text;
+            me.description = richTextBox1.Text;
+            me.source = textBox4.Text;
+            if (Int32.TryParse(textBox5.Text, out int marketevent_id))
+            {
+                //update
+                //country_id en siffra, gör resten
+                me.marketevent_id = marketevent_id;
+                using (CarsDWEntities dw = new CarsDWEntities())
+                {
+                    var entry = dw.Entry(me);
+                    if (entry.State == EntityState.Detached)
+                    {
+                        dw.MarketEvents.Attach(me);
+                    }
+                    dw.MarketEvents.Remove(me);
+                    int code = dw.SaveChanges();
+                    if (code==1)
+                    {
+                        label5.Text = "Deleted" + me.title + "code " + code.ToString();
+                        PopulateGridview();
+                        Clear();
+                    }
+                    else
+                    {
+                        label5.Text = "Something went wrong. Code:" + code.ToString();
+                    }
+                }
+            }
+            else
+            {
+                label5.Text = "marketevent_id";
+
             }
         }
     }
