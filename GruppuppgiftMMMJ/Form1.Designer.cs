@@ -38,6 +38,7 @@
             this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.co2FormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -83,7 +84,7 @@
             // miningToolStripMenuItem
             // 
             this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
-            this.miningToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.miningToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.miningToolStripMenuItem.Text = "Market event...";
             this.miningToolStripMenuItem.Click += new System.EventHandler(this.miningToolStripMenuItem_Click);
             // 
@@ -98,7 +99,7 @@
             // miningToolStripMenuItem1
             // 
             this.miningToolStripMenuItem1.Name = "miningToolStripMenuItem1";
-            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
             this.miningToolStripMenuItem1.Text = "Mining";
             this.miningToolStripMenuItem1.Click += new System.EventHandler(this.miningToolStripMenuItem1_Click);
             // 
@@ -111,7 +112,8 @@
             // sandboxToolStripMenuItem
             // 
             this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.livechartsDemoToolStripMenuItem});
+            this.livechartsDemoToolStripMenuItem,
+            this.co2FormToolStripMenuItem});
             this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
             this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.sandboxToolStripMenuItem.Text = "Sandbox";
@@ -122,6 +124,13 @@
             this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
             this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
+            // 
+            // co2FormToolStripMenuItem
+            // 
+            this.co2FormToolStripMenuItem.Name = "co2FormToolStripMenuItem";
+            this.co2FormToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.co2FormToolStripMenuItem.Text = "co2Form";
+            this.co2FormToolStripMenuItem.Click += new System.EventHandler(this.co2FormToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -152,6 +161,7 @@
         private System.Windows.Forms.ToolStripMenuItem chartsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sandboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livechartsDemoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem co2FormToolStripMenuItem;
     }
 }
 

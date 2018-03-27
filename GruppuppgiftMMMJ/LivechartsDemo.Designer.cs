@@ -50,6 +50,7 @@
             this.cartesianChart1.Size = new System.Drawing.Size(528, 266);
             this.cartesianChart1.TabIndex = 1;
             this.cartesianChart1.Text = "cartesianChart1";
+            this.cartesianChart1.ChildChanged += new System.EventHandler<System.Windows.Forms.Integration.ChildChangedEventArgs>(this.cartesianChart1_ChildChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -147,6 +148,7 @@
             this.Name = "LivechartsDemo";
             this.Text = "LivechartsDemo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InputData_FormClosing);
             this.Load += new System.EventHandler(this.LivechartsDemo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

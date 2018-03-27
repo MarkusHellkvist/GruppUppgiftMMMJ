@@ -11,9 +11,11 @@ namespace GruppuppgiftMMMJ
 {
     public partial class LivechartsDemo : Form
     {
-        public LivechartsDemo()
+        Form parentForm;
+        public LivechartsDemo(Form pf)
         {
             InitializeComponent();
+            parentForm = pf;
         }
 
         private void LivechartsDemo_Load(object sender, EventArgs e)
@@ -23,6 +25,12 @@ namespace GruppuppgiftMMMJ
             gaugePlot();
             piePlot();
             cartesianPlot();
+        }
+
+        private void InputData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            parentForm.Show(); 
         }
 
         // test function for solidGauge
@@ -75,13 +83,14 @@ namespace GruppuppgiftMMMJ
             List<BigView> Context = new List<BigView>();
             System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
             System.Collections.Generic.List<double> norPro = new System.Collections.Generic.List<double>();
-            using (DWEntitiesCars dw = new DWEntitiesCars())
+            using (CarsDWEntities dw = new CarsDWEntities())
             {
                 Context = dw.BigViews.Where(filter => filter.date >= new DateTime(2011, 1, 1) && filter.date < new DateTime(2017, 1, 1)).ToList();
                 var dataSweden = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 1).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
                 var dataNoway = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 2).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
 
-                swePro = Context.Where(c => c.country_id == 1).Select(s => new { tot = (double)s.electric / s.total }).Select(t => t.tot).ToList();//dataSweden.Select(x => x.result).ToList();
+                //swePro = Context.Where(c => c.country_id == 1).Select(s => new { tot = (double)s.electric / s.total }).Select(t => t.tot).ToList();//dataSweden.Select(x => x.result).ToList();
+                swePro = dataSweden.Select(x => x.result).ToList();
                 norPro = dataNoway.Select(x => x.result).ToList();
             }
 
@@ -102,11 +111,13 @@ namespace GruppuppgiftMMMJ
             NLS.Title = "Norge";
             NLS.Values = NCV;
             NLS.PointGeometry = null;
+            NLS.StrokeThickness = 4;
 
             LineSeries SLS = new LineSeries();
             SLS.Title = "Svedala";
             SLS.Values = SCV;
             SLS.PointGeometry = null;
+            SLS.StrokeThickness = 4;
 
             cartesianChart1.Series = new SeriesCollection
             {
@@ -116,7 +127,7 @@ namespace GruppuppgiftMMMJ
             cartesianChart1.AxisX.Add(new Axis
             {
                 MinValue = 0,
-                MaxValue = 12
+                MaxValue = 11
             });
 
             cartesianChart1.AxisY.Add(new Axis
@@ -132,7 +143,9 @@ namespace GruppuppgiftMMMJ
                     IsEnabled = false
                 }
             });
+            cartesianChart1.LegendLocation = LegendLocation.Right;
 
+            cartesianChart1.DataClick += CartesianChart1OnDataClick;
             /*
             cartesianChart1.AxisX.Add(new Axis
             {
@@ -157,12 +170,11 @@ namespace GruppuppgiftMMMJ
                 PointGeometrySize = 50,
                 PointForeground = Brushes.Gray
             });
-            */
+            
             //modifying any series values will also animate and update the chart
             //cartesianChart1.Series[2].Values.Add(5d);
-           // cartesianChart1.LegendLocation = LegendLocation.Right;
+            */
 
-            cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
 
         private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
@@ -232,6 +244,10 @@ namespace GruppuppgiftMMMJ
             solidGauge1.Value += 1;
         }
 
+        private void cartesianChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
     }
 
 }

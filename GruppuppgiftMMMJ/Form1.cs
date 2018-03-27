@@ -58,5 +58,12 @@ namespace GruppuppgiftMMMJ
         {
             Application.Exit();
         }
+
+        private void co2FormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            co2Form l = new co2Form(this);
+            l.Show();
+        }
     }
 }
