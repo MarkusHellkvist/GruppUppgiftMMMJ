@@ -1,11 +1,12 @@
 ﻿using System;
-
-
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Media;
 using LiveCharts;
 using LiveCharts.Wpf;
 using Brushes = System.Windows.Media.Brushes;
+
 
 namespace GruppuppgiftMMMJ
 {
@@ -18,7 +19,7 @@ namespace GruppuppgiftMMMJ
 
         private void LivechartsDemo_Load(object sender, EventArgs e)
         {
-            cartesianPlot();
+            marcusPlot();
             solidPlot();
             gaugePlot();
             piePlot();
@@ -69,14 +70,32 @@ namespace GruppuppgiftMMMJ
         }
 
         // Test function for the cartesianchart.
-        private void cartesianPlot()
+        private void marcusPlot()
+
         {
-            cartesianChart1.Series = new SeriesCollection
+            List<int> ylista = new List<int>();
+            using (DWEntitiesCars mw = new DWEntitiesCars()) //using för att den är väldigt tung. Vill stänga när vi använt databasen
+            {
+                ylista = mw.BigViews.Select(q => (int)q.electric).ToList();
+                
+            }
+            ChartValues<int> cw = new ChartValues<int>();
+            cw.AddRange(ylista);
+            LineSeries ls = new LineSeries();
+            ls.Title = "electric";
+            ls.Values = cw;
+
+            cartesianChart1.Series.Add(ls);
+
+                
+            /*
+
+                cartesianChart1.Series = new SeriesCollection
             {
                 new LineSeries
                 {
                     Title = "Series 1",
-                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
+                    Values = new ChartValues<double> { 1,2,3,4 }
                 },
                 new LineSeries
                 {
@@ -91,8 +110,9 @@ namespace GruppuppgiftMMMJ
                     PointGeometry = DefaultGeometries.Square,
                     PointGeometrySize = 15
                 }
+                
             };
-
+            
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Month",
@@ -120,7 +140,7 @@ namespace GruppuppgiftMMMJ
             //modifying any series values will also animate and update the chart
             cartesianChart1.Series[2].Values.Add(5d);
 
-
+        */
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
 

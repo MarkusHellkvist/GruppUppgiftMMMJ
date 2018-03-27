@@ -22,8 +22,8 @@ namespace GruppuppgiftMMMJ
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
            // Application.Run(new Form1());
-            //Application.Run(new LivechartsDemo());
-            Application.Run(new InputData());
+            Application.Run(new LivechartsDemo());
+            //Application.Run(new InputData());
         }
     }
 }
