@@ -22,7 +22,7 @@ namespace GruppuppgiftMMMJ
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
