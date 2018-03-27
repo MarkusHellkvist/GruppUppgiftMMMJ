@@ -87,18 +87,6 @@
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataTypesAvg_Salary.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataTypesCarSale.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataTypesChargingPoint.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataTypesMarketEvent.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,11 +96,17 @@
     <Compile Include="GasPrice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="InputData.cs">
+    <Compile Include="InsertMarketEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputData.Designer.cs">
-      <DependentUpon>InputData.cs</DependentUpon>
+    <Compile Include="InsertMarketEvent.Designer.cs">
+      <DependentUpon>InsertMarketEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiningTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiningTool.Designer.cs">
+      <DependentUpon>MiningTool.cs</DependentUpon>
     </Compile>
     <Compile Include="LivechartsDemo.cs">
       <SubType>Form</SubType>
@@ -143,8 +137,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputData.resx">
-      <DependentUpon>InputData.cs</DependentUpon>
+    <EmbeddedResource Include="InsertMarketEvent.resx">
+      <DependentUpon>InsertMarketEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiningTool.resx">
+      <DependentUpon>MiningTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LivechartsDemo.resx">
       <DependentUpon>LivechartsDemo.cs</DependentUpon>
