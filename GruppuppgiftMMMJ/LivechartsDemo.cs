@@ -1,11 +1,12 @@
 ﻿using System;
-
-
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Media;
 using LiveCharts;
 using LiveCharts.Wpf;
 using Brushes = System.Windows.Media.Brushes;
+
 
 namespace GruppuppgiftMMMJ
 {
@@ -71,12 +72,63 @@ namespace GruppuppgiftMMMJ
         // Test function for the cartesianchart.
         private void cartesianPlot()
         {
+            List<int> ylista = new List<int>();
+            using (DWEntitiesCars MHDW = new DWEntitiesCars())
+            {
+
+
+                ylista = MHDW.BigViews.Select(q => (int)q.electric).ToList();
+
+
+
+            }
+
+            LineSeries ls = new LineSeries();
+
+            ls.Title = "Electric cars";
+
+            ChartValues<int> cv = new ChartValues<int>();
+            cv.AddRange(ylista);
+            ls.Values = cv;
+
+            cartesianChart1.Series.Add(ls);
+
+
+
+            /*
+
+
+
+
+
+
+
+
+            
+
             cartesianChart1.Series = new SeriesCollection
             {
+                
+
+
+
+
+
+
+
+
+
+
+
+
                 new LineSeries
+
+
                 {
+                
+
                     Title = "Series 1",
-                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
+                    Values = new ChartValues<int> {1,2 }
                 },
                 new LineSeries
                 {
@@ -122,6 +174,7 @@ namespace GruppuppgiftMMMJ
 
 
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
+            */
         }
 
         private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
@@ -172,7 +225,7 @@ namespace GruppuppgiftMMMJ
 
         private void angularGauge1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -181,5 +234,5 @@ namespace GruppuppgiftMMMJ
             solidGauge1.Value += 10;
         }
     }
-    
+
 }
