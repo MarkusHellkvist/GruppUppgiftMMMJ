@@ -19,7 +19,6 @@ namespace GruppuppgiftMMMJ
         {
             this.Avg_Salary = new HashSet<Avg_Salary>();
             this.CarSales = new HashSet<CarSale>();
-            this.ChargingPoints = new HashSet<ChargingPoint>();
             this.MarketEvents = new HashSet<MarketEvent>();
             this.GasPrices = new HashSet<GasPrice>();
         }
@@ -31,8 +30,6 @@ namespace GruppuppgiftMMMJ
         public virtual ICollection<Avg_Salary> Avg_Salary { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarSale> CarSales { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChargingPoint> ChargingPoints { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MarketEvent> MarketEvents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

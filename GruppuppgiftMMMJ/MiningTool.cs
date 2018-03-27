@@ -21,7 +21,7 @@ namespace GruppuppgiftMMMJ
         private Form pf;
         public MiningTool(Form parentForm)
         {
-            pf = parentForm;
+            pf = parentForm as Form1;
             InitializeComponent();
             xStartsAtDateYear = 0;
             xStartsAtDateMonth = 0;
@@ -34,6 +34,7 @@ namespace GruppuppgiftMMMJ
         {
 
             PopulateComboBoxes();
+            dataGridView1.AutoGenerateColumns = false;
 
             // drawGraph(1, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "year", false);
             // mytestfunction(2, "CarSales", "År", "elbilar sålda", "electric", "sum", "column", "month", true);
@@ -176,7 +177,7 @@ namespace GruppuppgiftMMMJ
                 //typ av graf y värden
                 ColumnSeries cs = new ColumnSeries();
                 LineSeries ls = new LineSeries();
-                
+
                 switch (graphtype.ToLower())
                 {
                     case "column":
@@ -194,7 +195,7 @@ namespace GruppuppgiftMMMJ
                     case "line":
                         ls.Title = country_name + " " + pickedColumn;
                         ls.Values = cvy;
-                         //ökar skalindex
+                        //ökar skalindex
                         if (addScaleY == true)
                         {
                             currentYscaleLs++;
@@ -205,7 +206,7 @@ namespace GruppuppgiftMMMJ
                     default:
                         break;
                 }
-              
+
 
                 int numberofXAxis = cartesianChart1.AxisX.Count();
                 int numberofYAxis = cartesianChart1.AxisY.Count();
@@ -278,19 +279,34 @@ namespace GruppuppgiftMMMJ
 
         private void cartesianChart1_DataHover(object sender, ChartPoint p)
         {
-
             if (xStartsAtDateMonth == 0 && xStartsAtDateYear != 0)
             {
                 //år verkar valt
                 int yr = (int)p.X + xStartsAtDateYear;
+
+                //testing other form
+
+
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
-                    dataGridView1.Refresh();
-                    var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
-                    dataGridView1.DataSource = me;
+                    if (radioButton1.Checked == true) //Norway
+                    {
+                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.country_id == 2).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+
+                        dataGridView1.DataSource = me;
+                    }
+                    else //sverige
+                    {
+
+                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.country_id == 1).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+
+                        dataGridView1.DataSource = me;
+
+                    }
+
 
                 }
-               // label1.Text = yr.ToString();
+                // label1.Text = yr.ToString();
             }
             else if (xStartsAtDateYear != 0 && xStartsAtDateMonth != 0)
             {
@@ -301,12 +317,21 @@ namespace GruppuppgiftMMMJ
                 int mnth = d.Month;
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
-                    dataGridView1.Refresh();
-                    var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
-                    dataGridView1.DataSource = me;
+                    if (radioButton1.Checked == true) //norway
+                    {
 
+                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth && a.country_id == 2).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
+                        dataGridView1.DataSource = me;
+
+                    }
+                    else  //sweden
+                    {
+                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth && a.country_id == 2).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
+                        dataGridView1.DataSource = me;
+
+                    }
                 }
-                label1.Text = yr.ToString() + mnth.ToString();
+                // label1.Text = yr.ToString() + mnth.ToString();
             }
 
         }
@@ -319,11 +344,12 @@ namespace GruppuppgiftMMMJ
                 comboBox1.ValueMember = "country_id";
 
 
-                comboBox2.Items.Add(new CbItem("Car Sales Electric", "CarSales", "electric", "sum"));
-                comboBox2.Items.Add(new CbItem("Car Sales Hybrids", "CarSales", "hybrids", "sum"));
-                comboBox2.Items.Add(new CbItem("Car Sales Petrol/Diesel", "CarSales", "liquid_fuel", "sum"));
-                comboBox2.Items.Add(new CbItem("Car Sales All Cars", "CarSales", "total", "sum"));
+                comboBox2.Items.Add(new CbItem("Electric Cars", "CarSales", "electric", "sum"));
+                comboBox2.Items.Add(new CbItem("Hybrid Cars", "CarSales", "hybrids", "sum"));
+                comboBox2.Items.Add(new CbItem("Petrol/Diesel Cars", "CarSales", "liquid_fuel", "sum"));
+                comboBox2.Items.Add(new CbItem("All Cars", "CarSales", "total", "sum"));
                 comboBox2.Items.Add(new CbItem("Co2", "CarSales", "CO2", "sum"));
+                comboBox2.Items.Add(new CbItem("Market", "CarSales", "has_market_events", "sum"));
 
 
 
@@ -354,16 +380,23 @@ namespace GruppuppgiftMMMJ
             //drawGraph(1, "År", "elbilar sålda", "electric", "sum", "column", "year", false);
 
             drawGraph(cbiCountry.country_id, cbiGran.Text, cbiSelectionData.Column, cbiSelectionData.Column, cbiSelectionData.TypeOfCalculation, cbiGraphType.Text, cbiGran.Text, checkBox1.Checked, cbiSelectionData.IsFloat, checkBox2.Checked);
-            label1.Text = (cbiGran.Text);
+
 
         }
 
         private void InputData_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
+
             pf.Show();
+            this.Hide();
 
         }
+
+
+
+
+
+
     }
     public class CbItem
     {

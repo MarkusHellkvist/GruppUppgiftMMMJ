@@ -30,5 +30,6 @@ namespace GruppuppgiftMMMJ
         public double gas_price { get; set; }
         public int charging_points { get; set; }
         public int avg_salary { get; set; }
+        public Nullable<int> has_market_events { get; set; }
     }
 }

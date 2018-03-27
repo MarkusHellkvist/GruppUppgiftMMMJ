@@ -81,9 +81,6 @@
     <Compile Include="CarSale.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChargingPoint.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -102,6 +99,9 @@
     <Compile Include="InsertMarketEvent.Designer.cs">
       <DependentUpon>InsertMarketEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarketEvent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="MiningTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,9 +113,6 @@
     </Compile>
     <Compile Include="LivechartsDemo.Designer.cs">
       <DependentUpon>LivechartsDemo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MarketEvent.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
