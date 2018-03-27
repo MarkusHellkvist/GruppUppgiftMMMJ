@@ -34,19 +34,6 @@
           <Property Name="total" Type="int" Nullable="false" />
           <Property Name="avg_CO2" Type="int" />
         </EntityType>
-        <EntityType Name="ChargingPoint">
-          <Key>
-            <PropertyRef Name="chargingpoint_id" />
-          </Key>
-          <Property Name="chargingpoint_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="country_id" Type="int" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="no_of_charging_points" Type="int" Nullable="false" />
-          <Property Name="year_no" Type="int" StoreGeneratedPattern="Computed" />
-          <Property Name="month_no" Type="int" StoreGeneratedPattern="Computed" />
-          <Property Name="quarter" Type="varchar" MaxLength="9" StoreGeneratedPattern="Computed" />
-          <Property Name="country_name" Type="nvarchar" MaxLength="50" StoreGeneratedPattern="Computed" />
-        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="country_id" />
@@ -117,6 +104,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="gas_price" Type="float" Nullable="false" />
           <Property Name="charging_points" Type="int" Nullable="false" />
           <Property Name="avg_salary" Type="int" Nullable="false" />
+          <Property Name="has_market_events" Type="int" />
         </EntityType>
         <Association Name="FK__Avg_Salar__count__45F365D3">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
@@ -154,18 +142,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ChargingPoints_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ChargingPoint" Type="Self.ChargingPoint" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="country_id" />
-            </Principal>
-            <Dependent Role="ChargingPoint">
-              <PropertyRef Name="country_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_GasPrice_Country">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="GasPrice" Type="Self.GasPrice" Multiplicity="*" />
@@ -181,7 +157,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
         <EntityContainer Name="CarsDWModelStoreContainer">
           <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarSales" EntityType="Self.CarSales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChargingPoint" EntityType="Self.ChargingPoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GasPrice" EntityType="Self.GasPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarketEvent" EntityType="Self.MarketEvent" Schema="dbo" store:Type="Tables" />
@@ -202,7 +177,8 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
     [BigView].[CO2] AS [CO2], 
     [BigView].[gas_price] AS [gas_price], 
     [BigView].[charging_points] AS [charging_points], 
-    [BigView].[avg_salary] AS [avg_salary]
+    [BigView].[avg_salary] AS [avg_salary], 
+    [BigView].[has_market_events] AS [has_market_events]
     FROM [dbo].[BigView] AS [BigView]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Avg_Salar__count__45F365D3" Association="Self.FK__Avg_Salar__count__45F365D3">
@@ -216,10 +192,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <AssociationSet Name="FK_CarSales_Country" Association="Self.FK_CarSales_Country">
             <End Role="Country" EntitySet="Country" />
             <End Role="CarSales" EntitySet="CarSales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChargingPoints_Country" Association="Self.FK_ChargingPoints_Country">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="ChargingPoint" EntitySet="ChargingPoint" />
           </AssociationSet>
           <AssociationSet Name="FK_GasPrice_Country" Association="Self.FK_GasPrice_Country">
             <End Role="Country" EntitySet="Country" />
@@ -262,20 +234,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="avg_CO2" Type="Int32" />
           <NavigationProperty Name="Country" Relationship="Self.FK_CarSales_Country" FromRole="CarSales" ToRole="Country" />
         </EntityType>
-        <EntityType Name="ChargingPoint">
-          <Key>
-            <PropertyRef Name="chargingpoint_id" />
-          </Key>
-          <Property Name="chargingpoint_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="country_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="no_of_charging_points" Type="Int32" Nullable="false" />
-          <Property Name="year_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="month_no" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="quarter" Type="String" MaxLength="9" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_ChargingPoints_Country" FromRole="ChargingPoint" ToRole="Country" />
-        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="country_id" />
@@ -284,7 +242,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Avg_Salary" Relationship="Self.FK__Avg_Salar__count__45F365D3" FromRole="Country" ToRole="Avg_Salary" />
           <NavigationProperty Name="CarSales" Relationship="Self.FK_CarSales_Country" FromRole="Country" ToRole="CarSales" />
-          <NavigationProperty Name="ChargingPoints" Relationship="Self.FK_ChargingPoints_Country" FromRole="Country" ToRole="ChargingPoint" />
           <NavigationProperty Name="MarketEvents" Relationship="Self.FK__MarketEve__count__4316F928" FromRole="Country" ToRole="MarketEvent" />
           <NavigationProperty Name="GasPrices" Relationship="Self.FK_GasPrice_Country" FromRole="Country" ToRole="GasPrice" />
         </EntityType>
@@ -351,6 +308,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <Property Name="gas_price" Type="Double" Nullable="false" />
           <Property Name="charging_points" Type="Int32" Nullable="false" />
           <Property Name="avg_salary" Type="Int32" Nullable="false" />
+          <Property Name="has_market_events" Type="Int32" />
         </EntityType>
         <Association Name="FK__Avg_Salar__count__45F365D3">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
@@ -372,18 +330,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
               <PropertyRef Name="country_id" />
             </Principal>
             <Dependent Role="CarSales">
-              <PropertyRef Name="country_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ChargingPoints_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="ChargingPoint" Type="Self.ChargingPoint" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="country_id" />
-            </Principal>
-            <Dependent Role="ChargingPoint">
               <PropertyRef Name="country_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -415,7 +361,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
         <EntityContainer Name="CarsDWEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Avg_Salary" EntityType="Self.Avg_Salary" />
           <EntitySet Name="CarSales" EntityType="Self.CarSale" />
-          <EntitySet Name="ChargingPoints" EntityType="Self.ChargingPoint" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="GasPrices" EntityType="Self.GasPrice" />
           <EntitySet Name="MarketEvents" EntityType="Self.MarketEvent" />
@@ -427,10 +372,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
           <AssociationSet Name="FK_CarSales_Country" Association="Self.FK_CarSales_Country">
             <End Role="Country" EntitySet="Countries" />
             <End Role="CarSales" EntitySet="CarSales" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChargingPoints_Country" Association="Self.FK_ChargingPoints_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="ChargingPoint" EntitySet="ChargingPoints" />
           </AssociationSet>
           <AssociationSet Name="FK__MarketEve__count__4316F928" Association="Self.FK__MarketEve__count__4316F928">
             <End Role="Country" EntitySet="Countries" />
@@ -475,20 +416,6 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
                 <ScalarProperty Name="liquid_fuel" ColumnName="liquid_fuel" />
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="avg_CO2" ColumnName="avg_CO2" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ChargingPoints">
-            <EntityTypeMapping TypeName="CarsDWModel.ChargingPoint">
-              <MappingFragment StoreEntitySet="ChargingPoint">
-                <ScalarProperty Name="chargingpoint_id" ColumnName="chargingpoint_id" />
-                <ScalarProperty Name="country_id" ColumnName="country_id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="no_of_charging_points" ColumnName="no_of_charging_points" />
-                <ScalarProperty Name="year_no" ColumnName="year_no" />
-                <ScalarProperty Name="month_no" ColumnName="month_no" />
-                <ScalarProperty Name="quarter" ColumnName="quarter" />
-                <ScalarProperty Name="country_name" ColumnName="country_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -549,6 +476,7 @@ warning 6002: The table/view 'CarsDW.dbo.BigView' does not have a primary key de
                 <ScalarProperty Name="gas_price" ColumnName="gas_price" />
                 <ScalarProperty Name="charging_points" ColumnName="charging_points" />
                 <ScalarProperty Name="avg_salary" ColumnName="avg_salary" />
+                <ScalarProperty Name="has_market_events" ColumnName="has_market_events" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

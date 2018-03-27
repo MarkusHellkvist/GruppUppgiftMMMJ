@@ -67,7 +67,7 @@
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -83,7 +83,7 @@
             // miningToolStripMenuItem
             // 
             this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
-            this.miningToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.miningToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.miningToolStripMenuItem.Text = "Market event...";
             this.miningToolStripMenuItem.Click += new System.EventHandler(this.miningToolStripMenuItem_Click);
             // 
@@ -98,7 +98,7 @@
             // miningToolStripMenuItem1
             // 
             this.miningToolStripMenuItem1.Name = "miningToolStripMenuItem1";
-            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
             this.miningToolStripMenuItem1.Text = "Mining";
             this.miningToolStripMenuItem1.Click += new System.EventHandler(this.miningToolStripMenuItem1_Click);
             // 
@@ -119,7 +119,7 @@
             // livechartsDemoToolStripMenuItem
             // 
             this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
-            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
             this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
             // 
