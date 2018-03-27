@@ -285,7 +285,7 @@ namespace GruppuppgiftMMMJ
                 int yr = (int)p.X + xStartsAtDateYear;
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
-
+                    dataGridView1.Refresh();
                     var me = dw.MarketEvents.Where(a => a.year_no == yr).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
                     dataGridView1.DataSource = me;
 
@@ -301,6 +301,7 @@ namespace GruppuppgiftMMMJ
                 int mnth = d.Month;
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
+                    dataGridView1.Refresh();
                     var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
                     dataGridView1.DataSource = me;
 

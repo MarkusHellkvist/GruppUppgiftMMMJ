@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace GruppuppgiftMMMJ
         {
             form = f;
             InitializeComponent();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -43,17 +45,57 @@ namespace GruppuppgiftMMMJ
             me.title = textBox3.Text;
             me.description = richTextBox1.Text;
             me.source = textBox4.Text;
-
-            if (country_id != 0 && me.date != null)
+            
+            if (country_id != 0 && me.date != null && textBox5.Text==null && button1.Text=="Insert")
             {
 
                 using (CarsDWEntities dw = new CarsDWEntities())
                 {
                     dw.MarketEvents.Add(me);
-                    int code=dw.SaveChanges();
-                    
-                    label5.Text = "inserted"+me.title+"code"+code.ToString();
-                    
+                    int code = dw.SaveChanges();
+                    if (code==1)
+                    {
+
+                        label5.Text = "Inserted" + me.title + "code " + code.ToString();
+                        PopulateGridview();
+                        Clear();
+                    }
+                    else
+                    {
+                        label5.Text = "Something went wrong. code " + code.ToString();
+
+                    }
+
+                }
+
+
+            }
+            else if (button1.Text=="Update" && textBox5.Text!="")
+            {
+                if (Int32.TryParse(textBox5.Text, out int marketevent_id))
+                {
+                    //update
+                    //country_id en siffra, gör resten
+                    me.marketevent_id = marketevent_id;
+                    using (CarsDWEntities dw = new CarsDWEntities())
+                    {
+
+                        dw.Entry(me).State = EntityState.Modified;
+
+                        int code = dw.SaveChanges();
+                        if (code == 1)
+                        {
+
+                            label5.Text = "Updated" + me.title + "code " + code.ToString();
+                            PopulateGridview();
+                            Clear();
+                        }
+                        else
+                        {
+                            label5.Text="Something went wrong. Code:" + code.ToString();
+                        }
+
+                    }
                 }
 
 
@@ -70,6 +112,50 @@ namespace GruppuppgiftMMMJ
             this.Hide();
             form.Show();
 
+        }
+        private void Clear()
+        {
+
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text="";
+            richTextBox1.Text = "";
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = "";
+            richTextBox1.Text = "";
+            label5.Text = "Ready for new data";
+        }
+
+        private void InsertMarketEvent_Load(object sender, EventArgs e)
+        {
+            PopulateGridview();
+        }
+
+        private void PopulateGridview()
+        {
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridView1.DataSource = dw.MarketEvents.ToList<MarketEvent>();
+            }
+        }
+
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index != -1)
+            {
+                textBox5.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["marketevent_id"].Value);
+                textBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["country_id"].Value);
+                textBox2.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["date"].Value).Substring(0, 10);
+                textBox3.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["title"].Value);
+                richTextBox1.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["description"].Value);
+                textBox4.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["source"].Value);
+
+                button1.Text = "Update";
+            }
         }
     }
 }
