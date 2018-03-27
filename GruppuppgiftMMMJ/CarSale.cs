@@ -26,6 +26,7 @@ namespace GruppuppgiftMMMJ
         public int hybrids { get; set; }
         public Nullable<int> liquid_fuel { get; set; }
         public int total { get; set; }
+        public Nullable<int> avg_CO2 { get; set; }
     
         public virtual Country Country { get; set; }
     }
