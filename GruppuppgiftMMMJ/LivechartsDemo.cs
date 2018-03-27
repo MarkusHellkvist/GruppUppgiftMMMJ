@@ -78,7 +78,7 @@ namespace GruppuppgiftMMMJ
 
         {
             List<int> ylista = new List<int>();
-            using (DWEntitiesCars mw = new DWEntitiesCars()) //using för att den är väldigt tung. Vill stänga när vi använt databasen
+            using (CarsDWEntities mw = new CarsDWEntities()) //using för att den är väldigt tung. Vill stänga när vi använt databasen
             {
                 ylista = mw.BigViews.Select(q => (int)q.electric).ToList();
                 
