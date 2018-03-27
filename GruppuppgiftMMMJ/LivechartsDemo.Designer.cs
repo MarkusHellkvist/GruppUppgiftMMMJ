@@ -33,8 +33,12 @@
             this.angularGauge1 = new LiveCharts.WinForms.AngularGauge();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
             this.solidGauge1 = new LiveCharts.WinForms.SolidGauge();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.Back = new System.Windows.Forms.Button();
+            this.Forward = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cartesianChart1
@@ -57,7 +61,7 @@
             this.tableLayoutPanel1.Controls.Add(this.angularGauge1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pieChart1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.solidGauge1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -94,15 +98,45 @@
             this.solidGauge1.TabIndex = 4;
             this.solidGauge1.Text = "solidGauge1";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.Back);
+            this.flowLayoutPanel1.Controls.Add(this.Forward);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 181);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(260, 266);
+            this.flowLayoutPanel1.TabIndex = 5;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 181);
+            this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
+            this.button1.Size = new System.Drawing.Size(123, 35);
+            this.button1.TabIndex = 6;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Back
+            // 
+            this.Back.Location = new System.Drawing.Point(132, 3);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(123, 35);
+            this.Back.TabIndex = 7;
+            this.Back.Text = "Back";
+            this.Back.UseVisualStyleBackColor = true;
+            this.Back.Click += new System.EventHandler(this.PreviousOnClick);
+            // 
+            // Forward
+            // 
+            this.Forward.Location = new System.Drawing.Point(3, 44);
+            this.Forward.Name = "Forward";
+            this.Forward.Size = new System.Drawing.Size(123, 35);
+            this.Forward.TabIndex = 8;
+            this.Forward.Text = "Forward";
+            this.Forward.UseVisualStyleBackColor = true;
+            this.Forward.Click += new System.EventHandler(this.forwardOnClick);
             // 
             // LivechartsDemo
             // 
@@ -112,8 +146,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LivechartsDemo";
             this.Text = "LivechartsDemo";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.LivechartsDemo_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -125,6 +161,9 @@
         private LiveCharts.WinForms.AngularGauge angularGauge1;
         private LiveCharts.WinForms.PieChart pieChart1;
         private LiveCharts.WinForms.SolidGauge solidGauge1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Button Forward;
     }
 }

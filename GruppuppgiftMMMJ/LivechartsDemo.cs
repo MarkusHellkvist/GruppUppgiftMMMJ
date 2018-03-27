@@ -1,6 +1,6 @@
 ﻿using System;
-
-
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Media;
 using LiveCharts;
@@ -18,18 +18,19 @@ namespace GruppuppgiftMMMJ
 
         private void LivechartsDemo_Load(object sender, EventArgs e)
         {
-            cartesianPlot();
+            
             solidPlot();
             gaugePlot();
             piePlot();
+            cartesianPlot();
         }
 
         // test function for solidGauge
         private void solidPlot()
         {
-            solidGauge1.From = 0;
-            solidGauge1.To = 100;
-            solidGauge1.Value = 10;
+            solidGauge1.From = 2012;
+            solidGauge1.To = 2017;
+            solidGauge1.Value = 2012;
             solidGauge1.Base.LabelsVisibility = System.Windows.Visibility.Hidden;
             solidGauge1.Base.GaugeActiveFill = new LinearGradientBrush
             {
@@ -71,43 +72,83 @@ namespace GruppuppgiftMMMJ
         // Test function for the cartesianchart.
         private void cartesianPlot()
         {
+            List<BigView> Context = new List<BigView>();
+            System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
+            System.Collections.Generic.List<double> norPro = new System.Collections.Generic.List<double>();
+            using (DWEntitiesCars dw = new DWEntitiesCars())
+            {
+                Context = dw.BigViews.Where(filter => filter.date >= new DateTime(2011, 1, 1) && filter.date < new DateTime(2017, 1, 1)).ToList();
+                var dataSweden = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 1).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
+                var dataNoway = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 2).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
+
+                swePro = Context.Where(c => c.country_id == 1).Select(s => new { tot = (double)s.electric / s.total }).Select(t => t.tot).ToList();//dataSweden.Select(x => x.result).ToList();
+                norPro = dataNoway.Select(x => x.result).ToList();
+            }
+
+            /*var No = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.carsales_id == 2).Select(x => new { total = (double)x.total, elec = (double)x.electric,date = x.date });
+                System.Collections.Generic.List<int> norge = new System.Collections.Generic.List<int>();
+                norge = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 2).Select(Q => (int)Q.electric).ToList();
+                System.Collections.Generic.List<int> svergie = new System.Collections.Generic.List<int>();
+                svergie = 
+                dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.carsales_id == 1).Select(x => new { proc = (double)x.electric / (double)x.total });
+                var proc = No.Select(y => new { proc = (y.total / y.elec) });
+                */
+            ChartValues<double> NCV = new ChartValues<double>();
+            NCV.AddRange(norPro);
+            ChartValues<double> SCV = new ChartValues<double>();
+            SCV.AddRange(swePro);
+
+            LineSeries NLS = new LineSeries();
+            NLS.Title = "Norge";
+            NLS.Values = NCV;
+            NLS.PointGeometry = null;
+
+            LineSeries SLS = new LineSeries();
+            SLS.Title = "Svedala";
+            SLS.Values = SCV;
+            SLS.PointGeometry = null;
+
             cartesianChart1.Series = new SeriesCollection
             {
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> {6, 7, 3, 4, 6},
-                    PointGeometry = null
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> {5, 2, 8, 3},
-                    PointGeometry = DefaultGeometries.Square,
-                    PointGeometrySize = 15
-                }
+                NLS,SLS
             };
 
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                MinValue = 0,
+                MaxValue = 12
+            });
+
+            cartesianChart1.AxisY.Add(new Axis
+            {
+                Title = "Procent",
+                
+                MinValue = 0,
+                MaxValue = 50,
+                LabelFormatter = val => val + "%",
+                Separator = new Separator
+                {
+                    Step = 5,
+                    IsEnabled = false
+                }
+            });
+
+            /*
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Month",
                 Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
             });
-
+            
             cartesianChart1.AxisY.Add(new Axis
             {
-                Title = "Sales",
-                LabelFormatter = value => value.ToString("C")
+                Title = "Procent"
+                //LabelFormatter = value => value.ToString("C")
             });
-
-            cartesianChart1.LegendLocation = LegendLocation.Right;
-
+            
+            
             //modifying the series collection will animate and update the chart
+            
             cartesianChart1.Series.Add(new LineSeries
             {
                 Values = new ChartValues<double> { 5, 3, 2, 4, 5 },
@@ -116,10 +157,10 @@ namespace GruppuppgiftMMMJ
                 PointGeometrySize = 50,
                 PointForeground = Brushes.Gray
             });
-
+            */
             //modifying any series values will also animate and update the chart
-            cartesianChart1.Series[2].Values.Add(5d);
-
+            //cartesianChart1.Series[2].Values.Add(5d);
+           // cartesianChart1.LegendLocation = LegendLocation.Right;
 
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
@@ -170,16 +211,27 @@ namespace GruppuppgiftMMMJ
             pieChart1.LegendLocation = LegendLocation.Bottom;
         }
 
-        private void angularGauge1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-            
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             angularGauge1.Value += 3;
             solidGauge1.Value += 10;
         }
+
+        private void PreviousOnClick(object sender, EventArgs e)
+        {
+            cartesianChart1.AxisX[0].MinValue -= 12;
+            cartesianChart1.AxisX[0].MaxValue -= 12;
+            solidGauge1.Value -= 1;
+        }
+        private void forwardOnClick(object sender, EventArgs e)
+        {
+            cartesianChart1.AxisX[0].MinValue += 12;
+            cartesianChart1.AxisX[0].MaxValue += 12;
+            solidGauge1.Value += 1;
+        }
+
     }
-    
+
 }
