@@ -437,7 +437,8 @@ namespace GruppuppgiftMMMJ
                     Values = NCV,
                     PointGeometry = DefaultGeometries.Square,
                     StrokeThickness = 4,
-                    ScalesYAt = 1
+                    ScalesYAt = 1,
+                    Fill = null
                 };
 
                 LineSeries SLS = new LineSeries
@@ -446,7 +447,8 @@ namespace GruppuppgiftMMMJ
                     Values = SCV,
                     PointGeometry = null,
                     StrokeThickness = 4,
-                    ScalesYAt = 1
+                    ScalesYAt = 1,
+                    Fill = null
                 };
 
                 cartesianChart1.Series.Add(SLS);
