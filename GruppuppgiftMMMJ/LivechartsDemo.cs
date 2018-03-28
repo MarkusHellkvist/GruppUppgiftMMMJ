@@ -92,7 +92,7 @@ namespace GruppuppgiftMMMJ
             cartesianChart1.Series.Add(ls);
 
                 
-            /*
+            
 
                 cartesianChart1.Series = new SeriesCollection
             {
@@ -144,7 +144,7 @@ namespace GruppuppgiftMMMJ
             //modifying any series values will also animate and update the chart
             cartesianChart1.Series[2].Values.Add(5d);
 
-        */
+        
             cartesianChart1.DataClick += CartesianChart1OnDataClick;
         }
 

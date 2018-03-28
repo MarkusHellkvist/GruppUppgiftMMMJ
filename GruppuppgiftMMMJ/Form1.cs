@@ -58,5 +58,13 @@ namespace GruppuppgiftMMMJ
         {
             Application.Exit();
         }
+
+        //Marcus testchart
+        private void mWtestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //Göm fönstret
+            MWtest f = new MWtest(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
+            f.Show();//visa vid click
+        }
     }
 }

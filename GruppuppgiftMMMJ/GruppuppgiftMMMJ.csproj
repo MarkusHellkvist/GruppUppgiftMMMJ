@@ -132,6 +132,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MWtest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MWtest.Designer.cs">
+      <DependentUpon>MWtest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LivechartsDemo.resx">
       <DependentUpon>LivechartsDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MWtest.resx">
+      <DependentUpon>MWtest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
