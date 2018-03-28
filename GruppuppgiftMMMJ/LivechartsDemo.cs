@@ -21,9 +21,9 @@ namespace GruppuppgiftMMMJ
         private void LivechartsDemo_Load(object sender, EventArgs e)
         {
             
-            //angularGaugeNorway();
-            //gaugePlot();
-            //piePlot();
+            solidPlot();
+            gaugePlot();
+            piePlot();
             cartesianPlot();
         }
 
@@ -33,41 +33,30 @@ namespace GruppuppgiftMMMJ
             parentForm.Show(); 
         }
 
-        // test function for angularGauge1
-        private void angularGaugeNorway()
+        // test function for solidGauge
+        private void solidPlot()
         {
-            angularGauge1.Value = 50;
-            angularGauge1.FromValue = 0;
-            angularGauge1.ToValue = 100;
-            angularGauge1.TicksForeground = Brushes.White;
-            angularGauge1.Base.Foreground = Brushes.White;
-            angularGauge1.Base.FontWeight = System.Windows.FontWeights.Bold;
-            angularGauge1.Base.FontSize = 16;
-            angularGauge1.SectionsInnerRadius = 0.5;
+            solidGauge1.From = 2012;
+            solidGauge1.To = 2017;
+            solidGauge1.Value = 2012;
+            solidGauge1.Base.LabelsVisibility = System.Windows.Visibility.Hidden;
+            solidGauge1.Base.GaugeActiveFill = new LinearGradientBrush
             {
-                angularGauge1.Sections.Add(new AngularSection
+                GradientStops = new GradientStopCollection
                 {
-                    FromValue = 0,
-                    ToValue = 30,
-                    Fill = new SolidColorBrush(Color.FromRgb(247, 166, 37))
-                });
-                angularGauge1.Sections.Add(new AngularSection
-                {
-                    FromValue = 50,
-                    ToValue = 100,
-                    Fill = new SolidColorBrush(Color.FromRgb(254, 57, 57))
-                });
-
+                    new GradientStop(Colors.Yellow, 0),
+                    new GradientStop(Colors.Orange, .5),
+                    new GradientStop(Colors.Red, 1)
+                }
             };
         }
-
 
         // test function for angularGauge1
         private void gaugePlot()
         {
             angularGauge1.Value = 160;
             angularGauge1.FromValue = 50;
-            angularGauge1.ToValue = 1000;
+            angularGauge1.ToValue = 250;
             angularGauge1.TicksForeground = Brushes.White;
             angularGauge1.Base.Foreground = Brushes.White;
             angularGauge1.Base.FontWeight = System.Windows.FontWeights.Bold;
@@ -192,7 +181,7 @@ namespace GruppuppgiftMMMJ
         {
             MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
         }
-        /*
+
         private void piePlot()
         {
             Func<ChartPoint, string> labelPoint = chartPoint =>
@@ -233,35 +222,29 @@ namespace GruppuppgiftMMMJ
 
             pieChart1.LegendLocation = LegendLocation.Bottom;
         }
-        */
+
         
-    /*
+
         private void button1_Click(object sender, EventArgs e)
         {
             angularGauge1.Value += 3;
-            //solidGauge1.Value += 10;
+            solidGauge1.Value += 10;
         }
-        */
-        /*
+
         private void PreviousOnClick(object sender, EventArgs e)
         {
             cartesianChart1.AxisX[0].MinValue -= 12;
             cartesianChart1.AxisX[0].MaxValue -= 12;
-            angularGauge1.Value -= 1;
+            solidGauge1.Value -= 1;
         }
         private void forwardOnClick(object sender, EventArgs e)
         {
             cartesianChart1.AxisX[0].MinValue += 12;
             cartesianChart1.AxisX[0].MaxValue += 12;
-            //solidGauge1.Value += 1;
+            solidGauge1.Value += 1;
         }
 
         private void cartesianChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
-        {
-
-        }
-
-        private void angularGauge2_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
 
         }
