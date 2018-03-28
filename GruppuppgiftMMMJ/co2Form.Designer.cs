@@ -70,6 +70,7 @@
             this.cartesianChart1.Size = new System.Drawing.Size(494, 324);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
+            this.cartesianChart1.DataClick += new LiveCharts.Events.DataClickHandler(this.CartesianChart1OnDataClick);
             // 
             // flowLayoutPanel1
             // 
@@ -99,6 +100,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.popEvents);
             // 
             // button3
             // 

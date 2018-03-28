@@ -21,15 +21,32 @@ namespace GruppuppgiftMMMJ
         public ColumnSeries totSalesS { get; set; }
         public ColumnSeries elecSalesN { get; set; }
         public ColumnSeries totSalesN { get; set; }
+        public ArraySegment<string> Years;
         private void ToggleAllSales(object sender, System.EventArgs e)
         {
-            totSalesS.Visibility = totSalesS.Visibility == Visibility.Visible ? Visibility.Hidden:Visibility.Visible;
+            totSalesS.Visibility = totSalesS.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
             totSalesN.Visibility = totSalesN.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
         }
         public co2Form(Form pf)
         {
             InitializeComponent();
             parentForm = pf;
+        }
+
+        public void popEvents(object sender, EventArgs e)
+        {
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+
+                var me = dw.MarketEvents.Where(a => a.year_no == 2015 && a.country_id == 2).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+
+                dataGridView1.DataSource = me;
+
+            }
+        }
+        private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
+        {
+            System.Windows.MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
         }
 
         private void co2Form_Load(object sender, EventArgs e)
@@ -362,7 +379,7 @@ namespace GruppuppgiftMMMJ
                 ChartValues<int> totalNorway = new ChartValues<int>();
                 totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
 
-
+                //Years = new string[] salesNor.Select(X => "" + X.Key);
                 
                 cartesianChart1.AxisX.Add(new Axis
                 {
