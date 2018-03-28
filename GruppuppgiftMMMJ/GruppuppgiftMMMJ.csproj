@@ -87,9 +87,6 @@
     <Compile Include="CarSale.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChargingPoint.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="co2Form.cs">
       <SubType>Form</SubType>
     </Compile>
