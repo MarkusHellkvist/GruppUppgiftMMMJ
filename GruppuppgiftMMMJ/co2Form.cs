@@ -332,7 +332,7 @@ namespace GruppuppgiftMMMJ
 
         private void plot2()
         {
-            DateTime startDate = new DateTime(2011, 1, 1);
+            DateTime startDate = new DateTime(2010, 1, 1);
             DateTime endDate = new DateTime(2017, 1, 1);
             List<BigView> Context = new List<BigView>();
             System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
@@ -380,11 +380,13 @@ namespace GruppuppgiftMMMJ
                 totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
 
                 //Years = new string[] salesNor.Select(X => "" + X.Key);
-                
+
+                List<string> Years = salesNor.Select(x => "" + x.Key).ToList();
+
                 cartesianChart1.AxisX.Add(new Axis
                 {
                     Title = "Year",
-                    Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
+                    Labels = Years.ToArray()
                 });
 
                  electricSalesS = new ColumnSeries
@@ -435,7 +437,8 @@ namespace GruppuppgiftMMMJ
                     Values = NCV,
                     PointGeometry = DefaultGeometries.Square,
                     StrokeThickness = 4,
-                    ScalesYAt = 1
+                    ScalesYAt = 1,
+                    Fill = null
                 };
 
                 LineSeries SLS = new LineSeries
@@ -444,7 +447,8 @@ namespace GruppuppgiftMMMJ
                     Values = SCV,
                     PointGeometry = null,
                     StrokeThickness = 4,
-                    ScalesYAt = 1
+                    ScalesYAt = 1,
+                    Fill = null
                 };
 
                 cartesianChart1.Series.Add(SLS);
@@ -452,6 +456,9 @@ namespace GruppuppgiftMMMJ
                 cartesianChart1.LegendLocation = LegendLocation.Top;
                 System.Windows.Controls.Panel.SetZIndex(SLS, 10);
                 System.Windows.Controls.Panel.SetZIndex(NLS, 10);
+
+                cartesianChart1.AxisX[0].MinValue = 1;
+                cartesianChart1.AxisX[0].MaxValue = 7;
             }
 
         }
