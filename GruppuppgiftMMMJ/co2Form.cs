@@ -411,9 +411,9 @@ namespace GruppuppgiftMMMJ
                 System.Collections.Generic.List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
 
                 ChartValues<double> NCV = new ChartValues<double>();
-                NCV.AddRange(co2sweden);
+                NCV.AddRange(co2norway);
                 ChartValues<double> SCV = new ChartValues<double>();
-                SCV.AddRange(co2norway);
+                SCV.AddRange(co2sweden);
 
 
 
