@@ -22,7 +22,6 @@ namespace GruppuppgiftMMMJ
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void toolsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,6 +56,22 @@ namespace GruppuppgiftMMMJ
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void mHTESTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            MHTEST f = new MHTEST(this);
+            f.Show();
+            this.Hide();
+        }
+
+        private void myfunction(object sender, EventArgs e)
+        {
+
+            MHTEST f = new MHTEST(this);
+            f.Show();
+            this.Hide();
         }
     }
 }

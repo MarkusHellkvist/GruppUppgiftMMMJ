@@ -77,7 +77,7 @@ namespace GruppuppgiftMMMJ
         private void cartesianPlot()
         {
             List<int> ylista = new List<int>();
-            using (DWEntitiesCars MHDW = new DWEntitiesCars())
+            using (CarsDWEntities MHDW = new CarsDWEntities())
             {
 
 
