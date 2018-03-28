@@ -59,11 +59,12 @@ namespace GruppuppgiftMMMJ
             Application.Exit();
         }
 
-        private void co2FormToolStripMenuItem_Click(object sender, EventArgs e)
+        //Marcus testchart
+        private void mWtestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            co2Form l = new co2Form(this);
-            l.Show();
+            this.Hide(); //Göm fönstret
+            MWtest f = new MWtest(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
+            f.Show();//visa vid click
         }
     }
 }
