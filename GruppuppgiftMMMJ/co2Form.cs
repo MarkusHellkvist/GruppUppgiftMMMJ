@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace GruppuppgiftMMMJ
@@ -16,6 +17,15 @@ namespace GruppuppgiftMMMJ
     public partial class co2Form : Form
     {
         Form parentForm;
+        public ColumnSeries electricSalesS { get; set; }
+        public ColumnSeries totSalesS { get; set; }
+        public ColumnSeries elecSalesN { get; set; }
+        public ColumnSeries totSalesN { get; set; }
+        private void ToggleAllSales(object sender, System.EventArgs e)
+        {
+            totSalesS.Visibility = totSalesS.Visibility == Visibility.Visible ? Visibility.Hidden:Visibility.Visible;
+            totSalesN.Visibility = totSalesN.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+        }
         public co2Form(Form pf)
         {
             InitializeComponent();
@@ -24,7 +34,8 @@ namespace GruppuppgiftMMMJ
 
         private void co2Form_Load(object sender, EventArgs e)
         {
-           // plot(); // Just nu med en area plot.
+            //plot(); // Just nu med en area plot.
+            //plot();
             plot2();
         }
 
@@ -83,12 +94,13 @@ namespace GruppuppgiftMMMJ
                 ChartValues<int> totalNorway = new ChartValues<int>();
                 totalNorway.AddRange(salesNor.Select(x => x.Total - x.Elec).ToList());
 
-               
-                    //SeriesCollection sweden =  new SeriesCollection{
-                    cartesianChart1.AxisX.Add(new Axis
+
+                //SeriesCollection sweden =  new SeriesCollection{
+                cartesianChart1.AxisX.Add(new Axis
                 {
                     Title = "Year",
-                    Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
+                    Labels = salesNor.Select(x => ""+x.Key).ToArray()
+                   // { "2011", "2012", "2013", "2014", "2015", "2016" }
                 });
 
                 /*
@@ -190,8 +202,8 @@ namespace GruppuppgiftMMMJ
                 var dataNoway = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 2).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
                 */
                 
-                System.Collections.Generic.List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
-                System.Collections.Generic.List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
+                List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
+                List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
 
                 ChartValues<double> NCV = new ChartValues<double>();
                 NCV.AddRange(co2sweden);
@@ -358,23 +370,24 @@ namespace GruppuppgiftMMMJ
                     Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
                 });
 
-                ColumnSeries electricSalesS = new ColumnSeries
+                 electricSalesS = new ColumnSeries
                 {
                     Values = electricSweden,
                     Title = "Electric Sales Sweden"
                 };
-                ColumnSeries totSalesS = new ColumnSeries { 
+                 totSalesS = new ColumnSeries { 
                         Values = totalSweden,
                         Title = "Total Sales Sweden"
                     };
 
-                ColumnSeries elecSalesN = new ColumnSeries
+                 elecSalesN = new ColumnSeries
                 {
                     Values = electricNorway,
                         Title = "Electric Sales Norway"
 
                 };
-                ColumnSeries totSalesN = new ColumnSeries
+            
+        totSalesN = new ColumnSeries
                 {
                     Values = totalNorway,
                     Title = "Total Sales Norway"
@@ -403,7 +416,7 @@ namespace GruppuppgiftMMMJ
                 {
                     Title = "Norge",
                     Values = NCV,
-                    PointGeometry = null,
+                    PointGeometry = DefaultGeometries.Square,
                     StrokeThickness = 4,
                     ScalesYAt = 1
                 };
@@ -423,6 +436,83 @@ namespace GruppuppgiftMMMJ
                 System.Windows.Controls.Panel.SetZIndex(SLS, 10);
                 System.Windows.Controls.Panel.SetZIndex(NLS, 10);
             }
+
+        }
+
+        private void plot3()
+        {
+            DateTime startDate = new DateTime(2011, 1, 1);
+            DateTime endDate = new DateTime(2017, 1, 1);
+            List<BigView> Context = new List<BigView>();
+            System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
+            System.Collections.Generic.List<double> norPro = new System.Collections.Generic.List<double>();
+
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+                Context = dw.BigViews.Where(filter => filter.date >= startDate && filter.date < endDate).ToList();
+            }
+            var salesSwe = Context.Where(f => f.country_id == 1).GroupBy(x => x.year_no, (year, y) => new
+            {
+                Key = year,
+                Total = y.Sum(x => x.total),
+                Elec = y.Sum(x => (int)x.electric)
+            });
+
+            var salesNor = Context.Where(f => f.country_id == 2).GroupBy(x => x.year_no, (year, y) => new
+            {
+                Key = year,
+                Total = y.Sum(x => x.total),
+                Elec = y.Sum(x => (int)x.electric)
+            });
+
+            ChartValues<int> electricSweden = new ChartValues<int>();
+            electricSweden.AddRange(salesSwe.Select(x => x.Elec).ToList());
+            ChartValues<int> totalSweden = new ChartValues<int>();
+            totalSweden.AddRange(salesSwe.Select(x => x.Total).ToList());
+
+            ChartValues<int> electricNorway = new ChartValues<int>();
+            electricNorway.AddRange(salesNor.Select(x => x.Elec).ToList());
+            ChartValues<int> totalNorway = new ChartValues<int>();
+            totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                Title = "Year",
+                Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
+            });
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                Title = "Year",
+                Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
+            });
+
+            StackedColumnSeries elecSalesS = new StackedColumnSeries
+            {
+                Values = electricSweden,
+                Title = "Electric Sales Sweden",
+                ScalesXAt = 1
+            };
+            StackedColumnSeries totSalesS = new StackedColumnSeries
+            {
+                Values = totalSweden,
+                Title = "Total Sales Sweden",
+                ScalesXAt = 1
+            };
+
+            StackedColumnSeries elecSalesN = new StackedColumnSeries
+            {
+                Values = electricNorway,
+                Title = "Electric Sales Norway"
+
+            };
+            StackedColumnSeries totSalesN = new StackedColumnSeries
+            {
+                Values = totalNorway,
+                Title = "Total Sales Norway"
+            };
+            SeriesCollection sales = new SeriesCollection { elecSalesS, totSalesS, elecSalesN, totSalesN };
+            cartesianChart1.Series = sales;
+            System.Windows.Controls.Panel.SetZIndex(totSalesN, 0);
+            System.Windows.Controls.Panel.SetZIndex(elecSalesN, 1);
 
         }
     }
