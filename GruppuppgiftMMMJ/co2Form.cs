@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace GruppuppgiftMMMJ
@@ -16,10 +17,25 @@ namespace GruppuppgiftMMMJ
     public partial class co2Form : Form
     {
         Form parentForm;
+        public ColumnSeries electricSalesS { get; set; }
+        public ColumnSeries totSalesS { get; set; }
+        public ColumnSeries elecSalesN { get; set; }
+        public ColumnSeries totSalesN { get; set; }
+        public ArraySegment<string> Years;
+        private void ToggleAllSales(object sender, System.EventArgs e)
+        {
+            totSalesS.Visibility = totSalesS.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+            totSalesN.Visibility = totSalesN.Visibility == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+        }
         public co2Form(Form pf)
         {
             InitializeComponent();
             parentForm = pf;
+        }
+
+        private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
+        {
+            System.Windows.MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
         }
 
         private void co2Form_Load(object sender, EventArgs e)
