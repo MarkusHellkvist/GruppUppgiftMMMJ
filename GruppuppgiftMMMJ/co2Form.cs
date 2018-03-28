@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace GruppuppgiftMMMJ
 {
@@ -355,7 +356,6 @@ namespace GruppuppgiftMMMJ
                 });
 
 
-
                 ChartValues<int> electricSweden = new ChartValues<int>();
                 electricSweden.AddRange(salesSwe.Select(x => x.Elec).ToList());
                 ChartValues<int> totalSweden = new ChartValues<int>();
@@ -366,11 +366,14 @@ namespace GruppuppgiftMMMJ
                 ChartValues<int> totalNorway = new ChartValues<int>();
                 totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
 
-
+                //räknar uut procent
+                List<double> procentSwe = salesSwe.Select(i => ((double)i.Elec / (double)i.Total * 100)).ToList();
+                List<double> procentNor = salesNor.Select(i => ((double)i.Elec / (double)i.Total * 100)).ToList();
 
                 cartesianChart1.AxisX.Add(new Axis
                 {
                     Title = "Year",
+                    FontSize = 20,
                     Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
                 });
 
@@ -416,10 +419,10 @@ namespace GruppuppgiftMMMJ
                 SCV.AddRange(co2sweden);
 
 
+                
 
-
-                cartesianChart1.AxisY.Add(new Axis { Title = "CarSales", MinValue = 0 });
-                cartesianChart1.AxisY.Add(new Axis { Title = "Co2", MinValue = 0, Position = AxisPosition.RightTop });
+                cartesianChart1.AxisY.Add(new Axis { Title = "CarSales", MinValue = 0, LabelFormatter = val => (val/1000 + "k"), FontSize = 16});
+                cartesianChart1.AxisY.Add(new Axis { Title = "Co2", MinValue = 0, Position = AxisPosition.RightTop, FontSize = 0.1 });
                 LineSeries NLS = new LineSeries
                 {
                     Title = "Norge",
@@ -449,7 +452,17 @@ namespace GruppuppgiftMMMJ
                 System.Windows.Controls.Panel.SetZIndex(SLS, 10);
                 System.Windows.Controls.Panel.SetZIndex(NLS, 10);
             }
+          
+        }
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }
