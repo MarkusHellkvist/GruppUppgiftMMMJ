@@ -4,17 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d6f573b7b2e44f7f9048524c768415b2" Name="Diagram1">
-        <EntityTypeShape EntityType="CarsDWModel.Avg_Salary" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarsDWModel.CarSale" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarsDWModel.ChargingPoint" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarsDWModel.Country" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarsDWModel.GasPrice" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarsDWModel.MarketEvent" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+      <Diagram DiagramId="980bf9b06c8941788360c5694ea795ba" Name="Diagram1">
+        <EntityTypeShape EntityType="CarsDWModel.Avg_Salary" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.CarSale" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.Country" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.GasPrice" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarsDWModel.MarketEvent" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CarsDWModel.BigView" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CarsDWModel.FK__Avg_Salar__count__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="CarsDWModel.FK_CarSales_Country" ManuallyRouted="false" />
-        <AssociationConnector Association="CarsDWModel.FK_ChargingPoints_Country" ManuallyRouted="false" />
         <AssociationConnector Association="CarsDWModel.FK__MarketEve__count__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="CarsDWModel.FK_GasPrice_Country" ManuallyRouted="false" />
       </Diagram>
