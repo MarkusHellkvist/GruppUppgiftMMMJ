@@ -405,7 +405,8 @@ namespace GruppuppgiftMMMJ
                 };
                 cartesianChart1.Series = new SeriesCollection
             {
-                electricSalesS,totSalesS,elecSalesN,totSalesN
+                    totSalesS,electricSalesS, elecSalesN, totSalesN 
+                
             };
 
 
