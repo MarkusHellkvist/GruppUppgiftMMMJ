@@ -27,7 +27,6 @@ namespace GruppuppgiftMMMJ
     
         public virtual DbSet<Avg_Salary> Avg_Salary { get; set; }
         public virtual DbSet<CarSale> CarSales { get; set; }
-        public virtual DbSet<ChargingPoint> ChargingPoints { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<GasPrice> GasPrices { get; set; }
         public virtual DbSet<MarketEvent> MarketEvents { get; set; }

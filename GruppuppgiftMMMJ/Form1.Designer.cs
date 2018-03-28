@@ -39,6 +39,7 @@
             this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mWtestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.co2FormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +115,8 @@
             // 
             this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.livechartsDemoToolStripMenuItem,
-            this.mWtestToolStripMenuItem});
+            this.mWtestToolStripMenuItem,
+            this.co2FormToolStripMenuItem});
             this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
             this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.sandboxToolStripMenuItem.Text = "Sandbox";
@@ -133,6 +135,13 @@
             this.mWtestToolStripMenuItem.Text = "MWtest";
             this.mWtestToolStripMenuItem.Click += new System.EventHandler(this.mWtestToolStripMenuItem_Click);
             // 
+            // co2FormToolStripMenuItem
+            // 
+            this.co2FormToolStripMenuItem.Name = "co2FormToolStripMenuItem";
+            this.co2FormToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.co2FormToolStripMenuItem.Text = "co2Form";
+            this.co2FormToolStripMenuItem.Click += new System.EventHandler(this.co2FormToolStripMenuItem_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,7 +149,7 @@
             this.ClientSize = new System.Drawing.Size(710, 272);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -164,6 +173,7 @@
         private System.Windows.Forms.ToolStripMenuItem sandboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livechartsDemoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mWtestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem co2FormToolStripMenuItem;
     }
 }
 

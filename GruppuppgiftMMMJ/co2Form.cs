@@ -33,17 +33,6 @@ namespace GruppuppgiftMMMJ
             parentForm = pf;
         }
 
-        public void popEvents(object sender, EventArgs e)
-        {
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-
-                var me = dw.MarketEvents.Where(a => a.year_no == 2015 && a.country_id == 2).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
-
-                dataGridView1.DataSource = me;
-
-            }
-        }
         private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
         {
             System.Windows.MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
@@ -51,8 +40,7 @@ namespace GruppuppgiftMMMJ
 
         private void co2Form_Load(object sender, EventArgs e)
         {
-            //plot(); // Just nu med en area plot.
-            //plot();
+            // plot(); // Just nu med en area plot.
             plot2();
         }
 
@@ -104,7 +92,7 @@ namespace GruppuppgiftMMMJ
                 ChartValues<int> electricSweden = new ChartValues<int>();
                 electricSweden.AddRange(salesSwe.Select(x => x.Elec).ToList());
                 ChartValues<int> totalSweden = new ChartValues<int>();
-                totalSweden.AddRange(salesSwe.Select(x => x.Total-x.Elec).ToList());
+                totalSweden.AddRange(salesSwe.Select(x => x.Total - x.Elec).ToList());
 
                 ChartValues<int> electricNorway = new ChartValues<int>();
                 electricNorway.AddRange(salesNor.Select(x => x.Elec).ToList());
@@ -116,8 +104,7 @@ namespace GruppuppgiftMMMJ
                 cartesianChart1.AxisX.Add(new Axis
                 {
                     Title = "Year",
-                    Labels = salesNor.Select(x => ""+x.Key).ToArray()
-                   // { "2011", "2012", "2013", "2014", "2015", "2016" }
+                    Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
                 });
 
                 /*
@@ -218,9 +205,9 @@ namespace GruppuppgiftMMMJ
                 /*
                 var dataNoway = dw.BigViews.Where(e => e.date > new DateTime(2011, 1, 1) && e.country_id == 2).Select(Q => new { ev = (double)Q.electric, tot = (double)Q.total }).Select(QW => new { result = (QW.ev / QW.tot) * 100 });
                 */
-                
-                List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
-                List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
+
+                System.Collections.Generic.List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
+                System.Collections.Generic.List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
 
                 ChartValues<double> NCV = new ChartValues<double>();
                 NCV.AddRange(co2sweden);
@@ -279,11 +266,11 @@ namespace GruppuppgiftMMMJ
                     ScalesYAt = 1
                 };
 
-                  /*
-                SLS.Title = "Svedala";
-                SLS.Values = nSales;
-                SLS.PointGeometry = null;
-                SLS.StrokeThickness = 4;*/
+                /*
+              SLS.Title = "Svedala";
+              SLS.Values = nSales;
+              SLS.PointGeometry = null;
+              SLS.StrokeThickness = 4;*/
 
                 /*
                 cartesianChart1.Series = new SeriesCollection
@@ -291,7 +278,7 @@ namespace GruppuppgiftMMMJ
                 NCS,SCS,NLS,SLS,
             };*/
 
-                
+
                 cartesianChart1.Series.Add(SLS);
                 cartesianChart1.Series.Add(NLS);
                 cartesianChart1.LegendLocation = LegendLocation.Top;
@@ -332,7 +319,7 @@ namespace GruppuppgiftMMMJ
 
         private void plot2()
         {
-            DateTime startDate = new DateTime(2010, 1, 1);
+            DateTime startDate = new DateTime(2011, 1, 1);
             DateTime endDate = new DateTime(2017, 1, 1);
             List<BigView> Context = new List<BigView>();
             System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
@@ -379,46 +366,48 @@ namespace GruppuppgiftMMMJ
                 ChartValues<int> totalNorway = new ChartValues<int>();
                 totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
 
-                //Years = new string[] salesNor.Select(X => "" + X.Key);
 
-                List<string> Years = salesNor.Select(x => "" + x.Key).ToList();
 
                 cartesianChart1.AxisX.Add(new Axis
                 {
                     Title = "Year",
-                    Labels = Years.ToArray()
+                    Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
                 });
 
-                 electricSalesS = new ColumnSeries
+                ColumnSeries electricSalesS = new ColumnSeries
                 {
                     Values = electricSweden,
-                    Title = "Electric Sales Sweden"
+                    Title = "Electric Sales Sweden",
+                    Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179))
                 };
-                 totSalesS = new ColumnSeries { 
-                        Values = totalSweden,
-                        Title = "Total Sales Sweden"
-                    };
+                ColumnSeries totSalesS = new ColumnSeries
+                {
+                    Values = totalSweden,
+                    Title = "Total Sales Sweden",
+                    Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(153, 214, 255))
+                };
 
-                 elecSalesN = new ColumnSeries
+                ColumnSeries elecSalesN = new ColumnSeries
                 {
                     Values = electricNorway,
-                        Title = "Electric Sales Norway"
+                    Title = "Electric Sales Norway",
+                    Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0))
 
                 };
-            
-        totSalesN = new ColumnSeries
+                ColumnSeries totSalesN = new ColumnSeries
                 {
                     Values = totalNorway,
-                    Title = "Total Sales Norway"
+                    Title = "Total Sales Norway",
+                    Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 102, 102))
                 };
                 cartesianChart1.Series = new SeriesCollection
             {
                 electricSalesS,totSalesS,elecSalesN,totSalesN
-            }; 
+            };
 
 
 
-                 System.Collections.Generic.List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
+                System.Collections.Generic.List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
                 System.Collections.Generic.List<double> co2norway = co2.Where(i => i.coun == 2).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
 
                 ChartValues<double> NCV = new ChartValues<double>();
@@ -428,16 +417,18 @@ namespace GruppuppgiftMMMJ
 
 
 
- 
+
                 cartesianChart1.AxisY.Add(new Axis { Title = "CarSales", MinValue = 0 });
                 cartesianChart1.AxisY.Add(new Axis { Title = "Co2", MinValue = 0, Position = AxisPosition.RightTop });
                 LineSeries NLS = new LineSeries
                 {
                     Title = "Norge",
                     Values = NCV,
-                    PointGeometry = DefaultGeometries.Square,
+                    PointGeometry = null,
+                    Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0)),
+                    Fill = System.Windows.Media.Brushes.Transparent,
                     StrokeThickness = 4,
-                    ScalesYAt = 1
+                    ScalesYAt = 1,
                 };
 
                 LineSeries SLS = new LineSeries
@@ -445,96 +436,19 @@ namespace GruppuppgiftMMMJ
                     Title = "Svedala",
                     Values = SCV,
                     PointGeometry = null,
+                    Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179)),
+                    Fill = System.Windows.Media.Brushes.Transparent,
                     StrokeThickness = 4,
                     ScalesYAt = 1
+                    
                 };
-
+                
                 cartesianChart1.Series.Add(SLS);
                 cartesianChart1.Series.Add(NLS);
                 cartesianChart1.LegendLocation = LegendLocation.Top;
                 System.Windows.Controls.Panel.SetZIndex(SLS, 10);
                 System.Windows.Controls.Panel.SetZIndex(NLS, 10);
-
-                cartesianChart1.AxisX[0].MinValue = 1;
-                cartesianChart1.AxisX[0].MaxValue = 7;
             }
-
-        }
-
-        private void plot3()
-        {
-            DateTime startDate = new DateTime(2011, 1, 1);
-            DateTime endDate = new DateTime(2017, 1, 1);
-            List<BigView> Context = new List<BigView>();
-            System.Collections.Generic.List<double> swePro = new System.Collections.Generic.List<double>();
-            System.Collections.Generic.List<double> norPro = new System.Collections.Generic.List<double>();
-
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-                Context = dw.BigViews.Where(filter => filter.date >= startDate && filter.date < endDate).ToList();
-            }
-            var salesSwe = Context.Where(f => f.country_id == 1).GroupBy(x => x.year_no, (year, y) => new
-            {
-                Key = year,
-                Total = y.Sum(x => x.total),
-                Elec = y.Sum(x => (int)x.electric)
-            });
-
-            var salesNor = Context.Where(f => f.country_id == 2).GroupBy(x => x.year_no, (year, y) => new
-            {
-                Key = year,
-                Total = y.Sum(x => x.total),
-                Elec = y.Sum(x => (int)x.electric)
-            });
-
-            ChartValues<int> electricSweden = new ChartValues<int>();
-            electricSweden.AddRange(salesSwe.Select(x => x.Elec).ToList());
-            ChartValues<int> totalSweden = new ChartValues<int>();
-            totalSweden.AddRange(salesSwe.Select(x => x.Total).ToList());
-
-            ChartValues<int> electricNorway = new ChartValues<int>();
-            electricNorway.AddRange(salesNor.Select(x => x.Elec).ToList());
-            ChartValues<int> totalNorway = new ChartValues<int>();
-            totalNorway.AddRange(salesNor.Select(x => x.Total).ToList());
-            cartesianChart1.AxisX.Add(new Axis
-            {
-                Title = "Year",
-                Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
-            });
-            cartesianChart1.AxisX.Add(new Axis
-            {
-                Title = "Year",
-                Labels = new[] { "2011", "2012", "2013", "2014", "2015", "2016" }
-            });
-
-            StackedColumnSeries elecSalesS = new StackedColumnSeries
-            {
-                Values = electricSweden,
-                Title = "Electric Sales Sweden",
-                ScalesXAt = 1
-            };
-            StackedColumnSeries totSalesS = new StackedColumnSeries
-            {
-                Values = totalSweden,
-                Title = "Total Sales Sweden",
-                ScalesXAt = 1
-            };
-
-            StackedColumnSeries elecSalesN = new StackedColumnSeries
-            {
-                Values = electricNorway,
-                Title = "Electric Sales Norway"
-
-            };
-            StackedColumnSeries totSalesN = new StackedColumnSeries
-            {
-                Values = totalNorway,
-                Title = "Total Sales Norway"
-            };
-            SeriesCollection sales = new SeriesCollection { elecSalesS, totSalesS, elecSalesN, totSalesN };
-            cartesianChart1.Series = sales;
-            System.Windows.Controls.Panel.SetZIndex(totSalesN, 0);
-            System.Windows.Controls.Panel.SetZIndex(elecSalesN, 1);
 
         }
     }
