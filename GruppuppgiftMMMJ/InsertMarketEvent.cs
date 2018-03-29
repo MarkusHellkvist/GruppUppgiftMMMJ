@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -192,7 +193,7 @@ namespace GruppuppgiftMMMJ
                     }
                     dw.MarketEvents.Remove(me);
                     int code = dw.SaveChanges();
-                    if (code==1)
+                    if (code == 1)
                     {
                         label5.Text = "Deleted" + me.title + "code " + code.ToString();
                         PopulateGridview();
@@ -207,6 +208,35 @@ namespace GruppuppgiftMMMJ
             else
             {
                 label5.Text = "marketevent_id";
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+             List<MarketEvent> me= dw.MarketEvents.ToList();
+
+                List<string> meCSVFormattedList=new List<string>();
+                string columnHeaders = "marketevent_id;date;country_id;title;description;source";
+                meCSVFormattedList.Add(columnHeaders);
+                foreach(MarketEvent me2 in me)
+                {
+                    string csv = me2.marketevent_id + ";" + me2.date + ";" + me2.country_id + ";" + me2.title + ";" + me2.description + ";" + me2.source;
+                    meCSVFormattedList.Add(csv);
+                }
+
+
+                string dPath = @"C:\MarketEventsCSVFile";
+                string filename = "MarketEvents.csv";
+                string[] lines = meCSVFormattedList.ToArray();
+                System.IO.Directory.CreateDirectory(dPath);
+                System.IO.File.WriteAllLines(dPath + @"\"+filename, lines);
+                MessageBox.Show("File created " + dPath + @"\" + filename,"Exported CSV");
+                Process.Start(dPath);
+
 
             }
         }
