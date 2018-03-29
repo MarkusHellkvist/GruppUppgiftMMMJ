@@ -7,6 +7,7 @@ using LiveCharts;
 
 
 
+
 namespace GruppuppgiftMMMJ
 {
     static class Program

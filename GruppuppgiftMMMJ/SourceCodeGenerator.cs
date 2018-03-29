@@ -10,7 +10,7 @@ namespace GruppuppgiftMMMJ
 {
 
 
-    class SourceCodeGenarator
+    class SourceCodeGenerator
     {
 
         private List<OutputObject> outputObjects;
@@ -19,7 +19,7 @@ namespace GruppuppgiftMMMJ
         private int currentYscale;
         public int NumberOfXAxis { get => numberOfXAxis; set => numberOfXAxis = value; }
 
-        public SourceCodeGenarator()
+        public SourceCodeGenerator()
         {
             outputObjects = new List<OutputObject>();
             NumberOfXAxis = 0;
