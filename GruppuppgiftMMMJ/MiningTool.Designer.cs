@@ -49,13 +49,13 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBEndYearNo = new System.Windows.Forms.TextBox();
             this.txtBStartYearNo = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -236,11 +236,21 @@
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Location = new System.Drawing.Point(54, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1533, 105);
+            this.groupBox1.Size = new System.Drawing.Size(1430, 105);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data filter";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1198, 18);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 57);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Test Source Code";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -276,9 +286,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(990, 18);
+            this.button2.Location = new System.Drawing.Point(1027, 18);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(142, 57);
+            this.button2.Size = new System.Drawing.Size(165, 57);
             this.button2.TabIndex = 11;
             this.button2.Text = "Generate C# Source Code";
             this.button2.UseVisualStyleBackColor = true;
@@ -286,23 +296,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(901, 18);
+            this.button1.Location = new System.Drawing.Point(938, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 57);
             this.button1.TabIndex = 10;
             this.button1.Text = "Go!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1138, 18);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 57);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Test Source Code";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // MiningTool
             // 
