@@ -21,6 +21,7 @@ namespace GruppuppgiftMMMJ
 
         public SourceCodeGenerator()
         {
+            //Constructor
             outputObjects = new List<OutputObject>();
             NumberOfXAxis = 0;
             seriesNo = 0;
