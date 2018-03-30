@@ -19,10 +19,10 @@ namespace GruppuppgiftMMMJ
         private int currentYscaleLs;
         private int currentYscaleCs;
         private Form pf;
-        private SourceCodeGen sc;
+        private SourceCodeGenerator sc;
         public MiningTool(Form parentForm)
         {
-            sc = new SourceCodeGen();
+            sc = new SourceCodeGenerator();
             pf = parentForm as Form1;
             InitializeComponent();
             xStartsAtDateYear = 0;
