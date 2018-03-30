@@ -159,9 +159,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(246, 311);
+            this.button2.Location = new System.Drawing.Point(246, 312);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 33);
+            this.button2.Size = new System.Drawing.Size(75, 32);
             this.button2.TabIndex = 7;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(331, 311);
+            this.button3.Location = new System.Drawing.Point(327, 312);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 32);
             this.button3.TabIndex = 8;
@@ -271,9 +271,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1396, 713);
+            this.button4.Location = new System.Drawing.Point(1372, 713);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 47);
+            this.button4.Size = new System.Drawing.Size(140, 47);
             this.button4.TabIndex = 12;
             this.button4.Text = "Export to CSV";
             this.button4.UseVisualStyleBackColor = true;
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1704, 772);
+            this.ClientSize = new System.Drawing.Size(1528, 796);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox5);

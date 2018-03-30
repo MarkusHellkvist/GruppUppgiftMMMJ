@@ -58,8 +58,7 @@ namespace GruppuppgiftMMMJ
         }
         public string GetProcedure()
         {
-            string s = @"//Function order
-                            ";
+            string s = @"//Function order"+"\n";
 
             foreach (OutputObject o in outputObjects)
             {
@@ -114,14 +113,89 @@ List<BigView> Context = dw.BigViews.Where(c => c.country_id == " + country_id_st
                 ";
             outputObjects.Add(opo);
         }
+        public void GenerateXYValuesMonth(string pickedColumn, string start_year_no, string end_year_no, bool isfloat)
+        {
+            OutputObject opo = new OutputObject();
+            opo.Function = "generateXYValuesIntegerMonth";
+            opo.Id = seriesNo.ToString();
+            if (!isfloat)
+            {
+                opo.Function = "generateXYValuesIntegerMonth";
+
+                //alltid double
+                opo.Code = @" List<double> yAsDouble = new List<double>();
+
+            List<string> x = new List<string>();
+            for (int i = " + start_year_no + "; i <=" + end_year_no + @"; i++) //för varje år
+            {
+             //addarer y 12 gånger per år el hur många månader som det nu finns
+                            int maxmonth = Context.Where(C => C.year_no == i).Max(m => m.month_no);
+                            int minmonth = Context.Where(C => C.year_no == i).Min(m => m.month_no);
+                       
+                            for (int m = minmonth; m <= maxmonth; m++) //för månad
+                            {
+                                var hjalp1 = Context.Where(b => b.year_no == i && b.month_no == m).Select(" + "\"" + pickedColumn + "\"" + @");
+                                    int sumM = 0;
+                                    //summerar
+                                    foreach (int h in hjalp1)
+                                    {
+                                        sumM += h;
+                                    }
+                                    //lägger till
+                                    yAsDouble.Add(sumM);
+                               
+                               
+                                x.Add(i.ToString() +" + "\"-" + "\"" + @"+ m.ToString());
+                            }
+
+            }";
+
+            }
+            else //månad och isfloat
+            {
+                opo.Function = "generateXYValuesDoubleMonth";
+
+                //alltid double
+                opo.Code = @" List<double> yAsDouble = new List<double>();
+
+            List<string> x = new List<string>();
+            for (int i = " + start_year_no + "; i <=" + end_year_no + @"; i++) //för varje år
+            {
+             //addarer y 12 gånger per år el hur många månader som det nu finns
+                            int maxmonth = Context.Where(C => C.year_no == i).Max(m => m.month_no);
+                            int minmonth = Context.Where(C => C.year_no == i).Min(m => m.month_no);
+                        
+                            for (int m = minmonth; m <= maxmonth; m++) //för månad
+                            {
+                                var hjalp1 = Context.Where(b => b.year_no == i && b.month_no == m).Select(" + "\"" + pickedColumn + "\"" + @");
+                                   double sumM = 0;
+                                    //summerar
+                                    foreach (double h in hjalp1)
+                                    {
+                                        sumM += h;
+                                    }
+                                    //lägger till
+                                    yAsDouble.Add(sumM);
+                               
+                               
+                                x.Add(i.ToString() +" + "\"-" + "\"" + @"+ m.ToString());
+                            }
+
+             }";
+
+
+            }
+            outputObjects.Add(opo);
+        }
 
         public void GenerateXYValuesYear(string pickedColumn, string start_year_no, string end_year_no, bool isfloat)
         {
             OutputObject opo = new OutputObject();
-            opo.Function = "generateXYValuesInteger";
+         
             opo.Id = seriesNo.ToString();
             if (!isfloat)
             {
+                opo.Function = "generateXYValuesIntegerYear";
                 //alltid double
                 opo.Code = @" List<double> yAsDouble = new List<double>();
 
@@ -143,6 +217,7 @@ List<BigView> Context = dw.BigViews.Where(c => c.country_id == " + country_id_st
             }
             else //tabellen har double som column
             {
+                opo.Function = "generateXYValuesDoubleYear";
                 opo.Code = @" List<double> yAsDouble = new List<double>();
 
             List<string> x = new List<string>();
@@ -164,35 +239,6 @@ List<BigView> Context = dw.BigViews.Where(c => c.country_id == " + country_id_st
             }
             outputObjects.Add(opo);
         }
-        public void GenerateXYValuesYearDouble(string pickedColumn)
-        {
-
-            //alltid double
-            OutputObject opo = new OutputObject();
-            opo.Function = "generateXYValuesYearDouble";
-            opo.Code = @" List<double> yAsDouble = new List<double>();
-
-            List<string> x = new List<string>();
-            for (int i = min; i <= max; i++) //för varje år
-            {
-                x.Add(i.ToString());//year as x values
-                var hjalp = Context.Where(b => b.year_no == i).Select(" + "\"" + pickedColumn + "\"" + @");
-                double sum = 0;
-                //summerar
-                 foreach (double h in hjalp)
-                 {
-                       sum += h;
-                 }
-                 //lägger till
-                  yAsDouble.Add(sum);                       
-
-            }";
-            outputObjects.Add(opo);
-
-
-
-        }
-
         public void addSeries(string country_name, string pickedColumn, string graphType, string xtitle, string ytitle, bool addScaleY, bool add)
         {
             OutputObject opo = new OutputObject();
