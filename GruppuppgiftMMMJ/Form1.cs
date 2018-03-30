@@ -32,19 +32,19 @@ namespace GruppuppgiftMMMJ
 
         private void miningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
             InsertMarketEvent f = new InsertMarketEvent(this);
             f.Show();
-
+            this.Hide();
         }
 
         private void miningToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
-            this.Hide();
+            
             MiningTool f = new MiningTool(this);
             f.Show();
-            
+            this.Hide();
+
+
         }
 
         private void livechartsDemoToolStripMenuItem_Click(object sender, EventArgs e)

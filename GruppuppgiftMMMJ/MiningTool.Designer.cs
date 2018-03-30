@@ -169,7 +169,7 @@
             this.comboBox4.Location = new System.Drawing.Point(439, 39);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(108, 24);
-            this.comboBox4.TabIndex = 7;
+            this.comboBox4.TabIndex = 4;
             // 
             // checkBox1
             // 
@@ -177,7 +177,7 @@
             this.checkBox1.Location = new System.Drawing.Point(754, 18);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(122, 21);
-            this.checkBox1.TabIndex = 8;
+            this.checkBox1.TabIndex = 7;
             this.checkBox1.Text = "Add to existing";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -188,7 +188,7 @@
             this.comboBox3.Location = new System.Drawing.Point(346, 39);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(87, 24);
-            this.comboBox3.TabIndex = 5;
+            this.comboBox3.TabIndex = 3;
             // 
             // checkBox2
             // 
@@ -196,7 +196,7 @@
             this.checkBox2.Location = new System.Drawing.Point(754, 45);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(141, 21);
-            this.checkBox2.TabIndex = 9;
+            this.checkBox2.TabIndex = 8;
             this.checkBox2.Text = "New scale Y-Axis ";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -247,7 +247,7 @@
             this.button3.Location = new System.Drawing.Point(1198, 18);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 57);
-            this.button3.TabIndex = 13;
+            this.button3.TabIndex = 11;
             this.button3.Text = "Test Source Code";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -275,21 +275,21 @@
             this.txtBEndYearNo.Location = new System.Drawing.Point(650, 41);
             this.txtBEndYearNo.Name = "txtBEndYearNo";
             this.txtBEndYearNo.Size = new System.Drawing.Size(91, 22);
-            this.txtBEndYearNo.TabIndex = 13;
+            this.txtBEndYearNo.TabIndex = 6;
             // 
             // txtBStartYearNo
             // 
             this.txtBStartYearNo.Location = new System.Drawing.Point(553, 41);
             this.txtBStartYearNo.Name = "txtBStartYearNo";
             this.txtBStartYearNo.Size = new System.Drawing.Size(91, 22);
-            this.txtBStartYearNo.TabIndex = 12;
+            this.txtBStartYearNo.TabIndex = 5;
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1027, 18);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 57);
-            this.button2.TabIndex = 11;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Generate C# Source Code";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -299,7 +299,7 @@
             this.button1.Location = new System.Drawing.Point(938, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 57);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Go!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);

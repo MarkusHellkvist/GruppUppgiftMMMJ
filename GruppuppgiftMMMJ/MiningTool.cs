@@ -103,7 +103,7 @@ namespace GruppuppgiftMMMJ
                         case "year":
 
 
-                            x.Add(i.ToString());//year as x values
+                            x.Add(i.ToString());//year as x values INTRESSANT RAD
                             var hjalp = Context.Where(b => b.year_no == i).Select(pickedColumn);
                             if (!isFloat)
                             {
@@ -461,10 +461,16 @@ namespace GruppuppgiftMMMJ
                 country_name = dw.Countries.Where(c => c.country_id == country_id).Select(a => a.name).FirstOrDefault();
             }
 
-            sc.generateStaticContext(country_id.ToString(),add);
+            sc.generateStaticContext(country_id.ToString(), add);
+            if (granularity.ToLower() == "year")
+            {
+                sc.GenerateXYValuesYear(pickedColumn, start_year_no.ToString(), end_year_no.ToString(), isFloat);
+            }
+            else if (granularity.ToLower()=="month")
+            {
+                sc.GenerateXYValuesMonth(pickedColumn, start_year_no.ToString(), end_year_no.ToString(), isFloat);
 
-            sc.GenerateXYValuesYear(pickedColumn, start_year_no.ToString(), end_year_no.ToString(), isFloat);
-
+            }
             sc.addSeries(country_name, pickedColumn, graphtype.ToLower(), xtitle, ytitle, addScaleY, add);
 
             sc.FinishUsing();
@@ -473,154 +479,7 @@ namespace GruppuppgiftMMMJ
 
         public void testSourceCode()
         {
-            //AUTO GENERATED SOURCE CODE FOR LIVE CHART USING CARSDWENTITIES
-            cartesianChart1.Series.Clear();
-            cartesianChart1.AxisX.Clear();
-            cartesianChart1.AxisY.Clear();
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-                List<BigView> Context = dw.BigViews.Where(c => c.country_id == 2).ToList();
-
-
-                string country_name = dw.Countries.Where(c => c.country_id == 2).Select(a => a.name).FirstOrDefault();
-                List<double> yAsDouble = new List<double>();
-
-                List<string> x = new List<string>();
-                for (int i = 2009; i <= 2016; i++) //för varje år
-                {
-                    x.Add(i.ToString());//year as x values
-                    var hjalp = Context.Where(b => b.year_no == i).Select("total");
-                    int sum = 0;
-                    //summerar
-                    foreach (int h in hjalp)
-                    {
-                        sum += h;
-                    }
-                    //lägger till
-                    yAsDouble.Add(sum);
-
-                }
-                ChartValues<double> cvy = new ChartValues<double>();
-                cvy.AddRange(yAsDouble.ToArray());
-                LineSeries ls = new LineSeries();
-
-
-                ls.Title = "Norge" + " total";
-                ls.Values = cvy;
-                ls.ScalesYAt = 0;
-                cartesianChart1.AxisX.Add(new Axis
-                {
-                    Title = "Year",
-                    Labels = x.ToArray()
-                });
-
-                cartesianChart1.AxisY.Add(new Axis
-                {
-                    Title = "total",
-                    LabelFormatter = value => value.ToString()
-                });
-                cartesianChart1.Series.Add(ls);
-
-            }
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-                List<BigView> Context = dw.BigViews.Where(c => c.country_id == 1).ToList();
-
-
-                string country_name = dw.Countries.Where(c => c.country_id == 1).Select(a => a.name).FirstOrDefault();
-                List<double> yAsDouble = new List<double>();
-
-                List<string> x = new List<string>();
-                for (int i = 2009; i <= 2016; i++) //för varje år
-                {
-                    x.Add(i.ToString());//year as x values
-                    var hjalp = Context.Where(b => b.year_no == i).Select("total");
-                    int sum = 0;
-                    //summerar
-                    foreach (int h in hjalp)
-                    {
-                        sum += h;
-                    }
-                    //lägger till
-                    yAsDouble.Add(sum);
-
-                }
-                ChartValues<double> cvy = new ChartValues<double>();
-                cvy.AddRange(yAsDouble.ToArray());
-
-                LineSeries ls = new LineSeries();
-                ls.Title = "Sverige" + " total";
-                ls.Values = cvy;
-                ls.ScalesYAt = 0; cartesianChart1.Series.Add(ls);
-
-
-            }
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-                List<BigView> Context = dw.BigViews.Where(c => c.country_id == 2).ToList();
-
-
-                string country_name = dw.Countries.Where(c => c.country_id == 2).Select(a => a.name).FirstOrDefault();
-                List<double> yAsDouble = new List<double>();
-
-                List<string> x = new List<string>();
-                for (int i = 2009; i <= 2016; i++) //för varje år
-                {
-                    x.Add(i.ToString());//year as x values
-                    var hjalp = Context.Where(b => b.year_no == i).Select("electric");
-                    int sum = 0;
-                    //summerar
-                    foreach (int h in hjalp)
-                    {
-                        sum += h;
-                    }
-                    //lägger till
-                    yAsDouble.Add(sum);
-
-                }
-                ChartValues<double> cvy = new ChartValues<double>();
-                cvy.AddRange(yAsDouble.ToArray());
-
-                ColumnSeries cs = new ColumnSeries();
-                cs.Title = "Norge" + " electric";
-                cs.Values = cvy;
-                cs.ScalesYAt = 0; cartesianChart1.Series.Add(cs);
-
-
-            }
-            using (CarsDWEntities dw = new CarsDWEntities())
-            {
-                List<BigView> Context = dw.BigViews.Where(c => c.country_id == 1).ToList();
-
-
-                string country_name = dw.Countries.Where(c => c.country_id == 1).Select(a => a.name).FirstOrDefault();
-                List<double> yAsDouble = new List<double>();
-
-                List<string> x = new List<string>();
-                for (int i = 2009; i <= 2016; i++) //för varje år
-                {
-                    x.Add(i.ToString());//year as x values
-                    var hjalp = Context.Where(b => b.year_no == i).Select("electric");
-                    int sum = 0;
-                    //summerar
-                    foreach (int h in hjalp)
-                    {
-                        sum += h;
-                    }
-                    //lägger till
-                    yAsDouble.Add(sum);
-
-                }
-                ChartValues<double> cvy = new ChartValues<double>();
-                cvy.AddRange(yAsDouble.ToArray());
-
-                ColumnSeries cs = new ColumnSeries();
-                cs.Title = "Sverige" + " electric";
-                cs.Values = cvy;
-                cs.ScalesYAt = 0; cartesianChart1.Series.Add(cs);
-
-
-            }
+   
         }
 
 
