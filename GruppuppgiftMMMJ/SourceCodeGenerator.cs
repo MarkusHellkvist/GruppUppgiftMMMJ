@@ -98,7 +98,7 @@ namespace GruppuppgiftMMMJ
             string clearOrNot = "";
             if (!add)
             {
-                clearOrNot = @" 
+                clearOrNot = @"cartesianChart1.Series.Clear(); 
                 cartesianChart1.AxisX.Clear();
                 cartesianChart1.AxisY.Clear();";
 
@@ -118,7 +118,7 @@ List<BigView> Context = dw.BigViews.Where(c => c.country_id == " + country_id_st
         public void GenerateXYValuesYear(string pickedColumn, string start_year_no, string end_year_no, bool isfloat)
         {
             OutputObject opo = new OutputObject();
-            opo.Function = "generateXYValuesInteger";
+            opo.Function = "generateXYValuesYear";
             opo.Id = seriesNo.ToString();
             if (!isfloat)
             {
