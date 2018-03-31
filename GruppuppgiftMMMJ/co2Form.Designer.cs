@@ -30,20 +30,23 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvNor = new System.Windows.Forms.DataGridView();
             this.dgvSwe = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.tbSweden = new System.Windows.Forms.TextBox();
             this.tbNorway = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tbYear = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNor)).BeginInit();
@@ -68,7 +71,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1072, 579);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1902, 1033);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // cartesianChart1
@@ -78,22 +81,10 @@
             this.cartesianChart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cartesianChart1.Name = "cartesianChart1";
             this.tableLayoutPanel1.SetRowSpan(this.cartesianChart1, 2);
-            this.cartesianChart1.Size = new System.Drawing.Size(866, 474);
+            this.cartesianChart1.Size = new System.Drawing.Size(1696, 928);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             this.cartesianChart1.DataClick += new LiveCharts.Events.DataClickHandler(this.CartesianChart1OnDataClick);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(4, 482);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 93);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Toggle total Sales";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ToggleAllSales);
             // 
             // tableLayoutPanel2
             // 
@@ -103,11 +94,11 @@
             this.tableLayoutPanel2.Controls.Add(this.dgvNor, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.dgvSwe, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(203, 481);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(203, 935);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(866, 95);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1696, 95);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // dgvNor
@@ -118,11 +109,16 @@
             this.dgvNor.AllowUserToResizeRows = false;
             this.dgvNor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nTitle,
+            this.Column2,
+            this.Column3});
             this.dgvNor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNor.Location = new System.Drawing.Point(437, 4);
+            this.dgvNor.Location = new System.Drawing.Point(852, 4);
             this.dgvNor.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvNor.MaximumSize = new System.Drawing.Size(600, 0);
             this.dgvNor.Name = "dgvNor";
-            this.dgvNor.Size = new System.Drawing.Size(425, 87);
+            this.dgvNor.Size = new System.Drawing.Size(600, 87);
             this.dgvNor.TabIndex = 0;
             // 
             // dgvSwe
@@ -140,8 +136,9 @@
             this.dgvSwe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSwe.Location = new System.Drawing.Point(4, 4);
             this.dgvSwe.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvSwe.MaximumSize = new System.Drawing.Size(600, 0);
             this.dgvSwe.Name = "dgvSwe";
-            this.dgvSwe.Size = new System.Drawing.Size(425, 87);
+            this.dgvSwe.Size = new System.Drawing.Size(600, 87);
             this.dgvSwe.TabIndex = 1;
             // 
             // groupBox1
@@ -159,6 +156,33 @@
             this.groupBox1.Size = new System.Drawing.Size(194, 233);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // tbYear
+            // 
+            this.tbYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbYear.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.tbYear.Location = new System.Drawing.Point(9, 73);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.ReadOnly = true;
+            this.tbYear.Size = new System.Drawing.Size(87, 25);
+            this.tbYear.TabIndex = 5;
+            this.tbYear.Text = "2020";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBox3.Location = new System.Drawing.Point(6, 18);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(182, 55);
+            this.textBox3.TabIndex = 4;
+            this.textBox3.Text = "% of electronic cars year:";
             // 
             // tbSweden
             // 
@@ -212,53 +236,59 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Norway:";
             // 
-            // textBox3
+            // button1
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox3.Location = new System.Drawing.Point(6, 18);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(182, 55);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "% of electronic cars year:";
-            // 
-            // tbYear
-            // 
-            this.tbYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tbYear.Location = new System.Drawing.Point(9, 73);
-            this.tbYear.Name = "tbYear";
-            this.tbYear.ReadOnly = true;
-            this.tbYear.Size = new System.Drawing.Size(87, 25);
-            this.tbYear.TabIndex = 5;
-            this.tbYear.Text = "2020";
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(4, 936);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(192, 93);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Toggle total Sales";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ToggleAllSales);
             // 
             // Title
             // 
+            this.Title.DataPropertyName = "title";
             this.Title.HeaderText = "Title";
             this.Title.Name = "Title";
             // 
             // date
             // 
+            this.date.DataPropertyName = "date";
             this.date.HeaderText = "Date";
             this.date.Name = "date";
             // 
             // description
             // 
+            this.description.DataPropertyName = "description";
             this.description.HeaderText = "Description";
             this.description.Name = "description";
+            // 
+            // nTitle
+            // 
+            this.nTitle.DataPropertyName = "title";
+            this.nTitle.HeaderText = "Title";
+            this.nTitle.Name = "nTitle";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "date";
+            this.Column2.HeaderText = "Date";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "description";
+            this.Column3.HeaderText = "Description";
+            this.Column3.Name = "Column3";
             // 
             // co2Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 579);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "co2Form";
@@ -293,5 +323,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
