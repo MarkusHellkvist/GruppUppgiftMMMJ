@@ -35,6 +35,8 @@ namespace GruppuppgiftMMMJ
 
         private void co2Form_Load(object sender, EventArgs e)
         {
+            dgvSwe.AutoGenerateColumns = false;
+            dgvNor.AutoGenerateColumns = false;
             plot2();
         }
 
@@ -58,7 +60,9 @@ namespace GruppuppgiftMMMJ
          */
         private void CartesianChart1OnDataClick(object sender, ChartPoint chartPoint)
         {
-            System.Windows.MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
+            // System.Windows.MessageBox.Show("You clicked (" + chartPoint.X + "," + chartPoint.Y + ")");
+            setTxtButtons((int)chartPoint.X);
+            setGridView((int)chartPoint.X);
         }
 
 
@@ -193,11 +197,6 @@ namespace GruppuppgiftMMMJ
                 Context = dw.BigViews.Where(filter => filter.date >= startDate && filter.date < endDate).ToList();
             }
 
-            var co2 = Context.Select(f => new { year = f.year_no, co = f.CO2, coun = f.country_id });
-            List<double> procSalesSweden = Context.Where(c => c.country_id == 1).Select(f => new { year = f.year_no, total = f.total, electric = f.electric }).GroupBy(g => g.year, g => ((double)g.electric / (double)g.total * 100), (Key, g) => new { year = Key, proc = g.Average() }).Select(y => y.proc).ToList();
-
-            List<double> procSalesNor = Context.Where(c => c.country_id == 2).Select(f => new { year = f.year_no, total = f.total, electric = f.electric }).GroupBy(g => g.year, g => ((double)g.electric / (double)g.total * 100), (Key, g) => new { year = Key, proc = g.Average() }).Select(y => y.proc).ToList();
-
             var salesSwe = Context.Where(f => f.country_id == 1).GroupBy(x => x.year_no, (year, y) => new
             {
                 Key = year,
@@ -227,11 +226,10 @@ namespace GruppuppgiftMMMJ
             procentSwe = salesSwe.Select(i => ((double)i.Elec / (double)i.Total * 100)).ToList();
             procentNor = salesNor.Select(i => ((double)i.Elec / (double)i.Total * 100)).ToList();
 
-
             years = salesNor.Select(x => "" + x.Key).ToList();
-            tbYear.Text = years.Last();
-            tbNorway.Text = Math.Round(procentNor.Last(), 2) + "%";
-            tbSweden.Text = Math.Round(procentSwe.Last(), 2) + "%";
+
+            setTxtButtons(years.IndexOf(years.Last()));
+
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Year",
@@ -271,6 +269,7 @@ namespace GruppuppgiftMMMJ
             };
 
 
+            var co2 = Context.Select(f => new { year = f.year_no, co = f.CO2, coun = f.country_id });
 
             List<double> co2sweden = co2.Where(i => i.coun == 1).GroupBy(g => g.year, g => g.co, (key, g) => new { year = key, co2 = (double)g.Sum() / 12 }).Select(filter => filter.co2).ToList();
 
@@ -316,6 +315,25 @@ namespace GruppuppgiftMMMJ
             cartesianChart1.AxisX[0].MinValue = 1;
             cartesianChart1.AxisX[0].MaxValue = 7;
 
+        }
+
+        private void setTxtButtons(int index)
+        {
+            tbYear.Text = years[index];
+            tbNorway.Text = Math.Round(procentNor[index], 2) + "%";
+            tbSweden.Text = Math.Round(procentSwe[index], 2) + "%";
+        }
+
+
+        public void setGridView(int index)
+        {
+            int year = int.TryParse(years[index], out int value) ? value : 2016;
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+                dgvNor.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 2).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+
+                dgvSwe.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 1).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+            }
         }
     }
 }
