@@ -27,6 +27,10 @@ namespace GruppuppgiftMMMJ
         List<double> procentNor;
         List<string> years;
 
+        // Set up datasource for both countries.
+        BindingSource bindingNor = new BindingSource();
+        BindingSource bindingSwe = new BindingSource();
+
         public co2Form(Form pf)
         {
             InitializeComponent();
@@ -330,9 +334,17 @@ namespace GruppuppgiftMMMJ
             int year = int.TryParse(years[index], out int value) ? value : 2016;
             using (CarsDWEntities dw = new CarsDWEntities())
             {
-                dgvNor.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 2).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+                bindingNor.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 2).Select(a => new { a.title, a.date, a.description }).ToList();
+                
+                dgvNor.DataSource = bindingNor;
+                
 
-                dgvSwe.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 1).Select(a => new { a.title, a.date, a.country_name, a.description }).ToList();
+                var sme = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 1).Select(a => new { a.title, a.date, a.description }).ToList();
+                dgvSwe.DataSource = null;
+                dgvSwe.Rows.Clear();
+                dgvSwe.Refresh();
+                dgvSwe.DataSource = sme;
+               
             }
         }
     }
