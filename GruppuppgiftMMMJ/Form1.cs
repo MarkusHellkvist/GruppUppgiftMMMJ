@@ -59,19 +59,30 @@ namespace GruppuppgiftMMMJ
             Application.Exit();
         }
 
+
         //Marcus testchart
         private void mWtestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MWtest f = new MWtest(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
-            f.Show();//visa vid click
+         //   MWtest f = new MWtest(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
+          //  f.Show();//visa vid click
             this.Hide(); //Göm fönstret
         }
         
         private void co2FormToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            co2Form f = new co2Form(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
-            f.Show();//visa vid click
+          //  co2Form f = new co2Form(this);//Konstruktor. this = den form vi är i this hänvisar till sig själv
+          //  f.Show();//visa vid click
             this.Hide(); //Göm fönstret
+
+   }
+
+        private void bubbleChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BubbleChartCarSales f2 = new BubbleChartCarSales(this);
+            f2.Show();
+
         }
+
+        
     }
 }
