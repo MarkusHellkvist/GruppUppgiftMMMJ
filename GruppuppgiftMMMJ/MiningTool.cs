@@ -344,7 +344,7 @@ namespace GruppuppgiftMMMJ
                     }
                     else if (p.SeriesView.Title.Contains("Sverige")) //sweden
                     {
-                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth && a.country_id == 2).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
+                        var me = dw.MarketEvents.Where(a => a.year_no == yr && a.month_no == mnth && a.country_id == 1).Select(a => new { a.date, a.country_name, a.description, a.title }).ToList();
                         dataGridView1.DataSource = me;
 
                     }
