@@ -58,5 +58,13 @@ namespace GruppuppgiftMMMJ
         {
             Application.Exit();
         }
+
+   
+
+        private void bubbleChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BubbleChartCarSales f2 = new BubbleChartCarSales(this);
+            f2.Show();
+        }
     }
 }
