@@ -36,11 +36,11 @@
             this.toolsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miningToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mWtestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.co2FormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gasPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +55,7 @@
             this.sandboxToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(947, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(946, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -109,17 +108,24 @@
             // chartsToolStripMenuItem
             // 
             this.chartsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bubbleChartToolStripMenuItem});
+            this.bubbleChartToolStripMenuItem,
+            this.gasPriceToolStripMenuItem,
+            this.salariesToolStripMenuItem});
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.chartsToolStripMenuItem.Text = "Charts";
             // 
+            // bubbleChartToolStripMenuItem
+            // 
+            this.bubbleChartToolStripMenuItem.Name = "bubbleChartToolStripMenuItem";
+            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.bubbleChartToolStripMenuItem.Text = "Bubble";
+            this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
+            // 
             // sandboxToolStripMenuItem
             // 
             this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.livechartsDemoToolStripMenuItem,
-            this.mWtestToolStripMenuItem,
-            this.co2FormToolStripMenuItem});
+            this.livechartsDemoToolStripMenuItem});
             this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
             this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.sandboxToolStripMenuItem.Text = "Sandbox";
@@ -131,35 +137,27 @@
             this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
             this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
             // 
-            // mWtestToolStripMenuItem
+            // gasPriceToolStripMenuItem
             // 
-            this.mWtestToolStripMenuItem.Name = "mWtestToolStripMenuItem";
-            this.mWtestToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.mWtestToolStripMenuItem.Text = "MWtest";
-            this.mWtestToolStripMenuItem.Click += new System.EventHandler(this.mWtestToolStripMenuItem_Click);
+            this.gasPriceToolStripMenuItem.Name = "gasPriceToolStripMenuItem";
+            this.gasPriceToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gasPriceToolStripMenuItem.Text = "Gas Price";
+            this.gasPriceToolStripMenuItem.Click += new System.EventHandler(this.gasPriceToolStripMenuItem_Click);
             // 
-            // co2FormToolStripMenuItem
+            // salariesToolStripMenuItem
             // 
-            this.co2FormToolStripMenuItem.Name = "co2FormToolStripMenuItem";
-            this.co2FormToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.co2FormToolStripMenuItem.Text = "co2Form";
-            this.co2FormToolStripMenuItem.Click += new System.EventHandler(this.co2FormToolStripMenuItem_Click_1);
-            // 
-            // bubbleChartToolStripMenuItem
-            // 
-            this.bubbleChartToolStripMenuItem.Name = "bubbleChartToolStripMenuItem";
-            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.bubbleChartToolStripMenuItem.Text = "Bubble Chart";
-            this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
+            this.salariesToolStripMenuItem.Name = "salariesToolStripMenuItem";
+            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.salariesToolStripMenuItem.Text = "Salaries";
+            this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 335);
+            this.ClientSize = new System.Drawing.Size(946, 335);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -182,9 +180,9 @@
         private System.Windows.Forms.ToolStripMenuItem chartsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sandboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livechartsDemoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mWtestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem co2FormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bubbleChartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gasPriceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salariesToolStripMenuItem;
     }
 }
 
