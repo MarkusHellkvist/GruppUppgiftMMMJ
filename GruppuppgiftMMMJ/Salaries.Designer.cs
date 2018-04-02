@@ -48,6 +48,7 @@
             this.Controls.Add(this.cartesianChart1);
             this.Name = "Salaries";
             this.Text = "Salaries";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Salaries_Load);
             this.ResumeLayout(false);
 
