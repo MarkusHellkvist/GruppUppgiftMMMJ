@@ -36,9 +36,11 @@
             this.toolsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.miningToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gasPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,10 +108,19 @@
             // chartsToolStripMenuItem
             // 
             this.chartsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bubbleChartToolStripMenuItem});
+            this.bubbleChartToolStripMenuItem,
+            this.gasPriceToolStripMenuItem,
+            this.salariesToolStripMenuItem});
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.chartsToolStripMenuItem.Text = "Charts";
+            // 
+            // bubbleChartToolStripMenuItem
+            // 
+            this.bubbleChartToolStripMenuItem.Name = "bubbleChartToolStripMenuItem";
+            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.bubbleChartToolStripMenuItem.Text = "Bubble";
+            this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
             // 
             // sandboxToolStripMenuItem
             // 
@@ -122,16 +133,23 @@
             // livechartsDemoToolStripMenuItem
             // 
             this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
-            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
             this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
             this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
             // 
-            // bubbleChartToolStripMenuItem
+            // gasPriceToolStripMenuItem
             // 
-            this.bubbleChartToolStripMenuItem.Name = "bubbleChartToolStripMenuItem";
-            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.bubbleChartToolStripMenuItem.Text = "Bubble Chart";
-            this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
+            this.gasPriceToolStripMenuItem.Name = "gasPriceToolStripMenuItem";
+            this.gasPriceToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gasPriceToolStripMenuItem.Text = "Gas Price";
+            this.gasPriceToolStripMenuItem.Click += new System.EventHandler(this.gasPriceToolStripMenuItem_Click);
+            // 
+            // salariesToolStripMenuItem
+            // 
+            this.salariesToolStripMenuItem.Name = "salariesToolStripMenuItem";
+            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.salariesToolStripMenuItem.Text = "Salaries";
+            this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -163,6 +181,8 @@
         private System.Windows.Forms.ToolStripMenuItem sandboxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem livechartsDemoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bubbleChartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gasPriceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salariesToolStripMenuItem;
     }
 }
 

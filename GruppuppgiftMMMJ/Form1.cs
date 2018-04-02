@@ -66,5 +66,17 @@ namespace GruppuppgiftMMMJ
             BubbleChartCarSales f2 = new BubbleChartCarSales(this);
             f2.Show();
         }
+
+        private void gasPriceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Gaspricechart f3 = new Gaspricechart();
+            f3.Show();
+        }
+
+        private void salariesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Salaries f4 = new Salaries();
+            f4.Show();
+        }
     }
 }
