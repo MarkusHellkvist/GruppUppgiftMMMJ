@@ -51,12 +51,13 @@ namespace GruppuppgiftMMMJ
         {
             parentForm = pf;
             InitializeComponent();
-            start_year = 2011;
-            end_year = 2017;
+          
         }
 
         private void BubbleChartCarSales_Load(object sender, EventArgs e)
         {
+            start_year = 2007;
+            end_year = 2017;
             textBox1.Text = "7000";
 
 
@@ -70,7 +71,7 @@ namespace GruppuppgiftMMMJ
             SSNorge.Values = CVNorge;
             SSNorge.Title = "Norge";
             SSNorge.DataLabels = true;
-            SSNorge.LabelPoint = p => "Norge\nElbilar " + p.Weight + " st";
+            SSNorge.LabelPoint = p => "Norge";//nElbilar " + p.Weight + " st";
             cartesianChart1.Series.Add(SSNorge);
 
 
@@ -84,7 +85,7 @@ namespace GruppuppgiftMMMJ
             SSSverige.Values = CVSverige;
             SSSverige.Title = "Sverige";
             SSSverige.DataLabels = true;
-            SSSverige.LabelPoint = p => "Sverige\nElbilar " + p.Weight + " st";
+            SSSverige.LabelPoint = p => "Sverige";//\nElbilar " + p.Weight + " st";
             cartesianChart1.Series.Add(SSSverige);
 
             //Referenschartseries MAX
@@ -126,8 +127,14 @@ namespace GruppuppgiftMMMJ
             SSreferenceMin.MaxPointShapeDiameter = 400;
 
             cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(1500);
-
-
+            cartesianChart1.AxisX[0].FontSize = 22;
+            cartesianChart1.AxisY[0].FontSize = 22;
+            cartesianChart1.AxisX[0].FontWeight = System.Windows.FontWeights.Black;
+            cartesianChart1.AxisY[0].FontWeight = System.Windows.FontWeights.Black;
+            cartesianChart1.AxisY[0].Foreground = System.Windows.Media.Brushes.Black;
+            cartesianChart1.AxisX[0].Foreground = System.Windows.Media.Brushes.Black;
+            SSNorge.FontSize = 22;
+            SSSverige.FontSize = 22;
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
