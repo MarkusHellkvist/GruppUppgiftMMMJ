@@ -378,7 +378,6 @@ namespace GruppuppgiftMMMJ
 
                 comboBox3.Items.Add(new CbItem("Year"));
                 comboBox3.Items.Add(new CbItem("Month"));
-                comboBox3.Items.Add(new CbItem("Day"));
                 comboBox3.SelectedIndex = 0;
 
                 comboBox4.Items.Add(new CbItem("Column"));
