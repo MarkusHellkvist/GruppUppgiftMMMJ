@@ -65,23 +65,23 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1426, 839);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 701);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // cartesianChart1
             // 
             this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cartesianChart1.Location = new System.Drawing.Point(152, 2);
-            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(2);
             this.cartesianChart1.Name = "cartesianChart1";
             this.tableLayoutPanel1.SetRowSpan(this.cartesianChart1, 2);
-            this.cartesianChart1.Size = new System.Drawing.Size(1272, 754);
+            this.cartesianChart1.Size = new System.Drawing.Size(1130, 616);
             this.cartesianChart1.TabIndex = 0;
             this.cartesianChart1.Text = "cartesianChart1";
             this.cartesianChart1.DataClick += new LiveCharts.Events.DataClickHandler(this.CartesianChart1OnDataClick);
@@ -94,12 +94,12 @@
             this.tableLayoutPanel2.Controls.Add(this.dgvNor, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.dgvSwe, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(152, 760);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(152, 622);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1272, 77);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1130, 77);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // dgvNor
@@ -115,7 +115,7 @@
             this.Column2,
             this.Column3});
             this.dgvNor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNor.Location = new System.Drawing.Point(639, 3);
+            this.dgvNor.Location = new System.Drawing.Point(568, 3);
             this.dgvNor.MaximumSize = new System.Drawing.Size(450, 0);
             this.dgvNor.Name = "dgvNor";
             this.dgvNor.Size = new System.Drawing.Size(450, 71);
@@ -187,9 +187,9 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(146, 189);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
@@ -201,7 +201,7 @@
             this.tbYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbYear.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbYear.Location = new System.Drawing.Point(7, 59);
-            this.tbYear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbYear.Margin = new System.Windows.Forms.Padding(2);
             this.tbYear.Name = "tbYear";
             this.tbYear.ReadOnly = true;
             this.tbYear.Size = new System.Drawing.Size(65, 20);
@@ -215,7 +215,7 @@
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox3.Location = new System.Drawing.Point(4, 15);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -230,7 +230,7 @@
             this.tbSweden.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSweden.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbSweden.Location = new System.Drawing.Point(85, 116);
-            this.tbSweden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSweden.Margin = new System.Windows.Forms.Padding(2);
             this.tbSweden.Name = "tbSweden";
             this.tbSweden.ReadOnly = true;
             this.tbSweden.Size = new System.Drawing.Size(56, 23);
@@ -244,7 +244,7 @@
             this.tbNorway.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNorway.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbNorway.Location = new System.Drawing.Point(85, 88);
-            this.tbNorway.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbNorway.Margin = new System.Windows.Forms.Padding(2);
             this.tbNorway.Name = "tbNorway";
             this.tbNorway.ReadOnly = true;
             this.tbNorway.Size = new System.Drawing.Size(65, 23);
@@ -258,7 +258,7 @@
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox2.Location = new System.Drawing.Point(7, 116);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(94, 23);
@@ -272,7 +272,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox1.Location = new System.Drawing.Point(7, 88);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(94, 23);
@@ -282,7 +282,7 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(3, 761);
+            this.button1.Location = new System.Drawing.Point(3, 623);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 75);
             this.button1.TabIndex = 0;
@@ -294,9 +294,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 839);
+            this.ClientSize = new System.Drawing.Size(1284, 701);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "co2Form";
             this.Text = "co2Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.co2Form_FormClosing);
