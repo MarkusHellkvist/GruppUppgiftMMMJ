@@ -87,6 +87,12 @@
     <Compile Include="CarSale.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="co2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="co2Form.Designer.cs">
+      <DependentUpon>co2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -152,6 +158,9 @@
     <Compile Include="SourceCodeGenerator.cs" />
     <EmbeddedResource Include="BubbleChartCarSales.resx">
       <DependentUpon>BubbleChartCarSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="co2Form.resx">
+      <DependentUpon>co2Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

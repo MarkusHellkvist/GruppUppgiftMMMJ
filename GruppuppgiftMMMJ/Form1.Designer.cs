@@ -37,10 +37,11 @@
             this.miningToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.chartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gasPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesOverYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,7 +111,8 @@
             this.chartsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bubbleChartToolStripMenuItem,
             this.gasPriceToolStripMenuItem,
-            this.salariesToolStripMenuItem});
+            this.salariesToolStripMenuItem,
+            this.salesOverYearToolStripMenuItem});
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.chartsToolStripMenuItem.Text = "Charts";
@@ -121,21 +123,6 @@
             this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.bubbleChartToolStripMenuItem.Text = "Bubble";
             this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
-            // 
-            // sandboxToolStripMenuItem
-            // 
-            this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.livechartsDemoToolStripMenuItem});
-            this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
-            this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
-            this.sandboxToolStripMenuItem.Text = "Sandbox";
-            // 
-            // livechartsDemoToolStripMenuItem
-            // 
-            this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
-            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(190, 26);
-            this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
-            this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
             // 
             // gasPriceToolStripMenuItem
             // 
@@ -150,6 +137,28 @@
             this.salariesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.salariesToolStripMenuItem.Text = "Salaries";
             this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
+            // 
+            // sandboxToolStripMenuItem
+            // 
+            this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.livechartsDemoToolStripMenuItem});
+            this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
+            this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.sandboxToolStripMenuItem.Text = "Sandbox";
+            // 
+            // livechartsDemoToolStripMenuItem
+            // 
+            this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
+            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
+            this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
+            // 
+            // salesOverYearToolStripMenuItem
+            // 
+            this.salesOverYearToolStripMenuItem.Name = "salesOverYearToolStripMenuItem";
+            this.salesOverYearToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.salesOverYearToolStripMenuItem.Text = "Sales over year";
+            this.salesOverYearToolStripMenuItem.Click += new System.EventHandler(this.salesOverYearToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -183,6 +192,7 @@
         private System.Windows.Forms.ToolStripMenuItem bubbleChartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gasPriceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salariesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salesOverYearToolStripMenuItem;
     }
 }
 

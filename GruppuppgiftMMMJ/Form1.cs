@@ -78,5 +78,11 @@ namespace GruppuppgiftMMMJ
             Salaries f4 = new Salaries();
             f4.Show();
         }
+
+        private void salesOverYearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            co2Form f5 = new co2Form(this);
+            f5.Show();
+        }
     }
 }
