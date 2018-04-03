@@ -245,27 +245,27 @@ namespace GruppuppgiftMMMJ
             {
                 Values = electricSweden,
                 Title = "Electric Sales Sweden",
-                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179))
+                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0))
             };
             totSalesS = new ColumnSeries
             {
                 Values = totalSweden,
                 Title = "Total Sales Sweden",
-                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(153, 214, 255))
+                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 102, 102))
             };
 
             elecSalesN = new ColumnSeries
             {
                 Values = electricNorway,
                 Title = "Electric Sales Norway",
-                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0))
+                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179))
 
             };
             totSalesN = new ColumnSeries
             {
                 Values = totalNorway,
                 Title = "Total Sales Norway",
-                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 102, 102))
+                Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(153, 214, 255))
             };
             cartesianChart1.Series = new SeriesCollection
             {
@@ -291,7 +291,7 @@ namespace GruppuppgiftMMMJ
                 Title = "Co2 Norway",
                 Values = NCV,
                 PointGeometry = null,
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0)),
+                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179)),
                 Fill = System.Windows.Media.Brushes.Transparent,
                 StrokeThickness = 4,
                 ScalesYAt = 1,
@@ -302,7 +302,7 @@ namespace GruppuppgiftMMMJ
                 Title = "Co2 Sweden",
                 Values = SCV,
                 PointGeometry = null,
-                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 107, 179)),
+                Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(179, 0, 0)),
                 Fill = System.Windows.Media.Brushes.Transparent,
                 StrokeThickness = 4,
                 ScalesYAt = 1

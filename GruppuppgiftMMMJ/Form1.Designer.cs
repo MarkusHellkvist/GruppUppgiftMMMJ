@@ -39,9 +39,9 @@
             this.bubbleChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gasPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salesOverYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sandboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.livechartsDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesOverYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,8 @@
             this.sandboxToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(946, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(710, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,13 +66,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -80,14 +81,14 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miningToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Insert";
             this.toolsToolStripMenuItem.Click += new System.EventHandler(this.toolsToolStripMenuItem_Click);
             // 
             // miningToolStripMenuItem
             // 
             this.miningToolStripMenuItem.Name = "miningToolStripMenuItem";
-            this.miningToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.miningToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.miningToolStripMenuItem.Text = "Market event...";
             this.miningToolStripMenuItem.Click += new System.EventHandler(this.miningToolStripMenuItem_Click);
             // 
@@ -96,13 +97,13 @@
             this.toolsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miningToolStripMenuItem1});
             this.toolsToolStripMenuItem1.Name = "toolsToolStripMenuItem1";
-            this.toolsToolStripMenuItem1.Size = new System.Drawing.Size(56, 24);
+            this.toolsToolStripMenuItem1.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem1.Text = "Tools";
             // 
             // miningToolStripMenuItem1
             // 
             this.miningToolStripMenuItem1.Name = "miningToolStripMenuItem1";
-            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
+            this.miningToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.miningToolStripMenuItem1.Text = "Mining";
             this.miningToolStripMenuItem1.Click += new System.EventHandler(this.miningToolStripMenuItem1_Click);
             // 
@@ -114,59 +115,60 @@
             this.salariesToolStripMenuItem,
             this.salesOverYearToolStripMenuItem});
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
-            this.chartsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.chartsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.chartsToolStripMenuItem.Text = "Charts";
             // 
             // bubbleChartToolStripMenuItem
             // 
             this.bubbleChartToolStripMenuItem.Name = "bubbleChartToolStripMenuItem";
-            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.bubbleChartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bubbleChartToolStripMenuItem.Text = "Bubble";
             this.bubbleChartToolStripMenuItem.Click += new System.EventHandler(this.bubbleChartToolStripMenuItem_Click);
             // 
             // gasPriceToolStripMenuItem
             // 
             this.gasPriceToolStripMenuItem.Name = "gasPriceToolStripMenuItem";
-            this.gasPriceToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gasPriceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gasPriceToolStripMenuItem.Text = "Gas Price";
             this.gasPriceToolStripMenuItem.Click += new System.EventHandler(this.gasPriceToolStripMenuItem_Click);
             // 
             // salariesToolStripMenuItem
             // 
             this.salariesToolStripMenuItem.Name = "salariesToolStripMenuItem";
-            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salariesToolStripMenuItem.Text = "Salaries";
             this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
+            // 
+            // salesOverYearToolStripMenuItem
+            // 
+            this.salesOverYearToolStripMenuItem.Name = "salesOverYearToolStripMenuItem";
+            this.salesOverYearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salesOverYearToolStripMenuItem.Text = "Sales over year";
+            this.salesOverYearToolStripMenuItem.Click += new System.EventHandler(this.salesOverYearToolStripMenuItem_Click);
             // 
             // sandboxToolStripMenuItem
             // 
             this.sandboxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.livechartsDemoToolStripMenuItem});
             this.sandboxToolStripMenuItem.Name = "sandboxToolStripMenuItem";
-            this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.sandboxToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.sandboxToolStripMenuItem.Text = "Sandbox";
             // 
             // livechartsDemoToolStripMenuItem
             // 
             this.livechartsDemoToolStripMenuItem.Name = "livechartsDemoToolStripMenuItem";
-            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.livechartsDemoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.livechartsDemoToolStripMenuItem.Text = "LivechartsDemo";
             this.livechartsDemoToolStripMenuItem.Click += new System.EventHandler(this.livechartsDemoToolStripMenuItem_Click);
             // 
-            // salesOverYearToolStripMenuItem
-            // 
-            this.salesOverYearToolStripMenuItem.Name = "salesOverYearToolStripMenuItem";
-            this.salesOverYearToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.salesOverYearToolStripMenuItem.Text = "Sales over year";
-            this.salesOverYearToolStripMenuItem.Click += new System.EventHandler(this.salesOverYearToolStripMenuItem_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 335);
+            this.ClientSize = new System.Drawing.Size(710, 272);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Form1_Load);

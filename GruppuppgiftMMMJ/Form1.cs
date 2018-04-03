@@ -84,5 +84,6 @@ namespace GruppuppgiftMMMJ
             co2Form f5 = new co2Form(this);
             f5.Show();
         }
+        
     }
 }
