@@ -11,8 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\MarketEventsCSVFile\</PublishUrl>
+    <PublishUrl>C:\Sourcode\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,8 +21,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>EB2349B7F7AD2AB72C23EC1122536F6833F5061E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1F50FCE466F17ACBC6320810B009E376E18574DB</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>GruppuppgiftMMMJ_TemporaryKey.pfx</ManifestKeyFile>
@@ -115,6 +115,12 @@
     <Compile Include="CarSale.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="co2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="co2Form.Designer.cs">
+      <DependentUpon>co2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -180,6 +186,9 @@
     <Compile Include="SourceCodeGenerator.cs" />
     <EmbeddedResource Include="BubbleChartCarSales.resx">
       <DependentUpon>BubbleChartCarSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="co2Form.resx">
+      <DependentUpon>co2Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
