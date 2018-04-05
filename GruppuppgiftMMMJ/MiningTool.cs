@@ -357,6 +357,7 @@ namespace GruppuppgiftMMMJ
         {
             using (CarsDWEntities dw = new CarsDWEntities())
             {
+                
                 comboBox1.DataSource = dw.Countries.ToList();
                 comboBox1.DisplayMember = "name";
                 comboBox1.ValueMember = "country_id";
@@ -478,7 +479,56 @@ namespace GruppuppgiftMMMJ
 
         public void testSourceCode()
         {
-   
+            //AUTO GENERATED SOURCE CODE FOR LIVE CHART USING CARSDWENTITIES
+
+            cartesianChart1.AxisX.Clear();
+            cartesianChart1.AxisY.Clear();
+            using (CarsDWEntities dw = new CarsDWEntities())
+            {
+                List<BigView> Context = dw.BigViews.Where(c => c.country_id == 2).ToList();
+
+
+                string country_name = dw.Countries.Where(c => c.country_id == 2).Select(a => a.name).FirstOrDefault();
+                List<double> yAsDouble = new List<double>();
+
+                List<string> x = new List<string>();
+                for (int i = 2011; i <= 2016; i++) //för varje år
+                {
+                    x.Add(i.ToString());//year as x values
+                    var hjalp = Context.Where(b => b.year_no == i).Select("avg_salary");
+                    int sum = 0;
+                    //summerar
+                    foreach (int h in hjalp)
+                    {
+                        sum += h;
+                    }
+                    //lägger till
+                    yAsDouble.Add(sum);
+
+                }
+                ChartValues<double> cvy = new ChartValues<double>();
+                cvy.AddRange(yAsDouble.ToArray());
+                ColumnSeries cs = new ColumnSeries();
+
+
+                cs.Title = "Norge" + " avg_salary";
+                cs.Values = cvy;
+                cs.ScalesYAt = 0;
+                cartesianChart1.AxisX.Add(new Axis
+                {
+                    Title = "Year",
+                    Labels = x.ToArray()
+                });
+
+                cartesianChart1.AxisY.Add(new Axis
+                {
+                    Title = "avg_salary",
+                    LabelFormatter = value => value.ToString()
+                });
+                cartesianChart1.Series.Add(cs);
+
+            }
+
         }
 
 
