@@ -334,15 +334,15 @@ namespace GruppuppgiftMMMJ
             int year = int.TryParse(years[index], out int value) ? value : 2016;
             using (CarsDWEntities dw = new CarsDWEntities())
             {
-                bindingNor.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 2).Select(a => new { a.title, a.date, a.description }).ToList();
+                bindingNor.DataSource = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 2).Select(a => new { a.title, a.date, a.description, a.country_name }).ToList();
                 
                 dgvNor.DataSource = bindingNor;
                 
-
-                var sme = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 1).Select(a => new { a.title, a.date, a.description }).ToList();
+                var sme = dw.MarketEvents.Where(a => a.year_no == year && a.country_id == 1).Select(a => new { a.title, a.date, a.description,a.country_name }).ToList();
                 dgvSwe.DataSource = null;
                 dgvSwe.Rows.Clear();
                 dgvSwe.Refresh();
+                
                 dgvSwe.DataSource = sme;
                
             }
